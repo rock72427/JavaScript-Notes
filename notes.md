@@ -865,6 +865,8 @@ var d = add(c, b);
 | c:undefined  |      |
 | d:undefined  |      |
 
+##### add(10, 20)
+
 | M                        | C        |
 | ------------------------ | -------- |
 | arguments {0: 10, 1: 20} |          |
@@ -878,6 +880,8 @@ var d = add(c, b);
 | c:undefined  | 30   |
 | d:undefined  |      |
 
+##### add(30, 20)
+
 | M                       | C        |
 | ----------------------- | -------- |
 | arguments{0: 30, 1: 20} |          |
@@ -890,3 +894,13 @@ var d = add(c, b);
 | add:{=}      |      |
 | c:undefined  | 30   |
 | d:undefined  | 50   |
+
+```
+var a;
+console.log(a); // undefined
+```
+
+```
+let a;
+console.log(a); // uninitialized
+```
