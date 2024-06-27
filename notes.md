@@ -829,3 +829,64 @@ greet();
 - Callback Queue is a data structure which is used to store callback function's which are ready to be executed.
 - Micortask Queue is use to store the callback function's which has higher priority then the callback function's which are waiting inside callback queue.
 - Event loop is use to push the call back function's which are waiting inside weather callback queue or micro task queue to callstack execution.
+  ***
+
+* In javascript before executing one line of code only memory will be created for each variable and function.
+* If the variable is created var keyword the initail value is undefined.
+* If the vairable is created with let or const keyword's then the initial value is uninitialized.
+* For function declaraction initial value is actual function.
+* For function expression or arraow function's the initial value is depends on the keyword.
+* Execution context is a container which is use to execute javascript code.
+* the new execution context will be create for every function call.
+* The every exection context has two component:-
+
+1. memory component
+2. Code exection component
+
+```
+var a = 10;
+var b = 20;
+function add(n1, n2) {
+    var res = 0;
+    res = n1 + n2;
+    return res;
+}
+var c = add(a, b);
+var d = add(c, b);
+```
+
+### Global Execution Context
+
+| Memory       | Code |
+| ------------ | ---- |
+| a:undefined  | 10   |
+| b: undefined | 20   |
+| add:{=}      |      |
+| c:undefined  |      |
+| d:undefined  |      |
+
+| M                        | C        |
+| ------------------------ | -------- |
+| arguments {0: 10, 1: 20} |          |
+| res:undfined             | ~~0~~ 30 |
+
+| Memory       | Code |
+| ------------ | ---- |
+| a:undefined  | 10   |
+| b: undefined | 20   |
+| add:{=}      |      |
+| c:undefined  | 30   |
+| d:undefined  |      |
+
+| M                       | C        |
+| ----------------------- | -------- |
+| arguments{0: 30, 1: 20} |          |
+| res:undefined           | ~~0~~ 50 |
+
+| Memory       | Code |
+| ------------ | ---- |
+| a:undefined  | 10   |
+| b: undefined | 20   |
+| add:{=}      |      |
+| c:undefined  | 30   |
+| d:undefined  | 50   |

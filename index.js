@@ -1,1 +1,2 @@
-console.log("Hello Wrold");
+var a = 10;
+var a = 20;
