@@ -117,7 +117,7 @@ for   ❌
 ```
 main();
 function main() {
-    console.log("main starts);
+    console.log("main starts");
     m1();
     console.log("main ends");
 }
