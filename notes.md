@@ -822,9 +822,9 @@ greet();
 
 ## JS Runtime Environment
 
-![JRE](https://i.ibb.co/rwscvVR/Whats-App-Image-2024-06-27-at-1-48-13-PM.jpg)
+![JRE](https://vahid.blog/post/2021-03-21-understanding-the-javascript-runtime-environment-and-dom-nodes/jsRuntimeEnvironment_hufc6622042c18be00aa4535dddfa9305a_166610_1200x1200_fit_q75_lanczos.jpg)
 
-- JS runtime is an enviroment which is collection of necessary components in order to execute javascript code.
+- JS runtime is an enviroment which is a collection of necessary components in order to execute javascript code.
 - Javascirpt engine is a collection of program's which is use to run javascript program's.
 - Call Stack is the place where javascript code get's executed with the help of execution context.
 - Heap is an unstructured memory pool which is used to store javascript object's.
