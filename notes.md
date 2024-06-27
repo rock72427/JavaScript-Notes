@@ -820,3 +820,12 @@ greet();
 ## JS Runtime Environment
 
 ![JRE](https://i.ibb.co/rwscvVR/Whats-App-Image-2024-06-27-at-1-48-13-PM.jpg)
+
+- JS runtime is an enviroment which is collection of necessary components in order to execute javascript code.
+- Javascirpt engine is a collection of program's which is use to run javascript program's.
+- Call Stack is the place where javascript code get's executed with the help of execution context.
+- Heap is an unstructured memory pool which is used to store javascript object's.
+- Web API's are use to provide additional functionality to javascript program's (WEB API is not part to javasctipt langauge it is part of browser).
+- Callback Queue is a data structure which is used to store callback function's which are ready to be executed.
+- Micortask Queue is use to store the callback function's which has higher priority then the callback function's which are waiting inside callback queue.
+- Event loop is use to push the call back function's which are waiting inside weather callback queue or micro task queue to callstack execution.
