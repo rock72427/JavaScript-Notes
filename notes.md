@@ -631,10 +631,13 @@ function m1() {
 #### Output
 
 ```
-m1 is executing
-m1 is executing
+m1 is executing!!
+m1 is executing!!
 i value is 10
-j value is 200
+j value is  200
+m1 is executing!!
+10
+
 ```
 
 ### First Class Citizen
