@@ -582,6 +582,221 @@ for (let n = 1; n <= 10; n++) {
 }
 ```
 
+## Q1. Print 5 to 25?
+
+```
+for (let i = 5; i <= 25; i++) {
+    console.log(i);
+}
+```
+
+## Q2. Print -5 to 25?
+
+```
+for (let i = -5; i <= 25; i++) {
+    console.log(i);
+}
+```
+
+## Q3. Print 5 to -25?
+
+```
+for (let i = 5; i >= -25; i--) {
+    console.log(i);
+}
+```
+
+## Q4. Print -5 to -25?
+
+```
+for (let i = -5; i >= -25; i--) {
+    console.log(i);
+}
+```
+
+## Q. Write a program to print even number between 10 to 25?
+
+```
+for (let i = 10; i<= 25; i++) {
+    if(i %2 == 0) {
+        console.log(i);
+    }
+}
+```
+
+#### Output
+
+```
+10
+12
+14
+16
+18
+20
+22
+24
+```
+
+```
+main();
+function main() {
+    let str = '';
+    for (let n = 10; n <= 25; n++) {
+        if (n % 2 == 0) {
+            if (n < 24) {
+                str = str+n + ", ";
+            } else {
+                str = str +n;
+            }
+        }
+    }
+    console.log(str);
+}
+```
+
+```
+10, 12, 14, 16, 18, 20, 22, 24
+```
+
+## Q. Write a program to find factorial for a given number?
+
+```
+let num = 5
+let fact = 1;
+for (let n = 2; n <= num; n++) {
+    fact = fact * n;
+}
+console.log(fact); // 120
+```
+
+## Q. Write a program to print multiplication table of given number?
+
+```
+let num = 5;
+for (let n = 1; n <= 10; n++) {
+    console.log(`${num} * ${n} = ${num * n}`);
+}
+```
+
+#### Output
+
+```
+5 * 1 = 5
+5 * 2 = 10
+5 * 3 = 15
+5 * 4 = 20
+5 * 5 = 25
+5 * 6 = 30
+5 * 7 = 35
+5 * 8 = 40
+5 * 9 = 45
+5 * 10 = 50
+```
+
+## Q. Write a program to sum 1 to 10 digit?
+
+```
+let sum = 0;
+for (let n = 1; n <= 10; n++) {
+    sum += n;
+}
+console.log(sum);  // 55
+```
+
+```
+main();
+function main() {
+    for (let i = 1; i <= 10; i++) {
+        if (i % 2 == 0) break;
+        console.log(i);
+    }
+    console.log("outside for loop")
+}
+console.log("outside main function");
+```
+
+#### Output
+
+```
+1
+outside for loop
+outside main function
+```
+
+- Break statement can be use within looping statement.
+- Break statement is use to terminate the current loop.
+
+```
+main();
+function main() {
+    for (let i = 1; i <= 10; i++) {
+        if (i % 2== 0) continue;
+        console.log(i);
+    }
+    console.log("outside for loop");
+}
+console.log("outside main function");
+```
+
+#### Output
+
+```
+1
+3
+5
+7
+9
+outside for loop
+outside main function
+```
+
+- Continue is use to skip the current iteration and go to next.
+
+```
+main();
+function main() {
+    for (let i = 1; i <= 10; i++) {
+        if (i % 2 == 0) return;
+        console.log(i);
+    }
+    console.log("outside for loop");
+}
+console.log("outside main funciton");
+```
+
+#### Output
+
+```
+1
+outside main funciton
+```
+
+- Return is use to terminate the function.
+
+## Q. Write a program is divisible by prime or not?
+
+```
+let a = 8;
+let flag = 0;
+for (let i = 2; i < a; i++) {
+    if (a % i == 0) {
+        flag = 1;
+        break;
+    }
+}
+if (flag == 1) {
+    console.log(a + " is not prime");
+} else {
+    console.log(a + " is prime");
+}
+```
+
+#### Output
+
+```
+8 is not prime
+```
+
 ## Function
 
 - Function is set of statements which is use to perform some specific task.
