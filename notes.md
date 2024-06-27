@@ -35,7 +35,7 @@
 - Javascript is a Just in time programming language.
   > J.I.T compilation means converting highlevel code into machine level code at once and execute immediately.
 
-![JIT](https://i.ibb.co/GnbWDmF/Whats-App-Image-2024-06-13-at-2-58-19-PM-removebg-preview.png)
+![JIT](https://i.ibb.co/vhY8sty/Untitled-Project.jpg)
 
 Javascritp code can be attached to HTML page in 2 ways:-
 
