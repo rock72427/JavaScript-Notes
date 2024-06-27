@@ -65,10 +65,10 @@ Internal JS means writing script code into HTML document.
 - To execute function statement Function call is compulsory.
 
 ```
-Function FunctionName() { // Function- Keyword; FunctionName- Identifier
+function functionName() { // function- Keyword; functionName- Identifier
 
 }
-FunctionName(); // Function Call
+functionName(); // function Call
 ```
 
 ### Example
@@ -116,12 +116,12 @@ for   ❌
 
 ```
 main();
-Function main() {
+function main() {
     console.log("main starts);
     m1();
     console.log("main ends");
 }
-Function m1() {
+function m1() {
     console.log("m1 starts");
     console.log("m1 ends");
 }
