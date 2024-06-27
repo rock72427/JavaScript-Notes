@@ -274,7 +274,7 @@ console.log(++a); // 5
     function main() {
         let a = Number(prompt("Enter a value"));
         let b = Number(prompt("Enter b value"));
-        console.log(a + " + " + b " = " + (a + b));
+        console.log(`${a} + ${b} = ${a + b}`);
         let n1 = "10";
         console.log(n1, typeof n1);
         n1 = Number(n1);
