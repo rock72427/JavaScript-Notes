@@ -254,7 +254,7 @@ console.log(++a); // 4
 console.log(++a); // 5
 ```
 
-Q. How to take user input at run time?
+## Q. How to take user input at run time?
 
 - In javascript we use 'prompt' function to take input from the use at run time.
 
@@ -742,11 +742,11 @@ function mul(a, b) {
 }
 ```
 
-What is Callback Function?
+## Q.What is Callback Function?
 
 - The function which is passed as an argument to another function in known as callback function.
 
-What is High Order Function?
+## Q.What is High Order Function?
 
 - The function which is accepting another function as a argument the function is known as high order function.
 
