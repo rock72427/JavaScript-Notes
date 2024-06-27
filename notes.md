@@ -256,7 +256,7 @@ console.log(++a); // 5
 
 ## Q. How to take user input at run time?
 
-- In javascript we use 'prompt' function to take input from the use at run time.
+- In javascript we use 'prompt' function to take input from the user at run time.
 
 ```
 <script>
@@ -837,7 +837,7 @@ greet();
 * For function declaraction initial value is actual function.
 * For function expression or arraow function's the initial value is depends on the keyword.
 * Execution context is a container which is use to execute javascript code.
-* the new execution context will be create for every function call.
+* The new execution context will be create for every function call.
 * The every exection context has two component:-
 
 1. memory component
