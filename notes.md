@@ -128,9 +128,91 @@ function m1() {
 console.log("Hello");
 ```
 
-- Javascript is implicit semicoloned programming language.
+- Javascript is an implicit semicoloned programming language.
 
 > Which means when we are not using semi-colon in the end of the statements, then JS will be added automatically
+
+## Variable
+
+- Variable is a container which is use to store a single value.
+
+#### Syntax
+
+```
+keyword varName;
+varName = value;
+```
+
+#### Example
+
+```
+let a;
+a = 10;
+console.log('a'); // a
+console.log(a); // 10
+```
+
+- To create a variable we have 3 keyword like var, let, const.
+- let and const keyword are introduced in ES6 version in the year of 2015.
+- Variable can not be re-declared, but variable can be re-initialized.
+- Variable memory is tempory.
+
+#### Example
+
+```
+main();
+function main() {
+    let a;
+    a = 10;
+    console.log(a); // 10
+    a = 20;
+    console.log(a); // 20
+}
+```
+
+```
+main();
+function main() {
+    let a;
+    console.log(a); // undefined
+}
+```
+
+- If we create a variable without initialization then default value is assigned by JS engine is undefined.
+
+```
+studentDetails();
+function studentDetails() {
+    let stuName, stuId, stuPh;
+    stuName = "Rohit";
+    stuId = 101;
+    stuPh = 9999;
+    console.log(stuName);               // Rohit
+    console.log(stuId);                 // 101
+    console.log(stuPh);                 // 9999
+    console.log(stuId, stuName, stuPh); // 101 Rohit 9999
+}
+```
+
+```
+main();
+function main() {
+    let a = 10;
+    console.log(a); // 10
+    a = "Rohit";
+    console.log(a); // Rohit
+    a = true;
+    console.log(a); // true
+}
+```
+
+- Javascript is Dynamic typed programming language which means at the time of variable declaration we no need to use declaration.
+- In Dynamic type programming language the Data types of a variable will be assigned at run time.
+
+There are 2 types of Data types-
+
+1. Primitive type (number, string, boolean, undefined, null, big-int, symbol)
+2. Non-primitive type (object, array, regular expression, class name)
 
 ## Conditional Statements
 
