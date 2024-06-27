@@ -818,3 +818,5 @@ greet();
 - Arrow Function cannot be accessible before its initilazation.
 
 ## JS Runtime Environment
+
+![JRE](https://i.ibb.co/rwscvVR/Whats-App-Image-2024-06-27-at-1-48-13-PM.jpg)
