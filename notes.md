@@ -571,7 +571,7 @@ console.log(1 < 2 < 3); // (true < 3); (1 < 3); true
 ## Logical Operator
 
 - In AND(&&) operator if first condition is true then it will check second condition.
-- If first condition is false it wont check sedond condition.
+- If first condition is false it wont check second condition.
 
 ```
 let a = 5;
