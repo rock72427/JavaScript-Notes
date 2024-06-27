@@ -6,7 +6,7 @@
 
 - JavaScript is an implicitly semicoloned programming language.
 
-- JavaScript is a dynamically typed programming language means variable types are determined at runtime and can change as the program executes.
+- JavaScript is a dynamically typed programming language.
 
 ---
 
