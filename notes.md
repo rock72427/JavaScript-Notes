@@ -486,6 +486,102 @@ console.log(1 > 2 > 3); // (false > 3); (0 > 3); false
 console.log(1 < 2 < 3); // (true < 3); (1 < 3); true
 ```
 
+## Logical Operator
+
+- In AND(&&) operator if first condition is true then it will check second condition.
+- If first condition is false it wont check sedond condition.
+
+```
+let a = 5;
+console.log(!a > 5); // (false > 5); (0 > 5); false
+```
+
+```
+function main() {
+    let a = 5;
+    let b = 6;
+    console.log(a++ > 5 && b++ > 5);
+    console.log(a, b);
+}
+main();
+```
+
+#### Output
+
+```
+false
+6 6
+```
+
+- In OR(||) operator if first condition is false then it will check second condition.
+- If first condition is true it wont check sedond condition.
+
+```
+let a = 5;
+let b = 6;
+console.log(a++ >= 5 || b++ >= 5);
+console.log(a, b);
+```
+
+```
+true
+6 6
+```
+
+## Bitwise Operator
+
+- Bitwise '&' and '|' operator can be use for logical operations.
+- Bitwise '&' operator will check both the expression always and return binary output.
+
+```
+console.log(false && false);
+console.log(false & true);
+console.log(true & true);
+```
+
+#### Output
+
+```
+false
+0
+1
+```
+
+```
+console.log(0 && 1);                 // (false && true) => 0
+console.log(NaN && "Hi");            // (false && "Hi") => NaN
+console.log("Hi" && "Hello");        // (true && true) => Hello
+console.log("Java" && 0);            // (true && false) => 0
+console.log("Vinod" && undefined);   // (true && false) => undefined
+console.log(1 && "Hi");              // (true && true) => Hi
+console.log(NaN || null || "Vinod"); // (null || "Vinod") => (null || "Vinod") => (false || true) => Vinod
+
+```
+
+## Looping Statement
+
+1. for
+2. while
+3. do-while
+4. for in loop
+5. for of loop
+
+## For Loop
+
+#### Syntax
+
+```
+for (initilization; condition; increment/decrement) {
+
+}
+```
+
+```
+for (let n = 1; n <= 10; n++) {
+    console.log(n);
+}
+```
+
 ## Function
 
 - Function is set of statements which is use to perform some specific task.
