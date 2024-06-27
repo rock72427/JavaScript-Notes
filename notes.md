@@ -74,10 +74,10 @@ FunctionName(); // Function Call
 ### Example
 
 ```
-Function Pring() {
+function print() {
     console.log("Hello World");
 }
-Pring();
+print();
 ```
 
 ### Identifiers
