@@ -349,7 +349,7 @@ Boolean([1, 2, 3]) true
 
 #### Falsy Values
 
-- The values which returs the false when we converting into boolean type those values are known as falsy values.
+- The values which return the false when we converting into boolean type those values are known as falsy values.
 - There are 6 falsy values one is 0, " "(empty string), undefined, null, NaN, false.
 
 #### Truthy Values
