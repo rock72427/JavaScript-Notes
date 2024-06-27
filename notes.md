@@ -555,7 +555,7 @@ m1 ends
 
 - Return statement is use to returns the cursor to its calling function.
 - A javascript function can return any type of value (because of dynamic programming language).
-- If a function is not returning any value then writing statement is optional.
+- If a function is not returning any value then writing 'return' statement is optional.
 
 ```
 main();
