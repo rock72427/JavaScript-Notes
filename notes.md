@@ -301,6 +301,191 @@ console.log("Hi" + 1); // Hi1
 console.log("Hi" * 1); // NaN
 ```
 
+## Type Conversion
+
+Converting one type to another type manually or explicitly is known as type conversion.
+
+```
+Number("23"); // 23
+```
+
+### Coersion
+
+Converting one type to another type automatically of implicitly is known as type coersion.
+
+```
+"10" * 2 -> 20
+"1" + 2 -> "12"
+```
+
+### String()
+
+```
+String(23) // "23"
+String(true) // "true"
+```
+
+### Boolean()
+
+#### Falsy values
+
+```
+Boolean(0) false
+Boolean(" ") false
+Boolean(undefined) false
+Boolean(null) false
+Boolean(NaN) false
+Boolean(false) false
+```
+
+#### Truthy Values
+
+```
+Boolean(1) true
+Boolean("JSP") true
+Boolean(true) true
+Boolean([1, 2, 3]) true
+```
+
+#### Falsy Values
+
+- The values which returs the false when we converting into boolean type those values are known as falsy values.
+- There are 6 falsy values one is 0, " "(empty string), undefined, null, NaN, false.
+
+#### Truthy Values
+
+- The values which returns true when we convert into boolean type those values are known as truthy values.
+- Apart from falsy values all other values are truthy values.
+
+For conversion purpose we can use '+' operator.
+
+```
+let a = +("10");
+console.log(a, typeof a);
+```
+
+#### Output
+
+```
+10 number
+```
+
+#### Even or Odd
+
+```
+<script>
+    main();
+    function main() {
+        let n = Number(prompt("Enter Number"));
+        if (n % 2 == 0)
+            console.log(n + " is even number");
+        else
+            console.log(n + " is odd number");
+    }
+</script>
+```
+
+```
+<script>
+    main();
+    function main() {
+        let n = 5;
+        if (n % 2 == 0) {
+            n++;
+            ++n;
+        }
+        n++;
+        console.log("n value is " +n);
+    }
+</script>
+```
+
+#### Output
+
+```
+n value is 6
+```
+
+```
+<script>
+    main();
+    function main() {
+        let n = 13;
+        if (n % 2 == 0) {
+            n++;
+            ++n;
+            n++;
+            console.log("n value is " + n);
+        }
+    }
+</script>
+```
+
+## Relationl Operator
+
+Relational Operator also known as comparission operator.
+
+```
+5 > 5 false
+5 < 5 false
+5 >= 5 true
+5 <= 5 true
+5 == 5 true
+5 != false
+```
+
+#### Comparision
+
+```
+>
+<
+>=
+<=
+==
+!=
+===
+!==
+```
+
+Output of relational operator is in Boolean type.
+
+```
+<script>
+    main();
+    function main() {
+        let a = 5;
+        let b = "5";
+        if (a === b)
+            console.log("Javascript is Easy !!");
+        else
+            console.log("Javascript is very very Easy!!");
+    }
+</script>
+```
+
+#### Output
+
+```
+Javascript is very very Easy!!
+```
+
+## ==
+
+- Double equal to is a normal comparision operator.
+- Double equal to operator will check only the values but not data types.
+- In case of double equal to operator type coersion happens internally.
+
+## ===
+
+- Triple equal is a strictly comparision operator.
+- Triple equal to operator will check the values as datatype.
+- Type corsion will not happen is case of triple equal to.
+
+```
+console.log(1 > 2 > 3); // (false > 3); (0 > 3); false
+console.log(1 < 2 < 3); // (true < 3); (1 < 3); true
+```
+
 ## Function
 
 - Function is set of statements which is use to perform some specific task.
