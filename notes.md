@@ -1308,7 +1308,7 @@ console.log(a); // uninitialized
 - Object is a collection of properties(state) and methods(behaviour).
 - In javascript we can create object in 2 ways:-
 
-1. Object Literal
+## 1. Object Literal
 
 #### Syntax
 
@@ -1319,7 +1319,7 @@ let refVar = {
 }
 ```
 
-2. Using object Constructor
+## 2. Using object Constructor
 
 #### Syntax
 
@@ -1341,5 +1341,4 @@ console.log(stuName); // Satish Kumar
 
 let year = student["birthYear"];
 console.log(year); // 2000
-
 ```
