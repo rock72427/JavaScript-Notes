@@ -1,13 +1,12 @@
 let student = {
   id: 101,
+  8: "Eight",
   firstName: "Satish",
   lastName: "Kumar",
+  "full Name": "Satish Kumar",
   gender: "Male",
   birthYear: 2000,
   age: 24,
 };
-let stuName = `${student.firstName} ${student.lastName}`;
-console.log(stuName); // Satish Kumar
-
-let year = student["birthYear"];
-console.log(year); // 2000
+console.log(student["full Name"]); // Satish Kumar
+console.log(student["8"]); // Eight
