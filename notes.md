@@ -1118,24 +1118,25 @@ function m1(a) {
 
 ```
 main();
+
 function main() {
     let output = calc(10, 20, mul); // passing function as an argument
     console.log("Output = " + output);
 }
+
 function calc(n1, n2, callType) {
     let res = callType(n1, n2);
     return res;
 }
-function calc(n1, n2, callType) {
-    let res = calType(n1, n2);
-    return res;
-}
+
 function sum(a, b) {
     return a + b;
 }
+
 function mul(a, b) {
     return a * b;
 }
+
 ```
 
 ## Q.What is Callback Function?
