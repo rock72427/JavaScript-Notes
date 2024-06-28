@@ -1194,7 +1194,7 @@ A function without a name is known as anonymous function.
 
 | Function Declaration                                                         | Function Expression                                                |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| Function Declaration can be accessable before its declaration.               | Function Expression cannot be accessible.                          |
+| Function Declaration can be accessable before its declaration.               | Function Expression cannot be accessible before its declaration.   |
 | Since Function Declaration is a block of code we can not end with semicolon. | Since Function Expression is a variable we can end with semicolon. |
 
 ### Arrow Function
