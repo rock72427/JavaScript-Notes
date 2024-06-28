@@ -1395,3 +1395,19 @@ if (student[info]) {
     console.log("Invalid Search");
 }
 ```
+
+## Dot Notation
+
+- By using dot notation we can access only valid identifiers.
+- Using dot notation we can access only static properites.
+
+## Square Notation
+
+- By using [] square notation we can access invalid identifiers also.
+
+```
+objRef["full Name"]
+obj["6"]
+```
+
+- Using [] notation we can access dynamic properties.
