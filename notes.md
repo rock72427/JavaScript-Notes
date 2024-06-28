@@ -1329,8 +1329,8 @@ let refVar = new Object();
 
 2 ways to access object keys:-
 
-1. . notation
-2. [ ] notation
+1. got notation
+2. square notation
 
 ```
 let student = {
