@@ -1378,3 +1378,20 @@ let student = {
 console.log(student["full Name"]); // Satish Kumar
 console.log(student["8"]); // Eight
 ```
+
+```
+let student = {
+  id: 101,
+  firstName: "Satish",
+  lastName: "Kumar",
+  gender: "Male",
+  birthYear: 2000,
+  age: 24,
+};
+let info = prompt("Search Student Data..?");
+if (student[info]) {
+    console.log(`You are Searching For Student ${info} => ${student[info]}`);
+} else {
+    console.log("Invalid Search");
+}
+```
