@@ -1301,3 +1301,45 @@ console.log(a); // undefined
 let a;
 console.log(a); // uninitialized
 ```
+
+## Objects
+
+- Object is an physical entity or an real world entity.
+- Object is a collection of properties(state) and methods(behaviour).
+- In javascript we can create object in 2 ways:-
+
+1. Object Literal
+
+#### Syntax
+
+```
+let refVar = {
+    key: value,
+    key: value
+}
+```
+
+2. Using object Constructor
+
+#### Syntax
+
+```
+let refVar = new Object();
+```
+
+```
+let student = {
+  id: 101,
+  firstName: "Satish",
+  lastName: "Kumar",
+  gender: "Male",
+  birthYear: 2000,
+  age: 24,
+};
+let stuName = `${student.firstName} ${student.lastName}`;
+console.log(stuName); // Satish Kumar
+
+let year = student["birthYear"];
+console.log(year); // 2000
+
+```
