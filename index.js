@@ -1,12 +1,5 @@
-let student = {
-  id: 101,
-  8: "Eight",
-  firstName: "Satish",
-  lastName: "Kumar",
-  "full Name": "Satish Kumar",
-  gender: "Male",
-  birthYear: 2000,
-  age: 24,
-};
-console.log(student["full Name"]); // Satish Kumar
-console.log(student["8"]); // Eight
+let user_1 = { id: 1, name: "Satish", city: "UP" };
+let user_2 = user_1;
+user_2.city = "Bangalore";
+console.log(user_1.city); // Bangalore
+console.log(user_2.city); // Bangalore
