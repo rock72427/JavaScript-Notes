@@ -1327,6 +1327,11 @@ let refVar = {
 let refVar = new Object();
 ```
 
+2 ways to access object keys:-
+
+1. . notation
+2. [ ] notation
+
 ```
 let student = {
   id: 101,
@@ -1341,4 +1346,20 @@ console.log(stuName); // Satish Kumar
 
 let year = student["birthYear"];
 console.log(year); // 2000
+```
+
+- If we try to access non existing properties from an object then default value is return
+
+```
+let student = {
+  id: 101,
+  firstName: "Satish",
+  lastName: "Kumar",
+  gender: "Male",
+  birthYear: 2000,
+  age: 24,
+};
+console.log(student.firstName); // Satish
+console.log(student.address); // undefined
+console.log(student["info"]) // undefined
 ```
