@@ -311,11 +311,116 @@ console.log(n1, typeof n1);
 
 ### Arithmatic Operators
 
-"+" => Add\
-"-" => Sub\
-"\*" => Mul\
-"/" => Quotient\
-"%" => Reminder
+```
++ => Add
+- => Sub
+* => Mul
+/ => Quotient
+% => Reminder
+```
+
+### Math
+
+Math.trunc()
+trunc => Remove Decimal
+Math.trunc(a/b); // 2
+
+### To Remove Last Digit
+
+```
+main();
+function main() {
+    let n = 9746;
+    console.log(Math.trunc(n / 10)); // 974 // removing last one digit
+    console.log(Math.trunc(n / 100)); // 97
+    console.log(Math.trunc(n / 1000)); // 9
+}
+```
+
+### To get Last Digit
+
+```
+let n = 1234;
+console.log(n % 10); // 4
+console.log(n % 100); // 34
+console.log(n % 1000); // 234
+```
+
+### Compound Assignment Operator
+
+```
+let a = 1;
+a = a + 1;
+console.log(a);
+```
+
+a += 1 means +1 (positive 1) assign ni a value.
+
+### Concatination
+
+- Joining or combining tow or more operands is known as concatination.
+- To perform concatination we use (+) operator.
+- For concatination at least one operand should be string type
+
+```
+number + number => Addition
+number + string => concatination
+string + number => concatination
+string + string => concatination
+```
+
+```
+1 + 1 => 2                        // number
+1 + "css" => "1css"               // string
+"html" + 1 => "html1"             // string
+"java" + "script" => "javascript" // string
+```
+
+#### Example
+
+```
+1 + 2 + "Hi" => "3Hi"
+1 + 2 + "Hi" + 3 + "Hello" + 4 => "3Hi3Hello4"
+```
+
+#### Example
+
+```
+1 + "A" => "1A"
+```
+
+- But in Java A value consider as character and A values takes as ASCII values.
+
+#### Example
+
+```
+let a = 1;
+let str = " a value is ";
+let res = str + a;
+console.log(res);
+let b = 10;
+console.log("b value is " + b);
+console.log(`a value is ${a}`);
+```
+
+### Template Literal String (ES 6)
+
+#### Example
+
+```
+`      ${expression}`
+```
+
+## Q. Write a program to perfrom addition of two numbers?
+
+```
+main();
+function main() {
+    let a = 5;
+    let b = 10;
+    console.log(`addition of two number is:- ${a + b}`);
+}
+```
 
 ## Conditional Statements
 
