@@ -214,6 +214,109 @@ There are 2 types of Data types-
 1. Primitive type (number, string, boolean, undefined, null, big-int, symbol)
 2. Non-primitive type (object, array, regular expression, class name)
 
+### Number Data Type
+
+- Number data type is used to store any numberic value (either decimal or non-decimal values)
+
+#### Example
+
+```
+let a = 10;
+console.log(a, typeof a);
+a = 10.05;
+console.log(a, typeof a);
+```
+
+### String Data Type
+
+- String Data type is used to store a single letters or group of letters.
+- In Javascript a string can be enclosed within single quote(' ') or double quote(" ") or back tick(` `) operator.
+
+#### Example
+
+```
+let sname = "Abi";
+console.log(sname, typeof sname);
+sname = "nash";
+console.log(sname, typeof sname);
+sname = `Rautaray`;
+console.log(sname, typeof sname);
+```
+
+### Boolean Data type
+
+- Boolean datatype is used to store true or false values.
+
+#### Example
+
+```
+let ename = "Abi";
+let isMarried = true;
+console.log(isMarried, typeof isMarried);
+```
+
+### Undefined Datatype
+
+- If we create a variable without initialization then the default value is undefined.
+- Undefined values Datatype is undefined.
+
+#### Example
+
+```
+let gender;
+console.log(gender);
+```
+
+### Null
+
+- Null is an empty value or internenal absence of object value.
+
+#### Example
+
+```
+let isAlive = null;
+console.log(isAlive, typeof isAlive); // null 'object'
+```
+
+- It's a bug
+
+### Note
+
+- Javascript is multi-paradigm programming language which means we can write programming in procedual oriented or object oriented.
+
+### Big Int
+
+- Big Int datatype is used to store very large number which cannot store in number datatype.
+- To represent Bright datatype we need to use 'n';
+
+#### Example
+
+```
+let n1 = 10n;
+console.log(n1, typeof n1);
+```
+
+| Store maximum number of value syntax |
+| ------------------------------------ |
+| Number = MAX_SAFE_INTEGER            |
+
+- Big Int datatype introduced in ES-11 version.
+
+### Symbol
+
+- Symbol datatype is introduced in ES 6version.
+- Symbol datatype is used to create unique identifiers for objects.
+
+## Operators
+
+### Arithmatic Operators
+
+"+" => Add\
+"-" => Sub\
+"\*" => Mul\
+"/" => Quotient\
+"%" => Reminder
+
 ## Conditional Statements
 
 - By using conditional statement we can skip block of code.
