@@ -287,7 +287,7 @@ console.log(isAlive, typeof isAlive); // null 'object'
 ### Big Int
 
 - Big Int datatype is used to store very large number which cannot store in number datatype.
-- To represent Bright datatype we need to use 'n';
+- To represent Big Int datatype we need to use 'n';
 
 #### Example
 
