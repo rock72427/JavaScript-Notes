@@ -358,7 +358,7 @@ a += 1 means +1 (positive 1) assign ni a value.
 
 ### Concatination
 
-- Joining or combining tow or more operands is known as concatination.
+- Joining or combining two or more operands is known as concatination.
 - To perform concatination we use (+) operator.
 - For concatination at least one operand should be string type
 
