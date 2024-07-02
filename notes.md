@@ -155,7 +155,7 @@ console.log(a); // 10
 - To create a variable we have 3 keyword like var, let, const.
 - let and const keyword are introduced in ES6 version in the year of 2015.
 - Variable can not be re-declared, but variable can be re-initialized.
-- Variable memory is tempory.
+- Variable memory is temporary.
 
 #### Example
 
