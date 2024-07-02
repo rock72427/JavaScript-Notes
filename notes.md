@@ -1627,3 +1627,97 @@ user_2.city = "Bangalore";
 console.log(user_1.city); // Bangalore
 console.log(user_2.city); // Bangalore
 ```
+
+Every execution context can be associated with the object that object is having three properties:-
+
+1. Variable Object / Environment
+2. Scope Chain
+3. This
+
+## Variable Object / Environment
+
+- Variable Object is a property of execution context which contain all the variables, function arguments and inner functions declaration information.
+
+```
+function studentDetials(id, name) {
+    let instituteName = "Jspiders";
+    const branchName = "Marathahailli";
+    var course = "MERN";
+
+    function printDetails() {
+        console.log(`Student Name = ${name}, Student Course = ${course}`);
+    }
+    printDetails();
+    let welcome = function() {
+        console.log(`Hi ${name}, Welcome to ${instituteName}`);
+    }
+    welcome();
+
+    var greet = () => {
+        console.log(`Hey ${name}, Good Evening`);
+    }
+    greet();
+}
+studentDetails(101, "Satish");
+```
+
+#### G.E.C
+
+| Memory                             | Code |
+| ---------------------------------- | ---- |
+| variableObject:{studentDetails{=}} |      |
+
+#### StudentDetails(101, "Satish")
+
+| Memory                                           | Code |
+| ------------------------------------------------ | ---- |
+| variableObject:{arguments: {1:101, 1: "Satish"}} |      |
+| instituteName: uninitialized                     |      |
+| branch: uninitialized                            |      |
+| course: undefined                                |      |
+| printDetials: {=}                                |      |
+| welcome: unitialized                             |      |
+| greet: undefined                                 |      |
+| }                                                |      |
+
+## Scopes
+
+- Accessibility of a varaible is called scope.
+- There are three types of scope:
+
+1. Global
+2. Function Scope / Local Scope
+3. Block Scope
+
+### Global Scope
+
+- Top level code has global scope.
+- Top level code means the variable and functions which are not present inside any other functions or block is known as global variable and functions.
+
+### Function Scope / Local Scope
+
+- Function scope is also know as local scope.
+- The variables and functions which are present inside any other function are only accessible within that function.
+
+### Block level SCOPE
+
+- Blocks started creating scope from ES6 version.
+- The variables which are created using let or const keyword within that block only.
+
+## What is scope chain?
+
+- When ever we use a variable in javascript, JS engine looks for that variable in current scope if it is not avaible then it goes to outer scope and then this process continues till global scope.
+
+```
+let a = 10;
+{
+    let a = 20;
+    {
+        let a = 30;
+        {
+            let a = 40;
+            console.log(a);
+        }
+    }
+}
+```
