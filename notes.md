@@ -1721,3 +1721,88 @@ let a = 10;
     }
 }
 ```
+
+## Lexical Environment
+
+- Lexical environement is created for every exection context.
+- Lexical envinronment is local memory along with its parent lexical envinronment reference.
+
+Lexical Environment = local memory + its parent
+
+```
+function main() {
+    var a = 10;
+    function m1() {
+        var b = 20;
+        console.log(a);
+    }
+    m1();
+}
+main();
+```
+
+#### G.E.C
+
+| Memroy              | Code |
+| ------------------- | ---- |
+| varObje:{main: {=}} |      |
+
+#### main()
+
+| Memory      | Code |
+| ----------- | ---- |
+| a: undefine |      |
+| m1: {=}     |      |
+
+#### m1
+
+| Memory | Code |
+| ------ | ---- |
+|        |      |
+
+## What is Lexical Scope?
+
+- The variables which created outside the function can be accessible within the function.
+
+## Closures
+
+- Accessing the function variables even the function exection is completed or out of scope that is known as closure.
+
+OR
+
+- A clouser is a combination of a function bundled together with reference to its lexical environment.
+
+```
+function main() {
+    var a = 10;
+    function m1() {
+        var b = 20;
+        console.log(a);
+    }
+    return m1;
+}
+let outer = main();
+outer();
+```
+
+## Strict Mode
+
+- By using strict mode we can maintain secured javascript code which means we can avoid the small mistack which is done by developer.
+- To run javascript code in strict mode we need to write "use strict".
+
+```
+"use strict";
+let ename = "Satish";
+let hasDrivingLic= false;
+let passTest = true;
+
+if (passTest) {
+    hasDrivingLi = true;
+}
+console.log(hasDrivingLic);
+
+function main(a, b, a) {
+    console.log(a, b); // 30 20
+}
+main(10, 20, 30);
+```

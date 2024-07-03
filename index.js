@@ -1,5 +1,11 @@
-let user_1 = { id: 1, name: "Satish", city: "UP" };
-let user_2 = user_1;
-user_2.city = "Bangalore";
-console.log(user_1.city); // Bangalore
-console.log(user_2.city); // Bangalore
+function main() {
+  var a = 10;
+  function m1() {
+    var b = 20;
+    console.log(a);
+  }
+  return m1;
+}
+let outer = main();
+outer();
+console.log(a);
