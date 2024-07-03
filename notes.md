@@ -1806,3 +1806,27 @@ function main(a, b, a) {
 }
 main(10, 20, 30);
 ```
+
+## What is this keyword?
+
+- this keyword is a special variable which will be created for every execution context.
+- this keyword value is assigned at runtime.
+- In global context this refers to window object.
+- In regular function call(declaration and expression) this keyword refers to undefined in strict mode else it points to window object in normal mode.
+- Arrow function doesn't have its own this keyword if we use this keyword in arrow functions then it refers to the value of its parent scope this value.
+
+```
+"use strict";
+let a = this;
+console.log(a);
+
+let main = function () {
+    console.log(this);
+}
+main();
+
+console.log(this);
+let main = () => {
+    console.log(this);
+}
+```
