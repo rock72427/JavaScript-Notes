@@ -1,11 +1,12 @@
+main();
 function main() {
-  var a = 10;
-  function m1() {
-    var b = 20;
-    console.log(a);
-  }
-  return m1;
+  add(1, 2);
+  add(10, 20, 30, 1, 2, 3);
 }
-let outer = main();
-outer();
-console.log(a);
+function add(...nums) {
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+  }
+  console.log(`Sum = ${sum}`);
+}

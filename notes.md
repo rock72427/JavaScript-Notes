@@ -1812,7 +1812,7 @@ main(10, 20, 30);
 - this keyword is a special variable which will be created for every execution context.
 - this keyword value is assigned at runtime.
 - In global context this refers to window object.
-- In regular function call(declaration and expression) this keyword refers to undefined in strict mode else it points to window object in normal mode.
+- In regular function call(declaration and expression) this keyword refers to window object in strict mode else it points to undefined in normal mode.
 - Arrow function doesn't have its own this keyword if we use this keyword in arrow functions then it refers to the value of its parent scope this value.
 
 ```
@@ -1829,4 +1829,105 @@ console.log(this);
 let main = () => {
     console.log(this);
 }
+```
+
+In method call this keyword points to current object(current object means on which object reference the method is called)
+
+```
+let employee = {
+    eid: 101,
+    ename: "Rahul",
+    birthYear: 2000,
+    calcAge: function() {
+        console.log(this);
+        let d1 = new Date();
+        let currYear = d1.getFullYear();
+        return currYear - this.birthYear;
+    }
+}
+let age = employee.calcAge();
+console.log(`Employee Age = ${age}`);
+```
+
+```
+let employee = {
+    eid: 101,
+    ename: "Rahul",
+    birthYear: 2000,
+    calcAge: function() {
+        let a = this;
+        function calc() {
+            console.log(a.bithYear);
+        }
+        calc();
+    }
+}
+let age = employee.calcAge();
+console.log(`Employee Age = ${age}`);
+```
+
+```
+let employee = {
+    eid: 101,
+    ename: "Rahul",
+    birthYear: 2000,
+    calcAge: function() {
+        let calc = () => {
+            console.log(this.birthYear);
+        }
+        clac();
+    }
+}
+let age = employee.calcAge();
+console.log(`Employee Age = ${age}`);
+```
+
+## Arguments Object
+
+- Arguments object is a local variable which is available in all the functions.
+- Arguments object contains all the function parameters which are passed at function call.
+- Inside argument object the values are stored in index format.
+
+### Note
+
+- Argument object is not an array.
+- Argument object will not created in arrow function.
+- Arrow function does't have argument object.
+
+```
+main();
+function main() {
+    add(1, 2);
+    add(10, 20, 30);
+}
+function add() {
+    let size = arguments.length;
+    let sum = 0;
+    for (let i = 0; i < size; i++) {
+        sum += arguments[i];
+    }
+    console.log("Sum = " +sum);
+}
+```
+
+## Rest Parameter
+
+- Rest parameter's makes a function to accept any number of arguments as an array.
+- To represent rest parameter we have to use "...varName".
+- This parameter are introduced in ES6 version.
+
+```
+main();
+function main() {
+  add(1, 2);
+  add(10, 20, 30, 1, 2, 3);
+}
+function add(...nums) {
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+  }
+  console.log(`Sum = ${sum}`);
+}
+
 ```
