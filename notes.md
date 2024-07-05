@@ -2017,7 +2017,7 @@ fun.call(travels_3, "Satish", 40);
 
 - apply method is use to set this keyword value explicitly.
 - By using apply method we can call a function by passing owner object as an argument.
-- apply method is similar to call method but the differnce is the function argument must be passed as an array.
+- apply method is similar to call method but the difference is the function argument must be passed as an array.
 
 ```
 let travels_1  = {
