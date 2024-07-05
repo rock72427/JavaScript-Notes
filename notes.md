@@ -1931,3 +1931,157 @@ function add(...nums) {
 }
 
 ```
+
+## Overloading
+
+- Creating multiple function with same name but different arguments is known as function overloading.
+
+```
+main();
+function main() {
+    add(1, 2);
+}
+function add(a, b) {
+    console.log(a + b);
+}
+function add(a, b, c) {
+    console.log(a + b + c);
+}
+```
+
+#### Output
+
+```
+NaN // because c is not defined
+```
+
+```
+let travels_1 = {
+    travelsId: "OR101",
+    travelsName: "Orange",
+    bookings: [],
+    book: function (name, seatNo) {
+        console.log(`${name} is booked seat in ${this.travelsName} travels with seat number ${seatNo}`);
+        let obj = {passenger: `${name}, ${this.travelsId}, ${seatNo}`};
+
+        this.bookings.push(obj);
+    }
+};
+console.log(travels_1.bookings);
+travels_1.book("Rajesh", 41);
+travels_1.book("Raj", 42);
+console.log(travels_1.bookings);
+```
+
+- In javascript function's are treated as objects.
+- There are 3 methods for function's:
+
+1. f/n.call()
+2. f/n.apply()
+3. f/n.bind()
+
+## call method
+
+- By using call method we can set this keyword value explicitly.
+- By using call method we can call a function by passing owner object as an argument.
+
+```
+let travels_1  = {
+    travelsId: "OR101",
+    travelsName: "Orange",
+    bookings: [],
+};
+let travles_2 = {
+    travelsId: "VRL101",
+    travelsName: "VRL",
+    bookings: []
+};
+let travels_3  = {
+    travelsId: "ICT101",
+    travelsName: "Intercity",
+    bookings: []
+};
+let fun = function(name, seatNo) {
+    console.log(`${name} is booked seat in ${this.travelsName} travels with seat number ${seatNo}`);
+
+    let obj = {passenger: `${name}, ${this.travelsId}, ${seatNo}`};
+
+    this.bookings.push(obj);
+};
+fun.call(travels_1, "Rajesh", 1);
+fun.call(travels_2, "Rajesh", 10);
+fun.call(travels_3, "Satish", 40);
+```
+
+## apply method
+
+- appy method is use to set this keyword value explicitly.
+- By using appy method we can call a function by passing owner object as an argument.
+- apply method is similar to call method but the differnce is the function argument must be passed as an array.
+
+```
+let travels_1  = {
+    travelsId: "OR101",
+    travelsName: "Orange",
+    bookings: [],
+};
+let travles_2 = {
+    travelsId: "VRL101",
+    travelsName: "VRL",
+    bookings: []
+};
+let travels_3  = {
+    travelsId: "ICT101",
+    travelsName: "Intercity",
+    bookings: []
+};
+let fun = function(name, seatNo) {
+    console.log(`${name} is booked seat in ${this.travelsName} travels with seat number ${seatNo}`);
+
+    let obj = {passenger: `${name}, ${this.travelsId}, ${seatNo}`};
+
+    this.bookings.push(obj);
+};
+fun.call(travels_1, "Rajesh", 1);
+fun.apply(travels_2, ["Raj", 10]);
+```
+
+## bind method
+
+- bind method is use to set this keyword value explicity.
+- bind method is similar to call and apply method but bind method doesnt execute function immediatley instead of that it returns a copy of that function that function can be called again and again.
+- By using bind method we can preset some parameter values.
+
+```
+let travels_1  = {
+    travelsId: "OR101",
+    travelsName: "Orange",
+    bookings: [],
+};
+let travles_2 = {
+    travelsId: "VRL101",
+    travelsName: "VRL",
+    bookings: []
+};
+let travels_3  = {
+    travelsId: "ICT101",
+    travelsName: "Intercity",
+    bookings: []
+};
+let fun = function(name, seatNo) {
+    console.log(`${name} is booked seat in ${this.travelsName} travels with seat number ${seatNo}`);
+
+    let obj = {passenger: `${name}, ${this.travelsId}, ${seatNo}`};
+
+    this.bookings.push(obj);
+};
+fun.call(travels_1, "Rajesh", 1);
+fun.apply(travels_2, ["Raj", 10]);
+// let a = fun.bind(travels_3, "Pranay", 23);
+// a();
+
+let a = fun.bind(travels_3, "Pranay");
+a(1);
+a(2);
+a(3);
+```
