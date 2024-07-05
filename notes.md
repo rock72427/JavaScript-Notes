@@ -2085,3 +2085,36 @@ a(1);
 a(2);
 a(3);
 ```
+
+## Hoisting
+
+- Hoisting is a default behaviour or mechanism in javascript which allows some of the variable and function are availble to use before there declaration.
+
+|                      | Hoisted            | Innitial Value | Scope           |
+| -------------------- | ------------------ | -------------- | --------------- |
+| var                  | yes                | undefined      | functino        |
+| let, const           | yes(TDZ)           | uninitalized   | Block           |
+| Declaration          | yes                | Acutal F/n     | function sceope |
+| Expression/Arrow F/n | Depends On keyword |
+
+## let
+
+- let keyowrd is introduced in ES6 version
+- let variables cannot be re-declared, but it can be re-initialized.
+- let variables are hoisted, but they will be TDZ.
+- let variables are block scoped.
+
+## var
+
+- var keyword is introduced in older version.
+- var variables can be re-declared, it can be re-initialized.
+- var variables are hoisted and the value is undefined.
+- var variables are function scoped.
+
+## const
+
+- const keyword introduced in ES6;
+- const variables must be initialized at declaration only.
+- const varaiables cannot be re-initialized.
+- const varaiables are hoisted, but they will be TDZ.
+- const variables are block scoped.
