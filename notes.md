@@ -2015,8 +2015,8 @@ fun.call(travels_3, "Satish", 40);
 
 ## apply method
 
-- appy method is use to set this keyword value explicitly.
-- By using appy method we can call a function by passing owner object as an argument.
+- apply method is use to set this keyword value explicitly.
+- By using apply method we can call a function by passing owner object as an argument.
 - apply method is similar to call method but the differnce is the function argument must be passed as an array.
 
 ```
