@@ -1512,7 +1512,7 @@ console.log(a); // uninitialized
 
 ## Objects
 
-- Object is an physical entity or an real world entity.
+- Object is a physical entity or a real world entity.
 - Object is a collection of properties(state) and methods(behaviour).
 - In javascript we can create object in 2 ways:-
 
@@ -1537,7 +1537,7 @@ let refVar = new Object();
 
 2 ways to access object keys:-
 
-1. got notation
+1. dot notation
 2. square notation
 
 ```
