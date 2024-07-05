@@ -2118,3 +2118,14 @@ a(3);
 - const varaiables cannot be re-initialized.
 - const varaiables are hoisted, but they will be TDZ.
 - const variables are block scoped.
+
+## What is Temporal Dead Zone?
+
+- It is a time gap between where let and const variable are hoisted to its initialization.
+
+```
+console.log(a);
+console.log("Hello");
+console.log("Hi");
+let a = 10;
+```
