@@ -2076,7 +2076,7 @@ let fun = function(name, seatNo) {
     this.bookings.push(obj);
 };
 fun.call(travels_1, "Rajesh", 1);
-fun.apply(travels_2, ["Raj", 10]);
+fun.apply(travles_2, ["Raj", 10]);
 // let a = fun.bind(travels_3, "Pranay", 23);
 // a();
 
