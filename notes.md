@@ -2114,7 +2114,7 @@ a(3);
 ## const
 
 - const keyword introduced in ES6;
-- const variables must be initialized at declaration only.
+- const variables must be initialized at the time of declaration.
 - const varaiables cannot be re-initialized.
 - const varaiables are hoisted, but they will be TDZ.
 - const variables are block scoped.
