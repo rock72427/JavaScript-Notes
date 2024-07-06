@@ -269,7 +269,7 @@ console.log(gender);
 
 ### Null
 
-- Null is an empty value or internenal absence of object value.
+- Null is an empty value or internal absence of object value.
 
 #### Example
 
