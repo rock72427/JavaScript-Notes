@@ -2088,7 +2088,7 @@ a(3);
 
 ## Hoisting
 
-- Hoisting is a default behaviour or mechanism in javascript which allows some of the variable and function are availabel to use before there declaration.
+- Hoisting is a default behaviour or mechanism in javascript which allows some of the variable and function are available to use before there declaration.
 
 |                      | Hoisted            | Innitial Value | Scope           |
 | -------------------- | ------------------ | -------------- | --------------- |
