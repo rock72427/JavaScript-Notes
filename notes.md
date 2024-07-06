@@ -768,7 +768,7 @@ Javascript is very very Easy!!
 ## ===
 
 - Triple equal is a strictly comparision operator.
-- Triple equal to operator will check the values as datatype.
+- Triple equal to operator will check the values as well as datatype.
 - Type corsion will not happen is case of triple equal to.
 
 ```
