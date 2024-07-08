@@ -2129,3 +2129,69 @@ console.log("Hello");
 console.log("Hi");
 let a = 10;
 ```
+
+### Pure Function
+
+- A Function which produces always same output for same input is known as pure function.
+- Pure Function doesn't modify the state(data).
+- Pure Function doesn't have any side effects which means pure function doesn't modify external data.
+
+```
+function add(n1, n2) {
+    return n1 + n2;
+}
+console.log(add(3, 5)); // 8
+console.log(add(3, 5)); // 8
+```
+
+### Impure Function
+
+- A function which produces different output for same inputs is known as impure function.
+- Impure function modify the data.
+- Impure function has side effects which means impure function modifty external data.
+
+```
+let sum = 0;
+function add(n1) {
+    sum += n1;
+    return sum;
+}
+console.log(add(3)); // 3
+console.log(add(3)); // 6
+```
+
+## Default Parameter / Optional Parameter
+
+- Default parameter is introduced in ES6 version.
+- In javascript we can call a parameters function with less number of argument.
+- The default parameter's allows us to provide inital values or function parameters if no arguments are passed to functional parameter's when it is called.
+
+```
+main();
+function main() {
+  let output_1 = add();
+  console.log("Output_1 = " + output_1);
+
+  let output_2 = add(1);
+  console.log("Output_2 = " + output_2);
+
+  let output_3 = add(1, 2);
+  console.log("Output_3 = " + output_3);
+
+  let output_4 = add(1, 2, 3);
+  console.log("Output_4 = " + output_4);
+
+  function add(a = 0, b = 0, c = 0) {
+    return a + b + c;
+  }
+}
+```
+
+#### Output
+
+```
+Output_1 = 0
+Output_2 = 1
+Output_3 = 3
+Output_4 = 6
+```
