@@ -2195,3 +2195,18 @@ Output_2 = 1
 Output_3 = 3
 Output_4 = 6
 ```
+
+## Recursion
+
+- A function calling it self is known as recursion.
+
+```
+main();
+funciton main() {
+    m1();
+}
+function m1() {
+    console.log("m1 is executing!!!");
+    m1(); // Recursive Call
+}
+```
