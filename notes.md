@@ -2210,3 +2210,109 @@ function m1() {
     m1(); // Recursive Call
 }
 ```
+
+```
+main();
+function main() {
+    console.log("main starts");
+    m1(1);
+    console.log("main ends");
+}
+function m1(i) {
+    console.log(i);
+    if (i == 3) return;
+    m1 (i + 1);
+    console.log(i);
+}
+```
+
+#### Output
+
+```
+main starts
+1
+2
+3
+2
+1
+main ends
+```
+
+```
+main();
+function main() {
+  console.log("main starts");
+  m1(1);
+  console.log("main ends");
+}
+function m1(i) {
+  console.log(i);
+  if (i == 3) return;
+  m1(i + 1);
+  m1(i + 1);
+  console.log(i);
+}
+```
+
+#### Output
+
+```
+main starts
+1
+2
+3
+3
+2
+2
+3
+3
+2
+1
+main ends
+```
+
+## Write a program to print 1 to 10 number without using loop?
+
+```
+main();
+function main() {
+  m1(1);
+}
+function m1(i) {
+  console.log(i);
+  if (i == 10) return;
+  m1(i + 1);
+}
+```
+
+#### Output
+
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
+
+## Factorial using recursion?
+
+```
+fact();
+function fact(n) {
+  if (n == 0 || n == 1) {
+    return 1;
+  }
+  return n * fact(n - 1);
+}
+
+```
+
+## Sum of 1 to 10 number using recursion?
+
+## Print first 10 fibonnaci number using recursion?
