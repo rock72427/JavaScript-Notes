@@ -2313,6 +2313,28 @@ function fact(n) {
 
 ```
 
-## Sum of 1 to 10 number using recursion?
+## Write a program sum of 1 to 10 number using recursion?
 
-## Print first 10 fibonnaci number using recursion?
+```
+function rSum(n) {
+  if (n <= 1) return n;
+  return n + rSum(n - 1);
+}
+
+let sum = rSum(10);
+console.log(sum); // Output: 55
+
+```
+
+## Write a program to print first 10 fibonnaci number using recursion?
+
+```
+function fact(n) {
+  if (n <= 1) return n;
+  return fact(n - 1) + fact(n - 2);
+}
+
+for (let i = 0; i < 10; i++) {
+  console.log(fact(i));
+}
+```

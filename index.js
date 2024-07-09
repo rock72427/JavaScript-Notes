@@ -1,7 +1,8 @@
-fact();
 function fact(n) {
-  if (n == 0 || n == 1) {
-    return 1;
-  }
-  return n * fact(n - 1);
+  if (n <= 1) return n;
+  return fact(n - 1) + fact(n - 2);
+}
+
+for (let i = 0; i < 10; i++) {
+  console.log(fact(i));
 }
