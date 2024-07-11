@@ -2525,3 +2525,27 @@ Model => Structure
   </body>
 </html>
 ```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="one">Welcome to DOM</h1>
+    <h2 id="two"></h2>
+    <script>
+      let h1Tag = document.getElementById("one");
+      let text_1 = h1Tag.textContent;
+      console.log(text_1);
+
+      let h2Tag = document.querySelector("#two");
+      h2Tag.textContent = "DammnIt";
+    </script>
+  </body>
+</html>
+
+```
