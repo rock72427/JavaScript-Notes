@@ -2549,3 +2549,83 @@ Model => Structure
 </html>
 
 ```
+
+```
+<html>
+<head>
+</head>
+    <body>
+        <div>
+            <h1 id="display-text">Print Message</h1>
+            <br>
+            <button onclick="printMsg();">Click Here</button>
+        </div>
+    </body>
+    <script>
+    functiona printMsg() {
+        let displayTag = document.getElementById('display-text)
+        dispayTag.textContent = "Good Evening";
+        dispayTag.style.color = "blud";
+    }
+    </script>
+</html>
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        background-color: yellow;
+      }
+      h1 {
+        color: red;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+      }
+      button {
+        padding: 10px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="h1">Print Message</h1>
+      <div class="button">
+        <button id="hi" onclick="hi();">Hi</button>
+        <button id="hello" onclick="hello();">Hello</button>
+        <button id="bye" onclick="bye();">Bye</button>
+      </div>
+    </div>
+    <script>
+      function hi() {
+        let h1Tag = document.getElementById("h1");
+        h1Tag.textContent = "hi";
+      }
+      function hello() {
+        let h1Tag = document.getElementById("h1");
+        h1Tag.textContent = "hello";
+      }
+      function bye() {
+        let h1Tag = document.getElementById("h1");
+        h1Tag.textContent = "bye";
+      }
+    </script>
+  </body>
+</html>
+
+```
