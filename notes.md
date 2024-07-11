@@ -2338,3 +2338,190 @@ for (let i = 0; i < 10; i++) {
   console.log(fact(i));
 }
 ```
+
+## Document Object Model (DOM)
+
+Document => File\
+Object => Tag\
+Model => Structure
+
+- DOM is a structural representation of HTML elements as an object.
+- When the web pages is load to browser then the browser will create object for every HTML element.
+- Once the dom tree is created we can access the element from dom tree by using javascript and we can manupulate it.
+- Manupulation are we can create HTML elments dynamically.
+- We can addd css style dynamically.
+- We can change the content of HTML elements dynamically.
+- We can set and remove attribute dynamically.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Header One</h1>
+    <p>
+      Shop In Flipkart
+      <a href="https://www.flipkart.com">Click Here</a>
+    </p>
+  </body>
+</html>
+```
+
+![](https://i.ibb.co/1mzwqLT/2024-07-11-17-20-06-AI-Eraser.png)
+
+![](https://i.ibb.co/N2x09Ff/2024-07-11-17-20-34-AI-Eraser.png)
+
+```
+<html>
+  <head>
+    Welcome to js
+  </head>
+  <body></body>
+</html>
+```
+
+![](https://i.ibb.co/F4bX3bW/2024-07-11-17-20-48-AI-Eraser.png)
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Header</h1>
+    <h2>Header Two</h2>
+    <div id="brand-list">
+      <h1>Automobile Brands</h1>
+      <ul>
+        <li>Lamborghini</li>
+        <li>Buggatti</li>
+        <li>Ferrari</li>
+        <li>Ford</li>
+      </ul>
+    </div>
+    <script>
+      console.log(document);
+      console.log(window.document);
+    </script>
+  </body>
+</html>
+
+```
+
+- Document is a object which is created when the HTML file is loaded to browser.
+- Document is a property of window object.
+
+### Accessing the element from DOM tree
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Header</h1>
+    <h2>Header Two</h2>
+    <div id="brand-list">
+      <h1>Automobile Brands</h1>
+      <ul>
+        <li>Lamborghini</li>
+        <li>Buggatti</li>
+        <li>Ferrari</li>
+        <li>Ford</li>
+      </ul>
+    </div>
+    <a href="">1</a>
+    <a href="">2</a>
+    <script>
+      console.log(document.title);
+      console.log(document.head);
+      console.log(document.body);
+      console.log(document.links);
+      console.log(document.body.h1);
+    </script>
+  </body>
+</html>
+```
+
+- h1 is not a property of body object.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="one">Header</h1>
+    <h2 class="two">Header Two</h2>
+    <div id="brand-list">
+      <h1>Automobile Brands</h1>
+      <ul>
+        <li>Lamborghini</li>
+        <li class="s">Buggatti</li>
+        <li>Ferrari</li>
+        <li class="s">Ford</li>
+      </ul>
+    </div>
+    <a href="">1</a>
+    <a href="">2</a>
+    <script>
+      let h1Tag = document.getElementById("one");
+      console.log(h1Tag);
+
+      let tagSelector = document.getElementsByTagName("li");
+      console.log(tagSelector);
+
+      let classSelector = document.getElementsByClassName("s");
+      console.log(classSelector);
+    </script>
+  </body>
+</html>
+```
+
+- If the id doesnt match the tag name it will return null.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 class="one">Header</h1>
+    <h2 class="two">Header Two</h2>
+    <div id="brand-list">
+      <h1>Automobile Brands</h1>
+      <ul>
+        <li>Lamborghini</li>
+        <li class="s">Buggatti</li>
+        <li>Ferrari</li>
+        <li class="s">Ford</li>
+      </ul>
+    </div>
+    <a href="">1</a>
+    <a href="">2</a>
+    <script>
+      let anySelector_1 = document.querySelector(".j");
+      console.log(anySelector_1);
+
+      let anySelector_2 = document.querySelectorAll(".j");
+      console.log(anySelector_2);
+    </script>
+  </body>
+</html>
+```

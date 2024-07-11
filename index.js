@@ -1,8 +1,12 @@
-function fact(n) {
-  if (n <= 1) return n;
-  return fact(n - 1) + fact(n - 2);
+main();
+function main() {
+  add(1, 2);
+  add(10, 20, 30);
 }
-
-for (let i = 0; i < 10; i++) {
-  console.log(fact(i));
+function add(...nums) {
+  let sum = 0;
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i];
+  }
+  console.log(sum);
 }
