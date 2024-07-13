@@ -2629,3 +2629,156 @@ Model => Structure
 </html>
 
 ```
+
+![](https://i.ibb.co/NT5jDcs/2024-07-12-17-01-22-AI-Eraser.png)
+![](https://i.ibb.co/4Wsh2by/2024-07-12-17-03-25-AI-Eraser.png)
+
+### Javascript Event
+
+- Event is an action which we perform on browser.
+
+### Event Handling
+
+- We can handle event in 3 ways:
+
+1. Using Inline Event Handling.
+2. Using Event Properties.
+3. Using addEventListener() method.
+4. Select the tag on which you need to apply the event.
+
+```
+let tag = document.getElementById(" ");
+
+tag.onClick = function () {
+
+}
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      div {
+        background: yellow;
+        text-align: center;
+      }
+      h1 {
+        color: red;
+      }
+      button {
+        padding: 10px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 id="display-text">Print Message</h1>
+      <br />
+      <button onclick="hiMsg();">Hi</button>
+      <button id="hello-btn">Hello</button>
+      <button id="bye-btn">Bye</button>
+    </div>
+    <script>
+      let displayTag = document.getElementById("display-text");
+
+      function hiMsg() {
+        displayTag.textContent = "Hi";
+      }
+
+      let helloBtn = document.getElementById("hello-btn");
+      helloBtn.onclick = function () {
+        displayTag.textContent = "Hello";
+      };
+
+      let byeBtn = document.getElementById("bye-btn");
+      byeBtn.addEventListener(
+        "click",
+        function () {
+          displayTag.textContent = "Bye";
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
+
+```
+
+## What is event handler?
+
+- Event handler is a function which will get called when the event is perform on the browser.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="display">
+      <br />
+      <p>Lorem, ipsum. <span style="display: none">dolor sit</span> amet.</p>
+    </div>
+    <script>
+      let displayTag = document.querySelector("#display");
+      console.log(displayTag.textContent);
+      console.log(displayTag.innerText);
+      console.log(displayTag.innerHTML);
+    </script>
+  </body>
+</html>
+```
+
+#### Output
+
+```
+
+
+      Lorem, ipsum. dolor sit amet.
+    index.html
+
+
+
+Lorem, ipsum. amet. index.html
+
+      <br>
+      <p>Lorem, ipsum. <span style="display: none">dolor sit</span> amet.</p>
+```
+
+- Text Content Property will consider the spaces.
+- Inner text property will not consider the spaces.
+- Text Content property will not consider the style.
+- Inner text property will consider the style.
+- Inner html property returns the html elements which are present inside selected tag.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="display"></div>
+    <script>
+      let displayTag = document.querySelector("#display");
+      let htmlCode = "<h1>Header One</h1>";
+      console.log(htmlCode, typeof htmlCode);
+      displayTag.textContent = htmlCode;
+      displayTag.innerText = htmlCode;
+      displayTag.innerHTML = htmlCode;
+    </script>
+  </body>
+</html>
+```
