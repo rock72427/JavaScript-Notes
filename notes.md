@@ -2782,3 +2782,26 @@ Lorem, ipsum. amet. index.html
   </body>
 </html>
 ```
+
+## Web Storage
+
+- Web Storage is an API which is provide by browser.
+- By using web storage we can store some application data inside browser.
+- There are 2 types of storages:
+
+1. local Storage
+2. session Storage
+
+- Local storage and session storage are the properties of window object
+  ![](https://i.ibb.co/hd7NYyV/2024-07-15-17-16-55-AI-Eraser.png)
+
+```
+<script>
+      let empName = "Rock";
+
+      localStorage.setItem("ename", empName);
+      let getData = localStorage.getItem("ename");
+      console.log("Get Data = " + getData);
+      localStorage.removeItem("ename");
+    </script>
+```

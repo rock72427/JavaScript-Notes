@@ -7,22 +7,18 @@ let item = {
 };
 
 let htmldata = `<tr>
-                    <td>${item.id}</td>
-                    <td><img src="${
-                      item.imgURL
-                    }" alt="" width="30px" height="30px"></td>
-                    <td>${item.name}</td>
-                    <td>${item.price}</td>
-                    <td>
-                        <i class="bi bi-dash-circle" onclick="decQty();"></i>
-                        <span id="qty">${item.qty}</span>
-                        <i class="bi bi-plus-circle" onclick="incQty()"></i>
-                    </td>
-                    <td>
-                        <span id="total-price">${(
-                          item.price * item.qty
-                        ).toFixed(2)}</span>
-                    </td>
+  <td>${item.id}</td>
+  <td><img src="${item.imgURL}" alt="" width="30px" height="30px"></td>
+  <td>${item.name}</td>
+  <td>${item.price}</td>
+  <td>
+      <i class="bi bi-dash-circle" onclick="decQty();"></i>
+      <span id="qty">${item.qty}</span>
+      <i class="bi bi-plus-circle" onclick="incQty()"></i>
+  </td>
+  <td>
+      <span id="total-price">${(item.price * item.qty).toFixed(2)}</span>
+  </td>
 </tr>`;
 
 let displayTag = document.getElementById("display");

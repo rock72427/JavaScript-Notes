@@ -3,19 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script>
-      function main() {
-        var a = 10;
-        function m1() {
-          var b = 20;
-          console.log(a);
-        }
-        return m1;
-      }
-      let outer = main();
-      outer();
-    </script>
+    <title>New Tab</title>
   </head>
-  <body></body>
+  <body>
+    <h2>Web Storage</h2>
+
+    <script>
+      let empName = "Rock";
+
+      localStorage.setItem("ename", empName);
+      let getData = localStorage.getItem("ename");
+      console.log("Get Data = " + getData);
+      // localStorage.removeItem("ename");
+    </script>
+  </body>
 </html>
