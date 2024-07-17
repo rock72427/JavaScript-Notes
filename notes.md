@@ -2792,16 +2792,115 @@ Lorem, ipsum. amet. index.html
 1. local Storage
 2. session Storage
 
-- Local storage and session storage are the properties of window object
+- Local storage and session storage are the properties of window object\
   ![](https://i.ibb.co/hd7NYyV/2024-07-15-17-16-55-AI-Eraser.png)
 
 ```
 <script>
-      let empName = "Rock";
+  let empName = "Rock";
+  localStorage.setItem("ename", empName);
+  let getData = localStorage.getItem("ename");
+  console.log("Get Data = " + getData);
+  localStorage.removeItem("ename");
+</script>
+```
 
-      localStorage.setItem("ename", empName);
-      let getData = localStorage.getItem("ename");
-      console.log("Get Data = " + getData);
-      localStorage.removeItem("ename");
+```
+setItem(key, value);  => Create/update
+getItem(key);         => Read
+removeItem(key);      => Delete
+```
+
+| localStorage                                     | sessionStorage                                     |
+| ------------------------------------------------ | -------------------------------------------------- |
+| localStorage is webpage specific.                | sessionStorage is tab specific.                    |
+| Using localstorage we can store data permanently | Using session storage we can store data temporarly |
+
+## Attribute Methods
+
+### object.hasAttribute() => true/false
+
+- This method is use to check the existance of attribute.
+- hasAttribute method returns the boolean value.
+
+### object.getAttribute() => Value of given Attribute
+
+- It is use to get the value of attributes.
+
+### object.setAttribute() => New Value
+
+- It is use to set new value to attribute.
+
+### object.removeAttribute()
+
+- It is use to remove the attribute from elements.
+
+### object.attributes
+
+- Attributes property retruns the collection of attributes.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>New Tab</title>
+    <style>
+      #one {
+        color: blue;
+      }
+      .abc {
+        color: red;
+      }
+      #two {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div align="center" class="abc" id="one">
+      <p>Attribute Methods</p>
+    </div>
+    <script>
+      let divTag = document.querySelector("div");
+      console.log(divTag.hasAttribute("align"));
+      console.log(divTag.getAttribute("class"));
+      divTag.setAttribute("id", "two");
+      divTag.removeAttribute("class");
     </script>
+  </body>
+</html>
+
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>New Tab</title>
+    <style>
+      .one {
+        color: blue;
+      }
+      .two {
+        background: yellow;
+      }
+      .three {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="one two">
+      <p>Attribute Methods</p>
+    </div>
+    <script>
+      let divTag = document.querySelector("div");
+      console.log(divTag.getAttribute("class"));
+      //   divTag.setAttribute("class", "three");❌
+      divTag.classList.add("three");
+      divTag.classList.remove("two");
+    </script>
+  </body>
+</html>
+
 ```

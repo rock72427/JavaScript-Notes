@@ -1,21 +1,25 @@
-let likeCount = 0;
-let dislikeCount = 0;
+let likeCount = localStorage.getItem("likeCount")
+  ? Number(localStorage.getItem("likeCount"))
+  : 0;
+let dislikeCount = localStorage.getItem("dislikeCount")
+  ? Number(localStorage.getItem("dislikeCount"))
+  : 0;
+console.log(likeCount);
+console.log(dislikeCount);
 
 function like() {
   likeCount++;
-  // if (dislikeCount > 0) {
-  //   dislikeCount--;
-  // }
+  localStorage.setItem("likeCount", likeCount);
   updateCounts();
 }
 
 function dislike() {
   dislikeCount++;
-  // if (likeCount > 0) {
-  //   likeCount--;
-  // }
+  localStorage.setItem("dislikeCount", dislikeCount);
   updateCounts();
 }
+
+window.onload(updateCounts());
 
 function updateCounts() {
   document.getElementById("likeCount").innerText = likeCount;
