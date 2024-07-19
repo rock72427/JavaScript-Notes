@@ -1,9 +1,11 @@
-main();
-function main() {
-  let arr_1 = [10, 20, 30, 40, 50];
-  let arr_2;
-  arr_2 = arr_1;
-  arr_2[2] = 200;
+import add from "./one.js";
+import { sub, mul } from "./two.js";
 
-  console.log(arr_1[2], arr_2[2]);
-}
+let output_1 = add();
+console.log(output_1);
+
+let output_2 = sub();
+console.log(output_2);
+
+let output_3 = mul();
+console.log(output_3);

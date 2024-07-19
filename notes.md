@@ -3231,3 +3231,200 @@ function main() {
 ```
 200 200
 ```
+
+```
+main();
+function main() {
+  let a = m1();
+  console.log(a);
+  for (let n1 of a) {
+    console.log(n1);
+  }
+}
+function m1() {
+  console.log("m1 starts");
+  console.log("m1 ends");
+  return [1, 2, 3, 4, 5];
+}
+
+```
+
+#### Output
+
+```
+m1 starts
+m1 ends
+[ 1, 2, 3, 4, 5 ]
+1
+2
+3
+4
+5
+```
+
+```
+main();
+function main() {
+  let a = [10, 20, 30, 40];
+  m1(a);
+  for (let val of a) {
+    console.log(val);
+  }
+}
+function m1(a) {
+  console.log("m1 starts");
+  a[1] = 100;
+  for (let val of a) {
+    console.log(val);
+  }
+  console.log("m1 ends");
+}
+
+```
+
+#### Output
+
+```
+m1 starts
+10
+100
+30
+40
+m1 ends
+10
+100
+30
+40
+```
+
+## De-Structuring(ES6)
+
+- The way of unpacking the values from an object or an array into seperate variables is known as de-structuring.
+- De-structuring is introduced in ES 6 version.
+- We can perform object de-structuring and array de-structuring.
+- Object de-structuring must be done with curly bracket "{}".
+- Array de-structruing must be done with square bracket "[]".
+- While performing object de-structring the variable name should be same as object keys.
+- While perfroming array de-structring the variable name can be anything.
+
+```
+let student = {
+  stuId: 101,
+  sname: "Rajesh",
+  gender: "Male",
+  address: {
+    street: "Aswath nagar",
+    landmark: "Beside lakshmi Ladies pg",
+    pincode: 560037,
+    city: "Bangalore",
+    state: "Karnataka",
+  },
+};
+let scity = student.address.city;
+let sstate = student.address.state;
+console.log(`Student City = ${scity}, Student State = ${sstate}`);
+
+// Object DeStructuring
+
+let { city, state } = student.address;
+console.log(`Student City = ${city}, Student State = ${state}`);
+
+let arr = [10, 20, 30, 40, 50];
+let val_1 = arr[0];
+let val_2 = arr[1];
+console.log(`val_1 = ${val_1}, val_2 = ${val_2}`);
+
+// Array Destructuring
+let [n1, n2] = arr;
+console.log(`val_1 = ${n1}, val_2 = ${n2}`);
+
+```
+
+#### Output
+
+```
+Student City = Bangalore, Student State = Karnataka
+Student City = Bangalore, Student State = Karnataka
+val_1 = 10, val_2 = 20
+val_1 = 10, val_2 = 20
+```
+
+## Module
+
+- Module are use to write huge amount of javascript code into seperate files.
+- Modules makes code easy to read and maintain.
+- Modules are depends on the type attributes
+
+```
+<script type=module></script>
+```
+
+- A varaible are function can be export it in 2 ways:
+
+1. default export
+2. named export
+
+- One javascript file must have only one default export.
+- A javascript file can have multiple named export.
+- While importing named export a variable or function must be constructed within curly brackets.
+- While importing default export we can use without curly bracket.
+
+### Note
+
+Javascript modules works with only with server.
+
+### index.js
+
+```
+import add from "./one.js";
+import { sub, mul } from "./two.js";
+
+let output_1 = add();
+console.log(output_1);
+
+let output_2 = sub();
+console.log(output_2);
+
+let output_3 = mul();
+console.log(output_3);
+```
+
+### one.js
+
+```
+function add() {
+  let a = 1;
+  let b = 2;
+  let res = a + b;
+  return res;
+}
+export default add;
+```
+
+### two.js
+
+```
+export function sub() {
+  let a = 10;
+  let b = 2;
+  let res = a - b;
+  return res;
+}
+
+export function mul() {
+  let a = 10;
+  let b = 2;
+  let res = a * b;
+  return res;
+}
+
+// export {sub, mul};
+```
+
+#### Output
+
+```
+3
+8
+20
+```
