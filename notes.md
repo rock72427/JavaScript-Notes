@@ -3428,3 +3428,67 @@ export function mul() {
 8
 20
 ```
+
+## Array Methods
+
+```
+arr.push(); // add a new Element to existing array in the end
+arr.pop(); // remove an element from existing array in the end and return it
+arr.unshift(); // add a new Element to existing array in the begining
+arr.shift(); //
+```
+
+## array.slice()
+
+- Slice method is use to extract the part of an array.
+
+#### Syntax
+
+```
+arr.slice(startIndex, endIndex);
+```
+
+- Slice method will not change original array.
+
+```
+main();
+function main() {
+  let arr = [1, 2, 3, 4, 5, 6];
+  console.log(arr);
+  let slicedArr_1 = arr.slice(1, 4);
+  console.log(slicedArr_1);
+  console.log(arr);
+}
+```
+
+#### Output
+
+```
+[ 1, 2, 3, 4, 5, 6 ]
+[ 2, 3, 4 ]
+[ 1, 2, 3, 4, 5, 6 ]
+```
+
+```
+main();
+function main() {
+  let arr = [1, 2, 3, 4, 5, 6];
+  console.log(arr);
+  let slicedArr_1 = arr.slice(-4, -2);
+  console.log(slicedArr_1);
+  console.log(arr);
+}
+```
+
+#### Output
+
+```
+[ 1, 2, 3, 4, 5, 6 ]
+[ 3, 4 ]
+[ 1, 2, 3, 4, 5, 6 ]
+```
+
+```
+arr[length - 1];
+arr.slice(-1);
+```

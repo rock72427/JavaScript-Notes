@@ -1,11 +1,8 @@
-import add from "./one.js";
-import { sub, mul } from "./two.js";
-
-let output_1 = add();
-console.log(output_1);
-
-let output_2 = sub();
-console.log(output_2);
-
-let output_3 = mul();
-console.log(output_3);
+main();
+function main() {
+  let arr = [1, 2, 3, 4, 5, 6];
+  console.log(arr);
+  let slicedArr_1 = arr.slice(-4, -2);
+  console.log(slicedArr_1);
+  console.log(arr);
+}
