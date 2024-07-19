@@ -1,12 +1,9 @@
 main();
 function main() {
-  add(1, 2);
-  add(10, 20, 30);
-}
-function add(...nums) {
-  let sum = 0;
-  for (let i = 0; i < nums.length; i++) {
-    sum += nums[i];
-  }
-  console.log(sum);
+  let arr_1 = [10, 20, 30, 40, 50];
+  let arr_2;
+  arr_2 = arr_1;
+  arr_2[2] = 200;
+
+  console.log(arr_1[2], arr_2[2]);
 }

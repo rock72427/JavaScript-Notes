@@ -19,7 +19,9 @@ function dislike() {
   updateCounts();
 }
 
-window.onload(updateCounts());
+window.onload = function () {
+  updateCounts();
+};
 
 function updateCounts() {
   document.getElementById("likeCount").innerText = likeCount;

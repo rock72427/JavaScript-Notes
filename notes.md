@@ -1087,6 +1087,193 @@ if (flag == 1) {
 8 is not prime
 ```
 
+## Q. Write a program to check weather is a perfect Number or not?
+
+```
+let sum = 0;
+let sum = 0;
+let n = 28;
+for (let i = 1; i < n; i++) {
+  if (n % i == 0) {
+    sum += i;
+  }
+}
+if (sum == n) {
+  console.log(n + " is a perfect number");
+} else {
+  console.log(n + " is not a perfect number");
+}
+```
+
+#### Output
+
+```
+28 is a perfect number
+```
+
+## Q. Write a program to print first 10 fibonacci Number?
+
+```
+let a = 0;
+let b = 1;
+
+for (let i = 0; i < 10; i++) {
+  console.log(a);
+  let temp = a;
+  a = b;
+  b = temp + b;
+}
+
+```
+
+#### Output
+
+```
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+```
+
+## Q. Write a program to print fibonacci series within a range?
+
+```
+let n = 50;
+let start = 5;
+let n1 = 0;
+let n2 = 1;
+
+while (true) {
+  let sum = n1 + n2;
+  n1 = n2;
+  n2 = sum;
+  if (sum >= n) break;
+  if (sum >= start) {
+    console.log(sum);
+  }
+}
+
+```
+
+#### Output
+
+```
+5
+8
+13
+21
+34
+```
+
+## Q. Write a program to check given number is belongs to fibonacci series or not?
+
+```
+function isFibonacci(n) {
+  let a = 0,
+    b = 1;
+  while (b < n) {
+    let temp = a;
+    a = b;
+    b = temp + b;
+  }
+  return b === n;
+}
+
+let num = 13;
+if (isFibonacci(num)) {
+  console.log(`${num} is a Fibonacci number`);
+} else {
+  console.log(`${num} is not a Fibonacci number`);
+}
+
+```
+
+#### Output
+
+```
+13 is a Fibonacci number
+```
+
+## Q. Write a program to print 5 alternate fibonacci number?
+
+```
+function main(n) {
+  let a = 0;
+  let b = 1;
+  for (let i = 1; i <= n * 2; i++) {
+    let c = a + b;
+    a = b;
+    b = c;
+    if (i % 2 == 0) {
+      continue;
+    } else {
+      console.log(b);
+    }
+  }
+}
+main(5);
+```
+
+#### Output
+
+```
+1
+3
+8
+21
+55
+```
+
+## Q. Write a program for sum of digit in a given number?
+
+```
+function sum(n) {
+  let sum = 0;
+  while (n != 0) {
+    sum += n % 10;
+    n = Math.floor(n / 10);
+  }
+  return sum;
+}
+
+let num = 12345;
+console.log("Sum of digits in " + num + " is " + sum(num));
+```
+
+#### Output
+
+```
+Sum of digits in 12345 is 15
+```
+
+## Q. Write a program to count number of digit in a given number?
+
+```
+function count(n) {
+  let count = 0;
+  while (n > 0) {
+    n = Math.floor(n / 10);
+    count++;
+  }
+  return count;
+}
+
+let num = 145;
+console.log(`Number of digits in ${num} is ${count(num)}`);
+```
+
+#### Output
+
+```
+Number of digits in 145 is 3
+```
+
 ## Function
 
 - Function is set of statements which is use to perform some specific task.
@@ -2903,4 +3090,144 @@ removeItem(key);      => Delete
   </body>
 </html>
 
+```
+
+## Arrays
+
+- Javascript arrays are treated as object which is use to store collection of elements.
+- Javascript arrays are heterogeneous which means we can store any type of value.
+- In javascript array can be created in 2 ways:
+
+1. Using bracket [ ]
+2. Using array constructor:- new Array()
+
+- In javascript arrays are having dynamic size which can be increase or decrease it is not fixed.
+
+* Arrays are store in heap memory.
+* Arrays are reference type.
+
+```
+main();
+function main() {
+  let num_1 = [1, 2, 3, 4];
+  console.log(num_1);
+
+  let num_2 = new Array(10, 20, 30, 40, 50);
+  console.log(num_2);
+}
+
+```
+
+```
+main();
+function main() {
+  let num_1 = [1, 2, 3, 4];
+  console.log(num_1);
+  console.log(`size = ${num_1.length}`);
+
+  num_1.length = 2;
+  console.log(num_1);
+
+  num_1.length = 4;
+  console.log(num_1);
+}
+
+```
+
+#### Output
+
+```
+[ 1, 2, 3, 4 ]
+size = 4
+[ 1, 2 ]
+[ 1, 2, <2 empty items> ]
+```
+
+```
+main();
+function main() {
+  let arr = new Array();
+  arr[13] = 10;
+  console.log(arr[0]);
+  console.log(arr.length);
+}
+
+```
+
+#### Output
+
+```
+undefined
+14
+```
+
+```
+main();
+function main() {
+  let arr = new Array();
+  arr[0] = 10;
+  arr[1] = 20;
+  arr[2] = 30;
+  arr[3] = 40;
+  arr[4] = 50;
+
+  console.log(arr);
+  console.log("----Normal For Loop----");
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+
+  console.log("----For In Loop----");
+  for (let i in arr) {
+    console.log(arr[i]);
+  }
+
+  console.log("----For Of Loop----");
+  for (let i of arr) {
+    console.log(i);
+  }
+}
+
+```
+
+#### Output
+
+```
+[ 10, 20, 30, 40, 50 ]
+----Normal For Loop----
+10
+20
+30
+40
+50
+----For In Loop----
+10
+20
+30
+40
+50
+----For Of Loop----
+10
+20
+30
+40
+50
+```
+
+```
+main();
+function main() {
+  let arr_1 = [10, 20, 30, 40, 50];
+  let arr_2;
+  arr_2 = arr_1;
+  arr_2[2] = 200;
+
+  console.log(arr_1[2], arr_2[2]);
+}
+```
+
+#### Output
+
+```
+200 200
 ```
