@@ -3492,3 +3492,134 @@ function main() {
 arr[length - 1];
 arr.slice(-1);
 ```
+
+## Q. Write a program to print sum of number in a given array?
+
+```
+let arr = [10, 20, 30, 40, 50];
+let sum = 0;
+for (let i = 0; i < arr.length; i++) {
+  sum += arr[i];
+}
+console.log(sum); // 150
+```
+
+## Q. Write a program to add sum of even number in a given array?
+
+```
+function sum(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 == 0) {
+      sum += arr[i];
+    }
+  }
+  return sum;
+}
+
+let arr = [2, 3, 4, 5, 6, 7, 8, 9];
+console.log(sum(arr)); // 20
+```
+
+## Q. Find greatest elment in a given array?
+
+```
+let arr = [10, 20, 30, 40, 50, 60];
+let max = arr[0];
+
+for (let i = 1; i < arr.length; i++) {
+  if (arr[i] > max) {
+    max = arr[i];
+  }
+}
+
+console.log(max); // 60
+```
+
+## Shallow Copy
+
+It is use to store the reference of the array.
+
+```
+let arr = [1, 2, 3, 4];
+let num = arr.slice();
+num[2] = 100;
+console.log(arr[2]); // 3
+console.log(num[2]); // 100
+```
+
+## array.splice()
+
+- Splice method is use to extract the part of an array.
+
+```
+arr.splice(index, no. of elements to be removed, new Elements);
+```
+
+- Splice method effects or changes the orignial array.
+
+```
+main();
+function main() {
+  let arr = [1, 2, 3, 4, 5, 6, 7];
+  let splicedArr_1 = arr.splice(2);
+  console.log(splicedArr_1);
+  console.log(arr);
+}
+// [3, 4, 5, 6, 7]
+// [(1, 2)]
+```
+
+## array.forEach
+
+- Foreach method is a higher order function.
+- Foreach method is use to loop an array and perfrom some operation on array elements.
+
+* Foreach method will not return any value.
+
+```
+arr.forEach(arg);
+// arg => function
+
+function (val, index, array) {
+
+}
+```
+
+```
+main();
+function main() {
+  let arr = [1, 2, 3, 4, 5, 6, 7];
+  arr.forEach(function (val, index, array) {
+    console.log(val, index, array);
+  });
+}
+
+```
+
+#### Output
+
+```
+1 0 [1, 2, 3, 4, 5, 6, 7]
+2 1 [1, 2, 3, 4, 5, 6, 7]
+3 2 [
+  1, 2, 3, 4,
+  5, 6, 7
+]
+4 3 [
+  1, 2, 3, 4,
+  5, 6, 7]
+5 4 [1, 2, 3, 4, 5, 6, 7]
+6 5 [1, 2, 3, 4, 5, 6, 7]
+7 6 [1, 2, 3, 4, 5, 6, 7]
+```
+
+```
+let salaries = [20000, 30000, 40000];
+salaries.forEach(function (sal, i) {
+  let incSal = Math.trunc(sal / 10);
+  salaries[i] = sal + incSal;
+});
+console.log(salaries);
+
+```
