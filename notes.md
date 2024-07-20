@@ -3359,7 +3359,7 @@ val_1 = 10, val_2 = 20
 <script type=module></script>
 ```
 
-- A varaible are function can be export it in 2 ways:
+- A variable are function can be export it in 2 ways:
 
 1. default export
 2. named export
