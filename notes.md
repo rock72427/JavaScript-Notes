@@ -3431,6 +3431,21 @@ export function mul() {
 
 ## Array Methods
 
+1. Push
+2. Pop
+3. Shift
+4. Unshift
+5. Slice
+6. Splice
+7. ForEach
+8. Map
+9. Filter
+10. find
+11. includes
+12. indexOf
+13. lastIndexOf
+14. concat
+
 ```
 arr.push(); // add a new Element to existing array in the end
 arr.pop(); // remove an element from existing array in the end and return it
@@ -3570,7 +3585,7 @@ function main() {
 // [(1, 2)]
 ```
 
-## array.forEach
+## array.forEach()
 
 - Foreach method is a higher order function.
 - Foreach method is use to loop an array and perfrom some operation on array elements.
@@ -3602,13 +3617,8 @@ function main() {
 ```
 1 0 [1, 2, 3, 4, 5, 6, 7]
 2 1 [1, 2, 3, 4, 5, 6, 7]
-3 2 [
-  1, 2, 3, 4,
-  5, 6, 7
-]
-4 3 [
-  1, 2, 3, 4,
-  5, 6, 7]
+3 2 [1, 2, 3, 4, 5, 6, 7]
+4 3 [1, 2, 3, 4, 5, 6, 7]
 5 4 [1, 2, 3, 4, 5, 6, 7]
 6 5 [1, 2, 3, 4, 5, 6, 7]
 7 6 [1, 2, 3, 4, 5, 6, 7]
@@ -3622,4 +3632,208 @@ salaries.forEach(function (sal, i) {
 });
 console.log(salaries);
 
+```
+
+## array.map()
+
+- Array map method is a higher order function which takes a call back function with three parameter element, index and array reference where index and array reference are optional.
+- Map method is use to iterate array from starting element to the last element and returns a new updated array according to the passing expression.
+
+- Map method returns a new array with the same length of original array.
+
+#### Syntax
+
+```
+let result = arr.map((element, index, arrayRef) => {
+  return expression;
+})
+```
+
+```
+let num = [1, 2, 3, 4];
+let result = num.map((element, i, arrRef) => {
+  console.log(element, i, arrRef);
+  return element * 10;
+});
+console.log(num); // [ 1, 2, 3, 4 ]
+console.log(result); // [ 10, 20, 30, 40 ]
+```
+
+```
+let students = [
+  {
+    name: "A",
+    age: 20,
+    address: "Bnglr",
+  },
+  {
+    name: "B",
+    age: 18,
+    address: "Munbai",
+  },
+  {
+    name: "C",
+    age: 18,
+    address: "Delhi",
+  },
+];
+let newStudents = students.map((element) => {
+  if (element.name == "B") {
+    element.address = "Pune";
+  }
+  return element;
+});
+console.log(newStudents);
+```
+
+#### Output
+
+```
+[
+  { name: 'A', age: 20, address: 'Bnglr' },
+  { name: 'B', age: 18, address: 'Pune' },
+  { name: 'C', age: 18, address: 'Delhi' }
+]
+```
+
+## array.filter()
+
+- Array filter method is a higher order function which takes a call back function with three parameter element, index and array reference where index and array reference are optional.
+- Filter method iterates the array from starting element to end element and returns a new filtered array according to the given condition.
+- Filter method can reduce the array size.
+- Filter method returns a new array which is the sub array of original array.
+
+#### Syntax
+
+```
+let result = arr.filter((element, index, arrayRef) => {
+  return conction;
+})
+```
+
+```
+let arr = [1, 2, 3, 4];
+let evenArr = arr.filter((element, index, arrayRef) => {
+  if (element % 2 == 0) {
+    return element;
+  }
+});
+console.log(evenArr); // [ 2, 4 ]
+```
+
+```
+let arr = [1, 2, 3, 4];
+let oddArr = arr.filter((e) => e % 2 != 0);
+console.log(oddArr); // [ 1, 3 ]
+```
+
+## array.find()
+
+- Array find method is a higher order function which takes a call back function with three parameter element, index and array reference where index and array reference are optional.
+- Find method returns the first match element according to the passing condition, if no element match the condition it returns undefined.
+
+#### Syntax
+
+```
+let result = arr.find((element, index, arrayRef) => {
+  return condition;
+});
+```
+
+```
+let arr = [1, 2, 3, 4, 5];
+let result = arr.find((element, i) => {
+  console.log(element); // 1 2 3 4
+  return element > 3;
+});
+console.log(result); // 4
+```
+
+## array.includes()
+
+- Include method except 2 arguments search element and start index where startIndex is the optional.
+- It is use to search an element inside the array and returns a boolean result according to the presence of the element.
+
+#### Syntax
+
+```
+arr.includes(searchElement, startIndex);
+```
+
+```
+const fruits = ["apple", "mango", "kiwi", "grapes"];
+let result = fruits.includes("kiwi");
+console.log(result); // true
+let result1 = fruits.includes("orange");
+console.log(result1); // false
+
+let result2 = fruits.includes("mange", 2); // false
+```
+
+## array.indexOf()
+
+- IndexOf method is use to search the index number of even element from the array.
+- IndexOf method based on forward searching that means it search from the element from 0th index to the last index.
+- If there is no element presented in the array it returns -1 as a result.
+
+#### Syntax
+
+```
+let result = arr.indexOf(searchElement, StartIndex);
+```
+
+```
+const num = [10, 20, 30, 40];
+let result = num.indexOf(20);
+console.log(result); // 1
+```
+
+```
+const num = [10, 20, 30, 40, 20];
+let result = num.indexOf(20);
+console.log(result); // 1
+
+let result1 = num.indexOf(50);
+console.log(result1); // -1
+
+let result2 = num.indexOf(20, 2);
+console.log(result2); // 4
+```
+
+## array.lastIndexOf()
+
+- LastIndexOf method return the index number of last match element of the array.
+
+- If there is no matched element presented it will return -1.
+
+- It is based on backward search.
+
+#### Syntax
+
+```
+let result = arr.lastIndexOf(searchElement, StartIndex);
+```
+
+```
+const num = [10, 20, 30, 40, 20];
+let reuslt = num.lastIndexOf(20);
+console.log(reuslt); // 4
+
+let result1 = num.lastIndexOf(50);
+console.log(result1); // -1
+
+let result2 = num.lastIndexOf(20, 2);
+console.log(result2); // 1
+```
+
+## array.concat()
+
+- Concat use to merge multiple array into a single array.
+
+```
+let arr1 = [1, 2, 3, 4];
+let arr2 = [6, 7, 8, 9];
+let arr3 = ["a", "b", "c"];
+let result = arr1.concat(arr2, arr3);
+console.log(result); // [1, 2, 3, 4, 6, 7, 8, 9, 'a', 'b', 'c']
 ```

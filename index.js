@@ -1,6 +1,5 @@
-let salaries = [20000, 30000, 40000];
-salaries.forEach(function (sal, i) {
-  let incSal = Math.trunc(sal / 10);
-  salaries[i] = sal + incSal;
-});
-console.log(salaries);
+let arr1 = [1, 2, 3, 4];
+let arr2 = [6, 7, 8, 9];
+let arr3 = ["a", "b", "c"];
+let result = arr1.concat(arr2, arr3);
+console.log(result); // [1, 2, 3, 4, 6, 7, 8, 9, 'a', 'b', 'c']
