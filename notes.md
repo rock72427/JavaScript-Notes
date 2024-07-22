@@ -3445,6 +3445,8 @@ export function mul() {
 12. indexOf
 13. lastIndexOf
 14. concat
+15. toString
+16. join
 
 ```
 arr.push(); // add a new Element to existing array in the end
@@ -3836,4 +3838,32 @@ let arr2 = [6, 7, 8, 9];
 let arr3 = ["a", "b", "c"];
 let result = arr1.concat(arr2, arr3);
 console.log(result); // [1, 2, 3, 4, 6, 7, 8, 9, 'a', 'b', 'c']
+console.log(arr1); // [ 1, 2, 3, 4 ]
+```
+
+## array.toString()
+
+- toString method converts an array to a string.
+
+```
+let arr = [1, 2, 3, 4, 5];
+let result = arr.toString();
+console.log(result, typeof result); // 1,2,3,4,5 string
+```
+
+## array.join()
+
+- Join method use to convert an array to a string.
+- Join method takes an argument which is the seperator between 2 elements.
+
+#### Syntax
+
+```
+let result = arr.join(seperator)
+```
+
+```
+let arr = [1, 2, 3, 4, 5];
+let reuslt = arr.join("k");
+console.log(reuslt); // 1k2k3k4k5
 ```

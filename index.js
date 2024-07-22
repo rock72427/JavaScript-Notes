@@ -1,5 +1,3 @@
-let arr1 = [1, 2, 3, 4];
-let arr2 = [6, 7, 8, 9];
-let arr3 = ["a", "b", "c"];
-let result = arr1.concat(arr2, arr3);
-console.log(result); // [1, 2, 3, 4, 6, 7, 8, 9, 'a', 'b', 'c']
+let arr = [1, 2, 3, 4, 5];
+let reuslt = arr.join("k");
+console.log(reuslt); // 1k2k3k4k5
