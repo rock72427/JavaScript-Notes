@@ -1,3 +1,3 @@
-let arr = [1, 2, 3, 4, 5];
-let reuslt = arr.join("k");
-console.log(reuslt); // 1k2k3k4k5
+const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNumber = myNumbers.map((num) => num + 10);
+console.log(newNumber);

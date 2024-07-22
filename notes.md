@@ -3592,7 +3592,7 @@ function main() {
 - Foreach method is a higher order function.
 - Foreach method is use to loop an array and perfrom some operation on array elements.
 
-* Foreach method will not return any value.
+* Foreach method will undefined.
 
 ```
 arr.forEach(arg);
@@ -3624,6 +3624,25 @@ function main() {
 5 4 [1, 2, 3, 4, 5, 6, 7]
 6 5 [1, 2, 3, 4, 5, 6, 7]
 7 6 [1, 2, 3, 4, 5, 6, 7]
+```
+
+```
+const coding = ["js", "ruby", "java", "python", "cpp"];
+const value = coding.forEach((item) => {
+  return item;
+});
+console.log(value);
+```
+
+#### Output
+
+```
+js
+ruby
+java
+python
+cpp
+undefined
 ```
 
 ```
@@ -3698,6 +3717,21 @@ console.log(newStudents);
 ]
 ```
 
+```
+const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNumber = myNumbers.map((num) => num + 10);
+console.log(newNumber);
+```
+
+#### Output
+
+```
+[
+  11, 12, 13, 14, 15,
+  16, 17, 18, 19, 20
+]
+```
+
 ## array.filter()
 
 - Array filter method is a higher order function which takes a call back function with three parameter element, index and array reference where index and array reference are optional.
@@ -3714,6 +3748,12 @@ let result = arr.filter((element, index, arrayRef) => {
 ```
 
 ```
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNums = myNums.filter((num) => num > 4);
+console.log(newNums); // [ 5, 6, 7, 8, 9, 10 ]
+```
+
+```
 let arr = [1, 2, 3, 4];
 let evenArr = arr.filter((element, index, arrayRef) => {
   if (element % 2 == 0) {
@@ -3727,6 +3767,56 @@ console.log(evenArr); // [ 2, 4 ]
 let arr = [1, 2, 3, 4];
 let oddArr = arr.filter((e) => e % 2 != 0);
 console.log(oddArr); // [ 1, 3 ]
+```
+
+```
+const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const newNums = [];
+myNums.forEach((num) => {
+  if (num > 4) {
+    newNums.push(num);
+  }
+});
+console.log(newNums);
+```
+
+#### Output
+
+```
+[ 5, 6, 7, 8, 9, 10 ]
+```
+
+```
+const books = [
+  { title: "Book One", genre: "Fiction", publish: 1981, edition: 2004 },
+  { title: "Book Two", genre: "Non-Fiction", publish: 1992, edition: 2008 },
+  { title: "Book Three", genre: "History", publish: 1999, edition: 2007 },
+  { title: "Book Four", genre: "Non-Fiction", publish: 1989, edition: 2010 },
+  { title: "Book Five", genre: "Science", publish: 2009, edition: 2014 },
+  { title: "Book Six", genre: "Fiction", publish: 1987, edition: 2010 },
+  { title: "Book Seven", genre: "History", publish: 1986, edition: 1996 },
+  { title: "Book Eight", genre: "Science", publish: 2011, edition: 2016 },
+  { title: "Book Nine", genre: "Non-Fiction", publish: 1981, edition: 1989 },
+];
+
+let userBooks = books.filter(
+  (bk) => bk.publish > 1995 && bk.genre === "History"
+);
+console.log(userBooks);
+
+```
+
+#### Output
+
+```
+[
+  {
+    title: 'Book Three',
+    genre: 'History',
+    publish: 1999,
+    edition: 2007
+  }
+]
 ```
 
 ## array.find()
