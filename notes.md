@@ -3957,3 +3957,133 @@ let arr = [1, 2, 3, 4, 5];
 let reuslt = arr.join("k");
 console.log(reuslt); // 1k2k3k4k5
 ```
+
+## Q. difference between foreach and map in js?
+
+The main differences between forEach and map in JavaScript are:
+
+| forEach                                                                                                                                                              | map                                                                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| forEach is an array method used to iterate over each element of an array and perform a function on each element.                                                     | map is also an array method used to iterate over each element of an array and create a new array from the results of applying a function to each element. |
+| It executes a provided function once for each array element, but it doesn't return a new array.                                                                      | It returns a new array populated with the results of calling a provided function on every element in the calling array.                                   |
+| forEach is typically used when you want to perform side effects (like logging, modifying other variables, or interacting with the DOM) for each element in an array. | map is used when you want to transform elements in an array in a structured and functional way, creating a new array with modified or mapped values.      |
+
+- forEach does not return anything (returns undefined), whereas map returns a new array created by applying the provided function to each element of the original array.
+- forEach operates on each element independently, allowing you to perform operations but without producing a new array. map, on the other hand, applies a transformation function to each element and collects the results into a new array.
+
+## Spread Operator
+
+- Spread Operator is introduced in ES6 version.
+- Spread Operator is use to spread array elements as a functional
+  arguments.
+- Using spread operator we can merge object properties.
+
+```
+...variableName
+```
+
+```
+let val = Math.max(21, 1, 24, 3, 7, 9); // 24
+let maxVa = Math.max(arr); // Nan
+let val_2 = Math.max(...arr); // 24
+```
+
+```
+let arr = [1, 2, 3, 4, 5, 6, 7];
+let maxValue = Math.max(...arr);
+console.log(maxValue); // 7
+```
+
+#### Deep Copy
+
+```
+let arr_1 = arr;
+let_1 [2] = "Rajhesh"
+let arr_2 = [...arr];
+```
+
+```
+let moreLays = {
+  id: 1,
+  name: "Lays",
+  flavour: "Salt",
+  price: 5
+};
+
+let dmartLays = {
+  id: 1,
+  name: "Lays",
+  flavour: "Salt",
+  price: 5
+};❌
+
+let dmartLays = {...moreLays, price: 4};✅
+```
+
+## Q. Write a program to find second highest in an array?
+
+```
+let numbers = [7, 11, 69, 101, 108, 102, 102, 108];
+
+let max = 0;
+let secondmax = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] > max) {
+    secondmax = max;
+    max = numbers[i];
+  } else if (numbers[i] > secondmax && numbers[i] != max) {
+    secondmax = numbers[i];
+  }
+}
+
+console.log(secondmax);
+```
+
+## Q. Write a program to check the element is present in the array or not?
+
+```
+let numbers = [7, 11, 69, 101, 108, 102, 102, 108];
+let x = 102;
+let flag = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+  if (numbers[i] == x) {
+    flag = 1;
+    break;
+  }
+}
+
+if (flag == 1) {
+  console.log("Element found");
+} else {
+  console.log("Element not found");
+}
+```
+
+```
+let numbers = [10, 20, 30, 40, 50];
+let x = 102;
+let flag = 0;
+
+let low = 0;
+let high = numbers.length - 1;
+
+while (low <= high) {
+  let mid = Math.trunc((low + high) / 2);
+  if (numbers[mid] == x) {
+    flag = 1;
+    break;
+  } else if (numbers[mid] < x) {
+    low = mid + 1;
+  } else {
+    high = mid - 1;
+  }
+}
+
+if (flag == 1) {
+  console.log("Element found");
+} else {
+  console.log("Element not found");
+}
+```
