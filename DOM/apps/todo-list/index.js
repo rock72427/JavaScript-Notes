@@ -30,7 +30,7 @@ function displayTasks() {
     ? JSON.parse(localStorage.getItem("tasks"))
     : [];
 
-  if (taskList != 0) {
+  if (taskList.length > 0) {
     let eachTask = ``;
     taskList.forEach((task, index) => {
       eachTask += `<li class="list-group-item list-group-item-dark mb-2">
@@ -62,13 +62,8 @@ function displayTasks() {
         taskList[index].isCompleted = this.checked;
         localStorage.setItem("tasks", JSON.stringify(taskList));
 
-        if (this.checked) {
-          let taskText = document.querySelector(`#check-${index} + span`);
-          taskText.style.textDecoration = "line-through";
-        } else {
-          let taskText = document.querySelector(`#check-${index} + span`);
-          taskText.style.textDecoration = "none";
-        }
+        let taskText = document.querySelector(`#check-${index} + span`);
+        taskText.style.textDecoration = this.checked ? "line-through" : "none";
       });
     });
   }
