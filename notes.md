@@ -3452,7 +3452,7 @@ export function mul() {
 arr.push(); // add a new Element to existing array in the end
 arr.pop(); // remove an element from existing array in the end and return it
 arr.unshift(); // add a new Element to existing array in the begining
-arr.shift(); //
+arr.shift(); // removes the first element from an existing array and returns it.
 ```
 
 ## array.slice()
@@ -4086,4 +4086,28 @@ if (flag == 1) {
 } else {
   console.log("Element not found");
 }
+```
+
+## Storing Non-primitive Data type in localstorage
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let emp_1 = { id: 101, name: "Satish" };
+      let emp_2 = { id: 102, name: "Rajesh" };
+      let emps = [emp_1, emp_2];
+      localStorage.setItem("employees", JSON.stringify(emps));
+      let getData = JSON.parse(localStorage.getItem("employees"));
+      console.log(getData, typeof getData);
+    </script>
+  </head>
+  <body>
+    <h1>JS Storage</h1>
+  </body>
+</html>
 ```

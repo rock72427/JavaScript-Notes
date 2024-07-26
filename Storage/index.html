@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let emp_1 = { id: 101, name: "Satish" };
+      let emp_2 = { id: 102, name: "Rajesh" };
+      let emps = [emp_1, emp_2];
+      localStorage.setItem("employees", JSON.stringify(emps));
+      let getData = JSON.parse(localStorage.getItem("employees"));
+      console.log(getData, typeof getData);
+    </script>
+  </head>
+  <body>
+    <h1>JS Storage</h1>
+  </body>
+</html>
