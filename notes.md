@@ -3592,7 +3592,7 @@ function main() {
 - Foreach method is a higher order function.
 - Foreach method is use to loop an array and perfrom some operation on array elements.
 
-* Foreach method will undefined.
+* Foreach method will return undefined.
 
 ```
 arr.forEach(arg);
