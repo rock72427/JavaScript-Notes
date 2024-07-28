@@ -7,6 +7,8 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   const labelValue = labelInput.value;
   const typeValue = typeInput.value;
+  labelInput.value = "";
+  typeInput.value = "";
 
   const labelElement = document.createElement("label");
   labelElement.setAttribute("for", labelValue);

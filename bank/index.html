@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axis Bank</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+        margin: 0;
+      }
+      .login-container {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+        margin-top: 60px;
+      }
+      .navbar {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+      }
+      .navbar-brand img {
+        max-width: 100px;
+      }
+      .form-inline {
+        flex-direction: column;
+      }
+      .form-inline .form-control,
+      .form-inline .btn {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      @media (min-width: 576px) {
+        .form-inline {
+          flex-direction: row;
+        }
+        .form-inline .form-control,
+        .form-inline .btn {
+          width: auto;
+          margin-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light border">
+      <a class="navbar-brand" href="#">
+        <img src="./img.png" alt="Bank Logo" />
+      </a>
+      <form class="form-inline" id="login-form">
+        <input
+          class="form-control mr-sm-2"
+          type="text"
+          placeholder="Enter username"
+          id="username"
+        />
+        <input
+          class="form-control mr-sm-2"
+          type="password"
+          placeholder="Enter password"
+          id="password"
+        />
+        <button
+          class="btn btn-success my-2 my-sm-0"
+          type="button"
+          onclick="login()"
+        >
+          Submit
+        </button>
+      </form>
+      <button
+        class="btn btn-danger my-2 my-sm-0"
+        id="logout-button"
+        type="button"
+        onclick="logout()"
+        style="display: none"
+      >
+        Logout
+      </button>
+    </nav>
+
+    <div class="login-container text-center">
+      <h3 id="login-message">Login to get Started</h3>
+    </div>
+
+    <script>
+      function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (password === "password") {
+          document.getElementById(
+            "login-message"
+          ).innerText = `Welcome back, ${username}`;
+          localStorage.setItem("isLoggedIn", "true");
+          localStorage.setItem("username", username);
+          updateUI();
+        } else {
+          alert("Invalid password");
+        }
+
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+      }
+
+      function logout() {
+        localStorage.removeItem("isLoggedIn");
+        localStorage.removeItem("username");
+        updateUI();
+      }
+
+      function updateUI() {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        if (isLoggedIn === "true") {
+          document.getElementById("login-form").style.display = "none";
+          document.getElementById("logout-button").style.display = "block";
+          const username = localStorage.getItem("username");
+          document.getElementById(
+            "login-message"
+          ).innerText = `Welcome back, ${username}`;
+        } else {
+          document.getElementById("login-form").style.display = "block";
+          document.getElementById("logout-button").style.display = "none";
+          document.getElementById("login-message").innerText =
+            "Login to get Started";
+        }
+      }
+
+      window.onload = updateUI;
+    </script>
+  </body>
+</html>
