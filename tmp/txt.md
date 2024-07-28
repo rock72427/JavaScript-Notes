@@ -87,3 +87,22 @@ for (let i = 0; i < casteRadio.length; i++) {
     });
   });
 ```
+
+```
+    let updateButtons = document.querySelectorAll(".update-task");
+    updateButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        let index = button.getAttribute("data-index");
+        let taskList = localStorage.getItem("tasks")
+          ? JSON.parse(localStorage.getItem("tasks"))
+          : [];
+        let task = taskList[index];
+        let newTask = prompt("Enter new task:", task.text);
+        if (newTask) {
+          taskList[index].text = newTask;
+          localStorage.setItem("tasks", JSON.stringify(taskList));
+          displayTasks();
+        }
+      });
+    });
+```
