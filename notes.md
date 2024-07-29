@@ -4112,9 +4112,9 @@ if (flag == 1) {
 </html>
 ```
 
-## Class in Javascript (ES-6)
+## Class (ES-6)
 
-- Class is a blue print of objects.
+- Class is a blueprint of objects.
 - Class in javascript used as a template to create multiple objects with similar properties and methods.
 
 #### Syntax
@@ -4125,4 +4125,88 @@ class className {
 
   }
 }
+```
+
+```
+// class
+class Animal {
+  constructor(name, age, color) {
+    this.name = name;
+    this.age = age;
+    this.color = color;
+  }
+  // method
+  printName() {
+    console.log(this.name);
+  }
+}
+const animal1 = new Animal("dog", "5", "black");
+console.log(animal1);
+animal1.printName();
+const animal2 = new Animal("cat", "2", "orange");
+console.log(animal2);
+animal2.printName();
+```
+
+#### Output
+
+```
+Animal { name: 'dog', age: '5', color: 'black' }
+dog
+Animal { name: 'cat', age: '2', color: 'orange' }
+cat
+```
+
+## Inheritance
+
+- Inherit the property and method from parent classes inside an child class.
+
+* For Inheritance we are using extends keyword and super method.
+
+#### Syntax
+
+```
+class Child extends Parent {
+  constructor() {
+    super();
+  }
+}
+```
+
+```
+// class
+class Animal {
+  constructor(name, age, color) {
+    this.name = name;
+    this.age = age;
+    this.color = color;
+  }
+  // method
+  printName() {
+    console.log(this.name);
+  }
+}
+// child Class
+class Dog extends Animal {
+  constructor(name, age, color, breed) {
+    super(name, age, color);
+    this.breed = breed;
+  }
+  // methods
+  printBreed() {
+    console.log(`${this.name} is a ${this.breed}`);
+  }
+}
+const dog1 = new Dog("tom", "5yrs", "gray", "Labra");
+console.log(dog1);
+dog1.printName();
+dog1.printBreed();
+```
+
+#### Output
+
+```
+Dog { name: 'tom', age: '5yrs', color: 'gray', breed: 'Labra' }
+tom
+tom is a Labra
 ```
