@@ -4111,3 +4111,18 @@ if (flag == 1) {
   </body>
 </html>
 ```
+
+## Class in Javascript (ES-6)
+
+- Class is a blue print of objects.
+- Class in javascript used as a template to create multiple objects with similar properties and methods.
+
+#### Syntax
+
+```
+class className {
+  constructor() { // a javascript class can only have one constructor function
+
+  }
+}
+```
