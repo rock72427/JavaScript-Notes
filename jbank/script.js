@@ -48,6 +48,7 @@ let checkBalance = document.getElementById("checkBalance");
 let balance = document.getElementById("balance");
 let total = document.getElementById("total");
 let amount = document.getElementById("amount");
+let title = document.getElementById("title");
 
 let currentAcc;
 
@@ -88,7 +89,6 @@ loginInForm.addEventListener("submit", function (e) {
     userMessage.innerText = `Welcome back, ${
       currentAcc.accName.split(" ")[0]
     } 😊`;
-
     localStorage.setItem("currentAcc", JSON.stringify(currentAcc));
     usnEl.style.display = "none";
     pinEl.style.display = "none";
@@ -110,6 +110,7 @@ loginInForm.addEventListener("submit", function (e) {
 // View Statement
 viewStatement.addEventListener("click", function () {
   let currentAcc = JSON.parse(localStorage.getItem("currentAcc"));
+  title.textContent = `All Transaction Done By ${currentAcc.accName}`;
   mainSection.classList.remove("hidden");
   amount.classList.add("hidden");
   displayTransaction(currentAcc.transactions);
@@ -118,6 +119,7 @@ viewStatement.addEventListener("click", function () {
 // View Deposits
 viewDeposits.addEventListener("click", function () {
   let currentAcc = JSON.parse(localStorage.getItem("currentAcc"));
+  title.textContent = `All Transaction Done By ${currentAcc.accName}`;
   mainSection.classList.remove("hidden");
   let deposits = [];
   currentAcc.transactions.forEach(function (amt) {
@@ -140,6 +142,7 @@ viewDeposits.addEventListener("click", function () {
 // View Withdrawls
 viewWithdrawls.addEventListener("click", function () {
   let currentAcc = JSON.parse(localStorage.getItem("currentAcc"));
+  title.textContent = `All Transaction Done By ${currentAcc.accName}`;
   mainSection.classList.remove("hidden");
   let deposits = [];
   currentAcc.transactions.forEach(function (amt) {
@@ -163,6 +166,7 @@ viewWithdrawls.addEventListener("click", function () {
 // View Check Balance
 checkBalance.addEventListener("click", function () {
   let currentAcc = JSON.parse(localStorage.getItem("currentAcc"));
+  title.textContent = `All Transaction Done By ${currentAcc.accName}`;
   mainSection.classList.remove("hidden");
   let deposits = [];
   currentAcc.transactions.forEach(function (amt) {
@@ -171,13 +175,10 @@ checkBalance.addEventListener("click", function () {
     }
   });
   let arr = deposits;
-  console.log(arr);
   let sum = 0;
   for (let n of arr) {
     sum = sum + n;
   }
-  console.log(sum);
-  console.log(deposits);
   amount.classList.remove("hidden");
   total.textContent = sum;
   displayTransaction(deposits);
