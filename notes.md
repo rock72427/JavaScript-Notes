@@ -4112,6 +4112,22 @@ if (flag == 1) {
 </html>
 ```
 
+## array.reduce()
+
+- reduce an array element into single value.
+
+#### Syntax
+
+```
+arr.reduce(callback function, Initial value of accumulator);
+```
+
+```
+arr.reduce(function(acc, val, i, arr) {
+  return value;
+}, 0);
+```
+
 ## Class (ES-6)
 
 - Class is a blueprint of objects.
