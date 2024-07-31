@@ -4226,3 +4226,64 @@ Dog { name: 'tom', age: '5yrs', color: 'gray', breed: 'Labra' }
 tom
 tom is a Labra
 ```
+
+## Timer Function
+
+- There are 2 timer function:
+
+1. setTimeout
+2. setInterval
+
+### setTimeout
+
+- setTimeout is a higher order function which is use to execute a callback function for only once after specified time interval.
+
+#### Syntax
+
+```
+setTimeout(arg1, arg2);
+arg1 => function
+arg2 => time in ms
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      setTimeout(function () {
+        console.log("Its working");
+      }, 2000);
+    </script>
+  </head>
+  <body>
+    JS Timer Function
+  </body>
+</html>
+
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      console.log("Go To Your College And Apply For Degree Certificates!!!");
+      let student = ["Satish", "B.Tech"];
+      setTimeout(
+        function (name, deg) {
+          console.log(
+            `Hi, ${name} You ${deg} degree cerfificates has been created Successfully`
+          );
+        },
+        2000,
+        ...student
+      );
+      console.log("Your Degree Certificates Are Creating!!!");
+    </script>
+  </head>
+  <body>
+    JS Timer Function
+  </body>
+</html>
+```
