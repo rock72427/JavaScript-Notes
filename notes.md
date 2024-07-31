@@ -4287,3 +4287,76 @@ arg2 => time in ms
   </body>
 </html>
 ```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let interval = setTimeout(function () {
+        console.log("Its working");
+      }, 2000);
+
+      clearTimeout(interval);
+    </script>
+  </head>
+  <body>
+    JS Timer Function
+  </body>
+</html>
+```
+
+### setInterval
+
+- setInterval is a higher order function which is use to execute a callback function again and again for specified time interval.
+
+#### Syntax
+
+```
+setInterval(arg1, arg2);
+arg1 => function
+arg2 => time in ms
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      let count = 0;
+      let interval = setInterval(function () {
+        count++;
+        console.log(count);
+      }, 1000);
+      clearInterval(interval);
+    </script>
+  </head>
+  <body>
+    <h1>JS Timer Function</h1>
+  </body>
+</html>
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      let count = 0;
+      let interval = setInterval(function () {
+        count++;
+        console.log(count);
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 5000);
+    </script>
+  </head>
+  <body>
+    <h1>JS Timer Function</h1>
+  </body>
+</html>
+```

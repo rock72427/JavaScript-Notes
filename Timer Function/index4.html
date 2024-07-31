@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      let count = 0;
+      let interval = setInterval(function () {
+        count++;
+        console.log(count);
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(interval);
+      }, 5000);
+    </script>
+  </head>
+  <body>
+    <h1>JS Timer Function</h1>
+  </body>
+</html>
