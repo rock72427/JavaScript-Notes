@@ -4509,3 +4509,75 @@ myPromise.finally(() => {})
   </body>
 </html>
 ```
+
+## Async and Await
+
+- Async and await keyword are introduced in ES8 feature to handle the asynchronous code more frequently and with more synchronous manner.
+- Async keyword use to convert any function into a asynchronous function.
+- The await keyword can only use inside a async function to wait for the promise to be settled.
+- An async function returns a promise object.
+- To handle error inside an async function we have to use try, catch and finally blocks.
+
+#### Syntax
+
+```
+async function getData() {
+  try {
+      let result = await Promise
+  console.log(result);
+  } catch(error) {
+    console.log(error);
+  }
+}
+getData();
+```
+
+#### Exception Handling
+
+- We can handle the exception using try, catch and finally blocks inside an async function.
+- If any error occurs in the async function then it will be caught by the catch block and will be logged in the console.
+
+```
+try {
+  do // throw new Error()
+} catch (error) {
+
+} finnally {
+  // code to be executed after try and catch block
+}
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      console.log("starts");
+
+      async function main() {
+        try {
+          let age = 20;
+          let result = await new Promise((resolve, reject) => {
+            setTimeout(() => {
+              if (age > 18) {
+                resolve("Eligible for voting");
+              } else {
+                reject("Not eligible");
+              }
+            }, 2000);
+          });
+          console.log(result);
+        } catch (error) {
+          console.log(error);
+        } finally {
+          console.log("Promise is completed");
+        }
+      }
+
+      main();
+
+      console.log("end");
+    </script>
+  </body>
+</html>
+```
