@@ -4363,7 +4363,7 @@ arg2 => time in ms
 
 ## Asynchronous
 
-- By default javascript is a synchronous and single threaded programming language (synchronous means line by line code execution. Single threaded means performing one task at a time bcause of javascript single callstack architecture engine)
+- By default javascript is a synchronous and single threaded programming language (synchronous means line by line code execution. Single threaded means performing one task at a time because of javascript single callstack architecture engine)
 - But we can make javascript asynchronous by three ways:
 
 1. using callback
@@ -4390,6 +4390,45 @@ arg2 => time in ms
         console.log("hi2");
       }, 0);
       console.log("end");
+    </script>
+  </body>
+</html>
+```
+
+#### Output
+
+```
+start
+end
+hi2
+hi1
+```
+
+## Callback Hell
+
+- Callback hell is a situation where multiple callback are nested on each other to create a pyramid structure of callback, this type of code can reduce the readability and maintainablity of the code.
+- Some times it can result unexpected output as each of the callback are depends on the previous one result.
+- To prevent callback hell we are using promises or async and await to handle asynchronous code more frequently.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      setTimeout(() => {
+        console.log("1st timeout");
+        setTimeout(() => {
+          console.log("2nd timeout");
+          setTimeout(() => {
+            console.log("last timeout");
+          }, 1000);
+        }, 2000);
+      }, 500);
     </script>
   </body>
 </html>
