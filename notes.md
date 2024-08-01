@@ -4495,7 +4495,7 @@ myPromise.finally(() => {})
           if (age > 18) {
             resolve("Eligible for voting");
           } else {
-            reject("Not eligiblef");
+            reject("Not eligible");
           }
         }, 2000);
       });
