@@ -4360,3 +4360,37 @@ arg2 => time in ms
   </body>
 </html>
 ```
+
+## Asynchronous
+
+- By default javascript is a synchronous and single threaded programming language (synchronous means line by line code execution. Single threaded means performing one task at a time bcause of javascript single callstack architecture engine)
+- But we can make javascript asynchronous by three ways:
+
+1. using callback
+2. using promises
+3. using async and await
+
+### Using Callbacks
+
+- Callbacks are use to handle asynchronous code for example timer function, ajax request, etc.
+
+#### Example
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      // callbacks
+      console.log("start");
+      setTimeout(() => {
+        console.log("hi1");
+      }, 100);
+      setTimeout(() => {
+        console.log("hi2");
+      }, 0);
+      console.log("end");
+    </script>
+  </body>
+</html>
+```
