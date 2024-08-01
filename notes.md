@@ -4433,3 +4433,79 @@ hi1
   </body>
 </html>
 ```
+
+## Promise
+
+![Promise](https://i.ibb.co/TLXZhKC/2024-08-01-11-56-33-AI-Eraser.png)
+
+- Promise is introduce in ES6 features to handle the asynchronous code and get rid of callback hell.
+- Promise return a single value sometimes in near future.
+- Promise return an object with 3 states:
+
+1. Pending
+2. FullFilled
+3. Rejected
+
+- The main uses of promise are where an execution takes more time then normal operation and we have to wait for that result like data fetching, bigger calculation and network communication(API calling), etc.
+
+> ### Pending State
+>
+> Pending state means the promise is made but the result is yet to come.
+
+> ### FullFilled State
+>
+> FullFilled state refers that the promise is settled with successful data.
+
+> ### Rejected State
+>
+> The promise is settled with an error.
+
+- For consumming the promise we are using 3 inbuilt method
+
+1. then()
+2. catch()
+3. finally()
+
+- If the promise is fullfilled it execute the then method and if the promise the rejected it execute the catch method implicitly.
+- Finally method execute in both fullfilled and rejected state after the promise settled.
+
+#### Syntax
+
+```
+let myPromise = new Promise((resolve, reject) => {
+  // code to be executed
+})
+```
+
+```
+myPromise.then((data) => {})
+myPromise.catch((error) => {})
+myPromise.finally(() => {})
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      console.log("starts");
+      let myPromise = new Promise((resolve, reject) => {
+        let age = 20;
+        setTimeout(() => {
+          if (age > 18) {
+            resolve("Eligible for voting");
+          } else {
+            reject("Not eligiblef");
+          }
+        }, 2000);
+      });
+      console.log(myPromise);
+      myPromise
+        .then((data) => console.log(data))
+        .catch((err) => console.loog(err))
+        .finally(() => console.log("Promise is completed"));
+      console.log("end");
+    </script>
+  </body>
+</html>
+```

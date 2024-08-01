@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      console.log("starts");
+      let myPromise = new Promise((resolve, reject) => {
+        let age = 20;
+        setTimeout(() => {
+          if (age > 18) {
+            resolve("Eligible for voting");
+          } else {
+            reject("Not eligiblef");
+          }
+        }, 2000);
+      });
+      console.log(myPromise);
+      myPromise
+        .then((data) => console.log(data))
+        .catch((err) => console.loog(err))
+        .finally(() => console.log("Promise is completed"));
+      console.log("end");
+    </script>
+  </body>
+</html>
