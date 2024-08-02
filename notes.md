@@ -4581,3 +4581,59 @@ try {
   </body>
 </html>
 ```
+
+## Synchronous Programming
+
+- Since the javascript is synchronous programming language and single threaded at a time only one statement will be executed.
+- In synchronous programming code will be executed line by line.
+- Synchronous programs are blocking code.
+
+```
+main();
+function main() {
+  console.log("starts");
+  m1();
+  console.log("ends);
+}
+function m1(){
+  console.log("m1 starts");
+  console.log("m1 ends");
+}
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      console.log("Synchronous Programming");
+      alert("Working");
+      console.log("Asynchronous Programming");
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+## Asynchronous Programming
+
+- In asynchronous programming code doesnot stop the execution of next line.
+- Asynchronous programming are non-blocking code.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      console.log("Synchronous Programming");
+      setTimeout(function () {
+        alert("Working");
+      }, 3000);
+      console.log("Asynchronous Programming");
+    </script>
+  </head>
+  <body></body>
+</html>
+```
+
+## Asynchronous Javascript and XML
