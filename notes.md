@@ -4636,23 +4636,6 @@ function m1(){
 </html>
 ```
 
-## Asynchronous Programming
-
-- In asynchronouse programming code does not stop the execution of next line.
-- Asynchronouse programming is non blocking code.
-
-- Does not run in main threat
-
-#### Example
-
-```
-console.log("Synchronouse programming");
-setTimeout(function() {
-  alert("working");
-}, 3000);
-console.log("Asynchronouse programming");
-```
-
 ## Fetch();
 
 - fetch() is a inbuilt method is JS.
