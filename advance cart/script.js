@@ -71,7 +71,9 @@ function display() {
       <div class="col-md-3">
         <div class="card">
               <div class="card-header text-center">
-          <img style="height: 200px" src=${product.img} alt=${product.name} />
+          <img class="img-fluid" style="height: 200px;" src=${
+            product.img
+          } alt=${product.name} />
         </div>
         <div class="card-body">
           <h5>Name: ${product.name}</h5>

@@ -4636,4 +4636,69 @@ function m1(){
 </html>
 ```
 
-## Asynchronous Javascript and XML
+## Asynchronous Programming
+
+- In asynchronouse programming code does not stop the execution of next line.
+- Asynchronouse programming is non blocking code.
+
+- Does not run in main threat
+
+#### Example
+
+```
+console.log("Synchronouse programming");
+setTimeout(function() {
+  alert("working");
+}, 3000);
+console.log("Asynchronouse programming");
+```
+
+## Fetch();
+
+- fetch() is a inbuilt method is JS.
+- fetch() is used to perfrom http request to the server.
+- fetch is a provided based api which returns a promise responses as a result.
+- fetch always return JSON response to get data from JSON response we have to use response JSON.
+
+#### Syntax:
+
+```
+fetch(url, {
+  method: "GET", // or "POST", "PUT", "DELETE", etc.
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(data)
+})
+```
+
+- fetch() takes two arguments, 1st is URL 2nd is a object with method, headers and body property.
+- By default fetch api makes get request to the server.
+- If we need any other http request we have to use 2nd argument By defining that method.
+- Body property is use to send data to the server from client.
+
+#### Example // using promise method
+
+```
+// Define the URL
+let url = "https://jsonplaceholder.typicode.com/users";
+
+// Using Promises
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log(error));
+
+// Using Async/Await
+async function getData() {
+  try {
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getData();
+```
