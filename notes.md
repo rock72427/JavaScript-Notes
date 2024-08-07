@@ -4685,3 +4685,84 @@ async function getData() {
 
 getData();
 ```
+
+## Promise
+
+- Promise is an object which is use to store the future result of asynchronous operation.
+- Promise are introduced in ES 6 version.
+- While creating a promise executer function is compulsory.
+- The executer function will be called immediately when the promise is created.
+
+```
+let p1 = new Promise(function () {
+  console.log("Executer Function!!!");
+});
+```
+
+- Every promise, promises some result.
+- Every promise will have three states:
+
+1. Pending(undefined)
+2. FullFilled(data)
+3. Rejected(error)
+
+- Initially when the promise is created it in a pending state.
+- In pending state the data returned by the promise is undefined.
+
+```
+let p1 = new Promise(function (success, failure) {
+  //   success([1, 2, 3, 4, 5]);
+  failure("Something went wrong");
+});
+console.log(p1);
+```
+
+- The state of promise change to settled when the promise is either resolved or rejected.
+- If the promise is resolved then it returns the resolved data other wise if the promise is rejected then returns rejected data.
+
+```
+function getData(success, failure) {
+  let dataReceived = true;
+  if (dataReceived) {
+    success([1, 2, 3]);
+  } else {
+    failure("Error");
+  }
+}
+getData(abc, xyz);
+function abc(msg) {
+  console.log(msg);
+}
+function xyz(msg) {
+  console.log(msg);
+}
+```
+
+#### Output
+
+```
+[ 1, 2, 3 ]
+```
+
+```
+// Producing Code
+let p1 = new Promise(function (resolve, reject) {
+  let fetchData = true;
+  if (fetchData) resolve([1, 2, 3, 4, 5]);
+  else reject("Something went wrong!!!");
+});
+// Consuming Data
+p1.then((data) => {
+  console.log(data);
+});
+
+p1.catch((err) => {
+  console.error(err);
+});
+```
+
+#### Output
+
+```
+[ 1, 2, 3, 4, 5 ]
+```

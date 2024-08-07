@@ -1,27 +1,14 @@
-// class
-class Animal {
-  constructor(name, age, color) {
-    this.name = name;
-    this.age = age;
-    this.color = color;
-  }
-  // method
-  printName() {
-    console.log(this.name);
-  }
-}
-// child Class
-class Dog extends Animal {
-  constructor(name, age, color, breed) {
-    super(name, age, color);
-    this.breed = breed;
-  }
-  // methods
-  printBreed() {
-    console.log(`${this.name} is a ${this.breed}`);
-  }
-}
-const dog1 = new Dog("tom", "5yrs", "gray", "Labra");
-console.log(dog1);
-dog1.printName();
-dog1.printBreed();
+// Producing Code
+let p1 = new Promise(function (resolve, reject) {
+  let fetchData = true;
+  if (fetchData) resolve([1, 2, 3, 4, 5]);
+  else reject("Something went wrong!!!");
+});
+// Consuming Data
+p1.then((data) => {
+  console.log(data);
+});
+
+p1.catch((err) => {
+  console.error(err);
+});
