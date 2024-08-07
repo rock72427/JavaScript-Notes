@@ -2,14 +2,15 @@ function makeAjaxCall(country) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
     xhr.open("GET", `https://restcountries.com/v3.1/name/${country}`, true);
+    xhr.send();
     xhr.onload = function () {
+      console.log(xhr);
       if (xhr.status == 200) {
         resolve(JSON.parse(xhr.responseText));
       } else {
-        reject(xhr.statusText);
+        reject("Something Wents Wrong!!!");
       }
     };
-    xhr.send();
   });
 }
 
@@ -36,28 +37,24 @@ function displayCountry(data) {
 }
 
 function getData() {
-  makeAjaxCall("India")
+  makeAjaxCall("bharat")
     .then((data) => {
-      console.log(data);
       displayCountry(data);
-      return makeAjaxCall("United States");
+      return makeAjaxCall("usa");
     })
     .then((data) => {
-      console.log(data);
       displayCountry(data);
-      return makeAjaxCall("Pakistan");
+      return makeAjaxCall("pak");
     })
     .then((data) => {
-      console.log(data);
       displayCountry(data);
-      return makeAjaxCall("Afghanistan");
+      return makeAjaxCall("afg");
     })
     .then((data) => {
-      console.log(data);
       displayCountry(data);
     })
-    .catch((error) => {
-      console.error(error);
+    .catch((err) => {
+      console.error(err);
     });
 }
 
