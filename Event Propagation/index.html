@@ -32,15 +32,27 @@
       let btn = document.querySelector("button");
       console.log(box1, box2, btn);
 
-      box1.addEventListener("click", () => {
-        console.log("box1 is clicked");
-      });
-      box2.addEventListener("click", () => {
-        console.log("box2 is clicked");
-      });
-      btn.addEventListener("click", () => {
-        console.log("btn is clicked");
-      });
+      box1.addEventListener(
+        "click",
+        () => {
+          console.log("box1 is clicked");
+        },
+        true
+      );
+      box2.addEventListener(
+        "click",
+        () => {
+          console.log("box2 is clicked");
+        },
+        { capture: true }
+      );
+      btn.addEventListener(
+        "click",
+        () => {
+          console.log("btn is clicked");
+        },
+        true
+      );
     </script>
   </body>
 </html>

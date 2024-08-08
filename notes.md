@@ -4831,3 +4831,77 @@ p1.catch((err) => {
   </body>
 </html>
 ```
+
+## Event Capturing
+
+- Looking for the targeted event from top most parent element to the list most child element known as event capturing.
+- In this phase the event of top most parent element will triggered first then all connected children element's events are going to trigger.
+- To achieve the capturing phase we have to use the third optional argument of `addEventListener function` as true.
+
+#### Syntax
+
+```
+element.addEventListener("event", () => {}, capturing);
+// capturing => true/false
+```
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        padding: 50px;
+        background: yellowgreen;
+      }
+      #box2 {
+        padding: 20px;
+        background: red;
+      }
+      button {
+        padding: 10px;
+        background: blue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <div id="box2">
+        <button>Click Here</button>
+      </div>
+    </div>
+    <script>
+      let box1 = document.querySelector(".box1");
+      let box2 = document.getElementById("box2");
+      let btn = document.querySelector("button");
+      console.log(box1, box2, btn);
+
+      box1.addEventListener(
+        "click",
+        () => {
+          console.log("box1 is clicked");
+        },
+        true
+      );
+      box2.addEventListener(
+        "click",
+        () => {
+          console.log("box2 is clicked");
+        },
+        { capture: true }
+      );
+      btn.addEventListener(
+        "click",
+        () => {
+          console.log("btn is clicked");
+        },
+        true
+      );
+    </script>
+  </body>
+</html>
+```
