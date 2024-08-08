@@ -1,9 +1,4 @@
-## 1. What is hoisting? TDZ? example?
-
-- Hoisting is a default behaviour or mechanism in javascript which allows some of the variable and function are available to use before there declaration.
-- It is a time gap between where let and const variable are hoisted to its initialization.
-
----
+# Q1. What is hoisting? TDZ? example?
 
 Hoisting and the Temporal Dead Zone (TDZ) are important concepts in JavaScript related to variable and function declarations.
 
@@ -118,26 +113,7 @@ In this example:
 
 Understanding hoisting and the TDZ helps prevent bugs related to variable and function declarations, ensuring smoother development in JavaScript.
 
-## 2. What is closure with an example?
-
-- Accessing the function variables even the function exection is completed or out of scope that is known as closure.
-
-```
-function main() {
-    var a = 10;
-    function m1() {
-        var b = 20;
-        console.log(a);
-    }
-    return m1;
-}
-let outer = main();
-outer();
-```
-
-- Closure provides a means to encapsulate data within functions, allowing for controlled access to that data while keeping it hidden from the outside scope
-
----
+# Q2. What is closure with an example?
 
 ## What is a Closure?
 
@@ -196,7 +172,7 @@ Closures have three scopes :
 - Global Scope
   > If an outer function is a nested function then the outer function's scope includes the enclosing scope of the outer function which creates a chain of function scopes.
 
-## Mostly asked Interview Questions for Closures
+# Mostly asked Interview Questions for Closures
 
 ### 1. What are the advantages of Closures?
 
@@ -316,9 +292,8 @@ for (var i = 0; i < 3; i++) {
     console.log(i); // What is logged?
   }, 1000);
 }
+// Output: 3 3 3
 ```
-
-**Solution : ** 333
 
 ### 7. How would you use a closure to create a private counter?
 
@@ -327,13 +302,16 @@ for (var i = 0; i < 3; i++) {
 ```
 function counter() {
   var _counter = 0;
-    // return an object with several functions that allow you
-    // to modify the private _counter variable
-    return {
-      add: function(increment) { _counter += increment; },
-    retrieve: function() { return 'The counter is currently at: ' + _counter;
-        }
-  }
+  // return an object with several functions that allow you
+  // to modify the private _counter variable
+  return {
+    add: function (increment) {
+      _counter += increment;
+    },
+    retrieve: function () {
+      return "The counter is currently at: " + _counter;
+    },
+  };
 }
 
 // error if we try to access the private variable like below// _counter;// usage of our counter function
@@ -342,22 +320,22 @@ c.add(5);
 c.add(9);
 
 // now we can access the private variable in the following way
-c.retrieve();// => The counter is currently at: 14
+c.retrieve(); // => The counter is currently at: 14
 ```
 
 ### 8. What is module pattern?
 
 ```
-var Module = (function() {
-    function privateMethod() {
-        // do something
-    }
+var Module = (function () {
+  function privateMethod() {
+    // do something
+  }
 
-    return {
-        publicMethod: function() {
-            // can call privateMethod();
-        }
-    };
+  return {
+    publicMethod: function () {
+      // can call privateMethod();
+    },
+  };
 })();
 ```
 
@@ -480,7 +458,7 @@ console.log(clumsysquare(9467));
 console.timeEnd("Second call");
 ```
 
-## 3. Function Curring?
+# Q3. Function Curring?
 
 ### What is Currying?
 
@@ -804,187 +782,900 @@ function mergeArgs(args, nextArgs) {
 curry.placeholder = Symbol()
 ```
 
-## 4. type error and reference errro?
-
-### ReferenceError
-
-- A ReferenceError occurs when you try to use a variable that doesn't exist at all.
-
-```
-console.log(x); // ReferenceError: x is not defined
-let x = 10;
-
-console.log(y); // undefined
-var y = 20;
-
-console.log(add(2, 3)); // 5
-function add(a, b) {
-  return a + b;
-}
-```
+# Q4. Type Error and Reference Error?
 
 ### TypeError
 
-- A TypeError occurs when the variable exists, but the operation you're trying to perform is not appropriate for the type of value it contains.
+A `TypeError` occurs when an operation is performed on a value of an inappropriate type. This often happens when a value is not of the expected type for an operation or function.
 
-## Q5. this keyword?
-
-In JavaScript, the `this` keyword is a fundamental concept that refers to the context in which a function or method is executed.
-
-### 1. **Global Context**
-
-In the global context (outside of any function or object method), `this` refers to the global object.
-
-- **In a browser environment**, `this` refers to the `window` object.
-- **In Node.js**, `this` refers to the `global` object.
-
-**Example:**
+#### Example 1: Calling a Method on Undefined
 
 ```javascript
-console.log(this); // In a browser, this logs the Window object
+let obj = undefined;
+obj.someMethod(); // TypeError: Cannot read property 'someMethod' of undefined
 ```
 
-### 2. **Function Context**
+In this case, you’re trying to call `someMethod` on `obj`, but `obj` is `undefined`, and `undefined` does not have a method called `someMethod`.
 
-When `this` is used inside a regular function (not an arrow function), it refers to the object that called the function.
-
-- **In non-strict mode**, `this` refers to the global object (or `window` in browsers) if the function is called directly.
-- **In strict mode**, `this` is `undefined` if the function is called directly.
-
-**Example:**
+#### Example 2: Incorrect Argument Type
 
 ```javascript
-function showThis() {
-  console.log(this);
+function multiply(x, y) {
+  return x * y;
 }
 
-showThis(); // Logs the global object in non-strict mode, undefined in strict mode
+console.log(multiply(2, "3")); // Output: '63'
 ```
 
-**Strict mode example:**
+While this doesn’t throw a `TypeError` directly, it shows how type mismatches can lead to unexpected results. `x` is a number and `y` is a string; JavaScript coerces `y` into a number for the multiplication. If you were performing an operation that strictly requires both arguments to be numbers, you might encounter a `TypeError`.
+
+#### Example 3: Accessing a Property of a Non-Object
 
 ```javascript
-"use strict";
-
-function showThis() {
-  console.log(this);
-}
-
-showThis(); // Logs undefined
+let number = 123;
+console.log(number.length); // TypeError: Cannot read property 'length' of undefined
 ```
 
-### 3. **Method Context**
+Here, `number` is a number, and numbers do not have a `length` property. Trying to access `.length` on a number results in a `TypeError`.
 
-When `this` is used inside an object method, it refers to the object that owns the method.
+### ReferenceError
 
-**Example:**
+A `ReferenceError` occurs when code references a variable that hasn’t been declared. This typically happens if you try to use a variable before it’s been declared or if there’s a typo in the variable name.
+
+#### Example 1: Using an Undeclared Variable
 
 ```javascript
-const person = {
-  name: "Alice",
-  greet() {
-    console.log("Hello, " + this.name);
-  },
-};
-
-person.greet(); // Logs: Hello, Alice
+console.log(x); // ReferenceError: x is not defined
 ```
 
-### 4. **Constructor Functions**
+Here, `x` has not been declared or defined anywhere before this `console.log` call, resulting in a `ReferenceError`.
 
-In a constructor function (or class method), `this` refers to the newly created instance of the constructor.
-
-**Example:**
+#### Example 2: Using a Variable Before Declaration (with `let` or `const`)
 
 ```javascript
-function Person(name) {
-  this.name = name;
-}
-
-const alice = new Person("Alice");
-console.log(alice.name); // Logs: Alice
+console.log(a); // ReferenceError: Cannot access 'a' before initialization
+let a = 5;
 ```
 
-### 5. **Arrow Functions**
+The `ReferenceError` occurs because `let` and `const` declarations are not hoisted in the same way as `var`. Accessing `a` before it’s initialized results in an error.
 
-Arrow functions have a lexical `this`, meaning they inherit `this` from the surrounding context where they are defined. They do not have their own `this`.
-
-**Example:**
+#### Example 3: Typo in Variable Name
 
 ```javascript
-const person = {
-  name: "Alice",
-  greet() {
-    const innerFunction = () => {
-      console.log("Hello, " + this.name);
-    };
-    innerFunction();
-  },
-};
-
-person.greet(); // Logs: Hello, Alice
+let user = { name: "Alice" };
+console.log(user.namee); // ReferenceError: namee is not defined
 ```
 
-### 6. **Event Handlers**
-
-In event handlers, `this` refers to the element that triggered the event.
-
-**Example:**
-
-```javascript
-document.getElementById("myButton").addEventListener("click", function () {
-  console.log(this); // Logs the button element
-});
-```
-
-### 7. **`call`, `apply`, and `bind` Methods**
-
-You can explicitly set the value of `this` using `call()`, `apply()`, or `bind()`.
-
-- **`call()`**: Calls a function with a given `this` value and arguments.
-
-  ```javascript
-  function greet() {
-    console.log("Hello, " + this.name);
-  }
-
-  const person = { name: "Alice" };
-  greet.call(person); // Logs: Hello, Alice
-  ```
-
-- **`apply()`**: Similar to `call()`, but arguments are passed as an array.
-
-  ```javascript
-  function greet(greeting) {
-    console.log(greeting + ", " + this.name);
-  }
-
-  const person = { name: "Alice" };
-  greet.apply(person, ["Hello"]); // Logs: Hello, Alice
-  ```
-
-- **`bind()`**: Creates a new function with `this` bound to the provided value.
-
-  ```javascript
-  function greet() {
-    console.log("Hello, " + this.name);
-  }
-
-  const person = { name: "Alice" };
-  const boundGreet = greet.bind(person);
-  boundGreet(); // Logs: Hello, Alice
-  ```
+Here, `namee` is a typo. The correct property is `name`, so attempting to access `namee` results in a `ReferenceError` because it doesn’t exist on the `user` object.
 
 ### Summary
 
-- `this` depends on the context of the function or method it is used in.
-- In global context: `this` refers to the global object.
-- In a function: `this` refers to the global object (non-strict) or `undefined` (strict mode).
-- In a method: `this` refers to the object that owns the method.
-- In a constructor: `this` refers to the newly created instance.
-- In arrow functions: `this` is inherited from the surrounding context.
-- In event handlers: `this` refers to the element that triggered the event.
+- **TypeError**: Signals that an operation was performed on a value of the wrong type, e.g., calling a method on `undefined` or performing an operation on an incorrect type.
+- **ReferenceError**: Signals that a variable or reference was used before it was declared, e.g., trying to access an undeclared variable or referencing a variable before its initialization.
 
-Understanding `this` is crucial for working with JavaScript's object-oriented and functional programming features effectively.
+Understanding these errors can help you debug your code more effectively by identifying the root cause of the issue.
 
-## Q6. Function Method? why? call, apply, bind? with syntax and example?
+# Q5. this Keyword?
+
+The value of `this` is determined by how a function is called (runtime binding). So, there are two types of binding when it comes to object binding in JS, one is implicit and other is explicit.
+
+### Implicit Binding
+
+Implicit Binding is applied when you invoke a function in an Object using the dot notation. this in such scenarios will point to the object using which the function was invoked. Or simply the object on the left side of the dot.
+
+### Explicit Binding
+
+In Explicit Binding, you can force a function to use a certain object as its this. Explicit Binding can be applied using call(), apply(), and bind().
+
+## Interview Questions on "this"
+
+## Question 1 - Explain ‘this’ keyword?
+
+- In the English language, we use the pronoun ‘this’ to reference something:
+
+- Like suppose we have a bucket of fruits, when we say “this” inside of it so that will mean the bucket itself.
+
+- Fruits are kept in `this` bucket
+
+- Similarly, in the JavaScript language, the ‘this’ keyword is used to reference something — an object!
+
+- It can't be set by assignment during execution, and it may be different each time the function is called.
+
+### Global
+
+So for example if we console.log `this` here, we get the window object.
+
+```
+let a = 5
+
+console.log(this.a); //undefined
+```
+
+### This inside a function
+
+- Normally it targets the window object.
+  In it, `this` points to the owner of the function call, I repeat, THE FUNCTION CALL, and NOT the function itself. The same function can have different owners in different scenarios.
+
+```
+function myFunction() {
+    console.log(this)
+}
+myFunction(); // window object
+```
+
+- **What about Arrow Functions? **
+  It takes it's `this` from the outer “normal” function, this won't make much sense now, since as you can see it’s also pointing to window object.
+
+```
+const myFun=()=> {
+    console.log(this)
+}
+myFun(); // window object
+```
+
+- So lets see the behaviour of `this` inside of an Object
+
+### Method inside object
+
+```
+let user = {
+  name: "Piyush",
+  age: 24,
+    getDetails() {
+        console.log(this.name); //Piyush
+    }
+};
+```
+
+### What happens when we have functions inside a nested object key?
+
+```
+let user = {
+  name: "Piyush",
+  age: 24,
+    childObj:{
+        newName:"Roadside Coder",
+        getDetails() {
+            console.log(this.newName, "and" ,this.name);
+        }
+    }
+};
+```
+
+let us know in the comments what will be the output of `user.childObj.getDetails()`?
+
+### What if the same functions are arrow functions inside the object?
+
+```
+let user = {
+  name: "Piyush",
+  age: 24,
+    getDetails: () => {
+        console.log(this.name);
+    }
+};
+```
+
+Does `user.getDetails()` give you any output? Well it is empty since it points to window object.
+
+```
+let user = {
+  name: "Piyush",
+  age: 24,
+    getDetails() {
+        const nestedArrow = () => console.log(this.name); //Piyush
+        nestedArrow();
+    }
+};
+```
+
+`user.getDetails()` gives "Piyush" as the output since it points to the parent's context i.e. the user object.
+
+### Class / Constructors
+
+```
+class user {
+    constructor(n){
+        this.name = n
+    }
+    getName(){
+        console.log(this.name);
+    }
+}
+
+const User = new user("Piyush") // => This will generate a user object from the above class
+User.getName();
+```
+
+## Question -2 Give the output of the following snippet.
+
+```
+const user = {
+  firstName: 'Piyush!',
+  getName() {
+    const firstName = 'Jen!';
+    return this.firstName;
+  }
+};
+console.log(user.getName()); // What is logged?
+```
+
+`Piyush!` is logged to the console. `user.getName()` is a method invocation, that's why `this` inside the method equals `object`.
+
+There's also a variable declaration `const firstName = 'Jen!'` inside the method. The variable doesn't influence anyhow the value of `this.firstName`.
+
+## Question 3 -What is the result of accessing its `ref`? Why?
+
+```
+function makeUser() {
+  return {
+    name: "John",
+    ref: this
+  };
+}
+
+let user = makeUser();
+
+alert( user.ref.name ); // What's the result?
+```
+
+`Answer`: an error.
+
+That’s because rules that set `this` do not look at object definition. Only the moment of call matters.
+
+Here the value of `this` inside `makeUser()` is `undefined`, because it is called as a function, not as a method with “dot” syntax.
+
+The value of `this` is one for the whole function, code blocks and object literals do not affect it.
+
+So `ref: this` actually takes current `this` of the function.
+
+We can rewrite the function and return the same `this` with `undefined` value:
+
+#### Follow up -
+
+```
+function makeUser() {
+  return {
+    name: "Piyush Agarwal",
+    ref() {
+      return this;
+    }
+  };
+}
+
+let user = makeUser();
+
+alert( user.ref().name ); // Piyush Agarwal
+```
+
+You make ref a method and then there will be no error. You will get the output as `Piyush Agarwal`.
+
+## Question 4 -What logs to console the following code snippet?
+
+```
+const user = {
+  name: "Piyush Agarwal!",
+  logMessage() {
+    console.log(this.name);
+  },
+}; // What is logged?
+setTimeout(user.logMessage, 1000);
+
+
+```
+
+After a delay of 1 second, `undefined` is logged to console.
+
+While `setTimeout()` function uses the `object.logMessage` as a callback, still, it invokes `object.logMessage` as a regular function, rather than a method.
+
+And during a regular function invocation _this_ equals the global object which is `window` in the case of the browser environment.
+
+That's why `console.log(this.message)` inside `logMessage` method logs `window.message`, which is `undefined`.
+
+How can you fix this code so that 'Piyush Agarwal!' is logged to console?
+Write your solution in a comment below!
+
+### Question 5 -What logs to console of the following code snippet?
+
+```
+const user = {
+  name: "Piyush",
+  greet() {
+    return `Hello, ${this.name}!`;
+  },
+  farewell: () => {
+    return `Goodbye, ${this.name}!`;
+  },
+};
+console.log(user.greet());
+// What is logged?
+console.log(user.farewell());
+ // What is logged?
+
+
+```
+
+'Hello, Piyush!' and 'Goodbye, undefined!' are logged to console.
+
+When calling `object.greet()`, inside the method `greet()` `this` value equals `object`because `greet` is a regular function. Thus `object.greet()` returns `'Hello,Piyush!'`.
+
+But `farewell()` is an arrow function, so _[this_ value inside of an arrow function]_always_ equals `this` of the outer scope.
+
+The outer scope of `farewell()` is the global scope, where `this` is the global object. Thus `object.farewell()` actually returns `'Goodbye, ${window.name}!'`, which evaluates to `'Goodbye, undefined!'`.
+
+### Question 6: Create an object `calculator` with three methods:
+
+- `read()` prompts for two values and saves them as object properties with names `a` and `b` respectively.
+- `sum()` returns the sum of saved values.
+- `mul()` multiplies saved values and returns the result.
+
+#### Example :
+
+```
+
+let calculator = {
+  // ... your code ...
+};
+
+calculator.read();
+alert(calculator.sum());
+alert(calculator.mul());
+
+```
+
+```
+let calculator = {
+  sum() {
+    return this.a + this.b;
+  },
+
+  mul() {
+    return this.a * this.b;
+  },
+
+  read() {
+    this.a = +prompt("a?", 0);
+    this.b = +prompt("b?", 0);
+  },
+};
+
+calculator.read();
+alert(calculator.sum());
+alert(calculator.mul());
+```
+
+```
+var length = 4;
+function callback() {
+  console.log(this.length);
+} // What is logged?
+const object = {
+  length: 5,
+  method(callback) {
+    callback();
+  },
+};
+object.method(callback, 1, 2);
+```
+
+`4` is logged to console.
+
+`callback()` is called using regular function invocation inside `method()`. Since this value during a regular function invocation equals the global object, `this.length` is evaluated as `window.length` inside `callback()` function.
+
+The first statement `var length = 4`, being in the outermost scope, creates a property `length` on the global object: `window.length` becomes `4`.
+
+Finally, inside the `callback()` function `this.length` evaluates as `window.length` — `4` being logged to console.
+
+## Question 8 -What is the output of the following code snippet?
+
+```
+var length = 4;
+function callback() {
+  console.log(this.length);
+} // What is logged?
+const object = {
+  length: 5,
+  method() {
+    arguments0;
+  },
+};
+object.method(callback, 1, 2);
+```
+
+`3` is logged to console.
+
+`obj.method(callback, 1, 2)` is invoked with 3 arguments: `callback`, `1` and `2`. As result the `arguments` special variable inside `method()` is an array-like object of the following structure:
+
+```
+{ 0: callback, 1: 1, 2: 2, length: 3 }
+```
+
+Because `arguments[0]()` is a method invocation of `callback` on `arguments` object, `this` inside the `callback` equals `arguments`. As result `this.length` inside `callback()` is same as `arguments.length` — which is `3`.
+
+## Question-9 Write the implementation of this calc()
+
+```
+const result = calc.add(10).multiply(5).subtract(30).add(10);
+console.log(result.total); // What is logged?
+```
+
+```
+var calc = {
+  total: 0,
+  add(a) {
+    this.total += a;
+    return this;
+  },
+  subtract(a) {
+    this.total -= a;
+    return this;
+  },
+  multiply(a) {
+    this.total *= a;
+    return this;
+  },
+};
+```
+
+# Q6. Function Method? why? call, apply, bind? with syntax and example?
+
+- Functions are the building blocks of JavaScript, empowering developers to create reusable and modular code. They play a pivotal role in JavaScript’s versatility, enabling us to define logic, structure data, and execute actions within our programs.
+- They are first-class citizens, which means they can be assigned to variables, passed as arguments to other functions, and even returned from functions. Here are some fundamental roles that functions play in JavaScript:
+
+1. `Abstraction`: Functions allow you to abstract complex logic into reusable, named blocks of code, promoting code organization and maintainability.
+2. `Modularity`: By encapsulating functionality within functions, you can create modular and easily maintainable codebases. Each function can have a specific purpose and can be tested independently.
+3. `Callbacks`: Functions are commonly used as callbacks in asynchronous programming, enabling you to execute code after specific events or operations complete.
+4. `Method Definitions`: Functions are often used to define methods within objects, providing behavior and functionality to objects.
+5. `Scope and Closures`: Functions introduce scope in JavaScript, allowing you to control variable visibility. They also enable the creation of closures, which can capture and preserve variables’ state.
+
+### Introduction to Call, Apply, and Bind Methods
+
+While functions in JavaScript are powerful on their own, the `call`, `apply`, and `bind` methods further extend their capabilities. These methods are associated with functions and allow you to manipulate how a function is invoked and the context in which it executes.
+
+- `call`: The `call` method invokes a function with a specified `this` value and individual arguments passed as separate arguments. It allows you to borrow functions from one object and invoke them in the context of another.
+- `apply`: Similar to `call`, the `apply` method invokes a function with a specified `this` value, but it takes an array or an array-like object as its second argument, allowing you to pass a variable number of arguments to the function.
+- `bind`: The `bind` method creates a new function that, when called, has its `this` value set to a specific value and prepends any provided arguments to the original function's arguments list. It is often used to create functions with preset contexts or partially applied arguments.
+
+### The Call Method
+
+The `call` method is used to invoke a function with a specified `this` value and arguments provided individually. It allows you to change the context in which a function runs, effectively borrowing functions from one object and running them in the context of another. The primary purposes of the `call` method are:
+
+1. Setting the `this` Value: You can explicitly set the `this` value for a function, ensuring it operates within the desired context.
+2. Passing Arguments: You can pass arguments to the function individually, allowing for flexibility in argument handling.
+3. Function Borrowing: `call` enables you to borrow methods or functions from one object and use them in the context of another object.
+
+#### Syntax for Using the Call Method
+
+The syntax for using the `call` method is straightforward:
+
+```
+
+functionName.call(thisArg, arg1, arg2, ...);
+
+```
+
+- `functionName`: The function you want to call.
+- `thisArg`: The value to be used as `this` when the function is executed.
+- `arg1, arg2, ...`: Individual arguments to be passed to the function.
+
+### Examples Demonstrating How to Use Call to Invoke Functions
+
+```
+function greet() {
+console.log(`Hello, ${this.name}!`);
+}
+const person = {name: 'Alice'};
+greet.call(person); // Output: Hello, Alice!
+
+```
+
+### Borrowing Functions
+
+- You can also use `call` to borrow functions from one object and use them in the context of another. In this example, we borrow the `sayHello` method from `person1` and use it with `person2`:
+
+```
+const person1 = {
+name: "Bob",
+sayHello: function () {
+console.log(`Hello, ${this.name}!`);
+},
+};
+
+const person2 = {
+name: "Charlie",
+};
+person1.sayHello(person2); // Output: Hello, Charlie!
+```
+
+### Passing Arguments
+
+- The `call` method allows you to pass arguments individually. Here, we define a function `sum` that calculates the sum of two numbers:
+
+```
+function sum(a, b) {
+console.log(`Sum: ${a + b}`);
+}
+
+sum.call(null, 5, 7); // Output: Sum: 12
+```
+
+- In this example, `null` is used as the `this` value since we don't require a specific context for the `sum` function.
+
+- The `call` method's ability to dynamically set the `this` value and pass arguments makes it a versatile tool in JavaScript development. Whether you're dealing with method borrowing, context manipulation, or dynamic argument handling, `call` provides a clear and concise way to achieve your goals.
+
+### The Apply Method
+
+The `apply` method is used to invoke a function with a specified `this` value and arguments provided as an array or an array-like object. It serves a similar purpose to `call`, but its ability to accept an array of arguments offers added flexibility.
+
+The primary purposes of the `apply` method are:
+
+1. Setting the `this` Value: You can explicitly set the `this` value for a function, just like with `call`.
+2. Passing Arguments as an Array: `apply` allows you to pass a variable number of arguments to a function in the form of an array.
+3. Function Borrowing with Variable Arguments: It enables you to borrow functions with variable-length argument lists from one object and use them in the context of another.
+
+#### Syntax for Using the Apply Method
+
+```
+functionName.apply(thisArg, [arg1, arg2, ...]);
+```
+
+- `functionName`: The function you want to call.
+- `thisArg`: The value to be used as this when the function is executed.
+- `[arg1, arg2, ...]`: An array or an array-like object containing the arguments to be passed to the function.
+
+### Examples Illustrating How to Use Apply with Functions and Arrays
+
+- You can use `apply` to set the `this` value for a function, just like with `call`. In this example, we set the `this` value for the `greet` function:
+
+```
+function greet() {
+console.log(`Heloo, ${this.name}!`);
+}
+const person = { name: "David" };
+greet.apply(person); // Output: Hello, David
+```
+
+### Borrowing Functions with Variable Arguments
+
+`apply` is particularly useful when dealing with functions that accept a variable number of arguments. Here, we create a function `calculate` that accepts a callback function and an array of arguments:
+
+```
+function calculate(callback, args) {
+return callback.apply(null, args);
+}
+
+function sum(a, b) {
+return a + b;
+}
+
+const arguments = [5, 7];
+const result = calculate(sum, arguments);
+
+console.log(`Result: ${result}`); // Output: Result: 12
+```
+
+- In this example, the `calculate` function uses `apply` to pass the elements of the `arguments` array as individual arguments to the `sum` function.
+
+### Applying Functions to Arrays
+
+The `apply` method can also be useful when working with arrays. Here, we use `apply` to find the maximum value in an array of numbers:
+
+```
+
+const numbers = [4, 9, 2, 8, 5];
+const max = Math.max.apply(null, numbers);
+console.log(`Maximum: ${max}`); // Output: Maximum: 9
+
+```
+
+- In this case, `apply` allows us to apply the `Math.max` function to the `numbers` array, finding the maximum value without manually spreading the array elements as arguments.
+- The `apply` method's ability to pass an array of arguments makes it a versatile tool for dealing with functions that accept variable arguments or for applying functions to arrays and array-like objects.
+
+### The Bind Method
+
+The `bind` method is used to create a new function with a specified `this` value and optional preset arguments. This new function, often referred to as a "bound function," retains the same code body as the original function but operates with the predefined context and arguments.
+
+The primary purposes of the bind method are:
+
+1. `Preserving Context`: It allows you to ensure that a function always executes in a specific context, regardless of how it’s called.
+2. `Partial Function Application`: `bind` enables you to create new functions by pre-filling some of the function's arguments. This is particularly useful when you need to reuse a function with certain arguments fixed.
+
+#### Syntax for Using the Bind Method
+
+```
+const newFunction = functionName.bind(thisArg, arg1, arg2, ...);
+```
+
+- `functionName`: The function you want to bind.
+- `thisArg`: The value to be used as `this` when the new function is executed.
+- `arg1, arg2, ...`: Optional arguments to be preset for the new function.
+
+#### Examples Showing How to Create New Functions Using Bind
+
+In this example, we create a bound function `printMessage` that always runs in the context of the `person` object, ensuring that `this` refers to `person`:
+
+```
+const person = {name: 'Alice'};
+
+function greet() {
+console.log(`Hello, ${this.name}!`);
+}
+const printMessage = greet.bind(person);
+printMessage(); // Output: Hello, Alice!
+```
+
+The `bind` method allows us to "fix" the context of the `greet` function to `person`, making it context-independent.
+
+#### Partial Function Application
+
+`bind` is also valuable for creating new functions with preset arguments. In this example, we create a `multiplyBy` function that multiplies numbers by a preset factor:
+
+```
+function multiply(factor, number) {
+  return factor * number;
+}
+const double = multiply.bind(null, 2);
+console.log(double(5)); // Output: 10
+console.log(double(8)); // Output: 16
+```
+
+In this case, we’ve created a new function, `double`, by binding `multiply` with a `factor` argument preset to `2`. This results in a reusable function that effectively doubles any number passed to it.
+
+#### Creating Event Handlers
+
+`bind` is often used in event handling to ensure that event handlers have the correct context when executed. In this example, we create an event handler that logs a message with the clicked element's `id`:
+
+```
+const button = document.getElementById('myButton');
+function logId() {
+console.log(`Clicked element ID: ${this.id}`);
+}
+button.addEventListener('click', logIn.bind(button));
+```
+
+Here, we bind the `logId` function to the `button` element, ensuring that `this` refers to the button element when the event handler is executed.
+
+The `bind` method's ability to create new functions with predefined contexts and arguments enhances code reusability and context control. Whether you need to fix context issues or create specialized functions, `bind` empowers you to tailor your functions to specific use cases.
+
+### Key Differences between Call, Apply, and Bind
+
+#### 1. Invocation and Immediate Execution:
+
+- `call`: The `call` method immediately invokes the function with the specified `this` value and individual arguments.
+- `apply`: Like `call`, the `apply` method immediately invokes the function but accepts arguments as an array or array-like object.
+- `bind`: The `bind` method doesn't immediately invoke the function. Instead, it creates a new function with the specified `this` value and, optionally, preset arguments. The new function must be called separately.
+
+#### 2. Argument Handling:
+
+- `call`: Accepts arguments individually as a comma-separated list.
+- `apply`: Accepts arguments as an array or array-like object.
+- `bind`: Can preset arguments when creating the new function, but additional arguments can be passed when the new function is invoked.
+
+#### 3. Immediate vs. Deferred Execution:
+
+- `call` and `apply` execute the function immediately upon invocation.
+- `bind` returns a new function that can be invoked at a later time. It defers execution until the new function is called.
+
+### When to Choose One Method over the Others
+
+The choice between `call`, `apply`, and `bind` depends on the specific requirements of your code:
+`call`:
+
+- Use `call` when you want to invoke a function immediately with a specific `this` value and individual arguments.
+- Suitable for scenarios where you need to borrow a method from one object and execute it in the context of another.
+- Helpful for functions with a fixed number of arguments.
+  `apply`:
+
+* Choose `apply` when you need to invoke a function immediately but want to pass a variable number of arguments in the form of an array.
+* Useful when working with functions that accept variable-length argument lists.
+* Especially handy when dealing with arrays or array-like objects.
+  `bind`:
+* Opt for `bind` when you want to create a new function with a preset `this` value and, optionally, preset arguments.
+* Ideal for preserving context, ensuring that a function always runs in a specific context, regardless of how it’s called.
+* Useful for partial function application, where you create specialized functions by fixing some arguments.
+  By understanding the differences and nuances of `call`, `apply`, and `bind`, you can leverage these methods effectively to enhance your JavaScript code's flexibility and control.
+
+### Function Context and `this` Keyword
+
+In JavaScript, the `this` keyword refers to the current execution context, often associated with the object that called the function. The behavior of this can be complex and context-dependent. `call`, `apply`, and `bind` provide control over this context:
+
+1. `call`: When you use `call`, you explicitly set the `this` value for the invoked function. It allows you to immediately change the function's context to the specified object.
+2. `apply`: Similar to `call`, `apply` sets the `this` value but accepts an array or array-like object as arguments. This allows you to pass a variable number of arguments while changing the context.
+3. `bind`: `bind` creates a new function with a fixed `this` value. It doesn't immediately invoke the function; instead, it prepares the function to run in the specified context when called later.
+
+### Illustrative Examples of Changing the Context of a Function
+
+In this example, we have two objects, `person1` and `person2`, each with a `name` property. We define a `greet` function and use `call` to change its context to `person2`:
+
+```
+const person1 = {name: 'Alice'};
+const person2 = {name: 'Bob'};
+function greet() {
+console.log(`Hello, ${this.name}`);
+}
+greet.call(person1); // Output: Hello, Alice!
+greet.call(person2); // Output: Hello, Bob!
+```
+
+Using `call`, we can greet both `person1` and `person2` with the same `greet` function while changing the context.
+
+#### Changing Context with Bind
+
+In this example, we create a bound function `logName` that always logs the `name` property of the `person` object:
+
+```
+const person = {name: 'Charlie'};
+function logName() {
+console.log(`My name is ${this.name}.`);
+}
+const logPersonName = logName.bind(person);
+logPersonName(); // Output: My name is Charlie.
+```
+
+With `bind`, we ensure that `logName` maintains its context tied to the `person` object, even when called separately.
+
+Using Apply with a Different Context
+
+Here, we create a function `introduce` that takes an array of names and logs them in the context of the `speaker` object using `apply`:
+
+```
+const speaker = {name: 'David'};
+function introduce(names) {
+console.log(`I am ${this.name}. Let me introduce you to ${names.join(', ')}.`);
+}
+const friends = ['Emily', 'Fiona', 'George'];
+introduce.apply(speaker, [friends]);
+
+// Output: I am David. Let me introduce you to Emily, Fiona, George.
+```
+
+`apply` allows us to pass an array of names and change the context of `introduce` to the `speaker` object.
+
+# Q7. Explain Array Method? Slice vs splice? filter vs find? map vs find vs reducer? return type of array.push() and array.unshift()?
+
+## Array Methods
+
+Array methods are functions that operate on arrays, performing various operations such as manipulating elements, searching, and transforming data. Here, we'll explore some essential array methods, their differences, and return types.
+
+### Slice vs Splice
+
+`Slice()`: Returns a shallow copy of a portion of an array into a new array object.
+
+#### Syntax
+
+```
+arr.slice(start, end)
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+const slicedArr = arr.slice(1, 3);
+console.log(slicedArr); // Output: [2, 3]
+```
+
+`Splice()`: Changes the contents of an array by removing or replacing existing elements and/or adding new elements.
+
+#### Syntax
+
+```
+arr.splice(start, deleteCount, item1, item2, ...)
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+arr.splice(1, 2, "new");
+console.log(arr); // Output: [1, 'new', 4, 5]
+```
+
+### Filter vs Find
+
+`Filter()`: Creates a new array with all elements that pass the test implemented by the provided function.
+
+#### Syntax
+
+```
+arr.filter(callback(element, index, array))
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+const filteredArr = arr.filter((num) => num > 3);
+console.log(filteredArr); // Output: [4, 5]
+```
+
+`Find()`: Returns the first element in the array that satisfies the provided testing function.
+
+#### Syntax
+
+```
+arr.find(callback(element, index, array))
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+const foundElement = arr.find(num => num > 3);
+console.log(foundElement); // Output: 4
+```
+
+### Map vs Find vs Reduce
+
+`Map()`: Creates a new array populated with the results of calling a provided function on every element in the calling array.
+
+#### Syntax
+
+```
+arr.map(callback(element, index, array))
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+const mappedArr = arr.map((num) => num * 2);
+console.log(mappedArr); // Output: [2, 4, 6, 8, 10]
+```
+
+`Find()`: Returns the first element in the array that satisfies the provided testing function. (Same as above)
+`Reduce()`: Applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+
+#### Syntax
+
+```
+arr.reduce(callback(accumulator, currentValue, index, array), initialValue)
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3, 4, 5];
+const sum = arr.reduce((acc, current) => acc + current, 0);
+console.log(sum); // Output: 15
+```
+
+### Return Type of Array.push() and Array.unshift()
+
+`push()`: Adds one or more elements to the end of an array and returns the new length of the array.
+
+#### Syntax
+
+```
+arr.push(element1, element2, ...)
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3];
+const newLength = arr.push(4, 5);
+console.log(newLength); // Output: 5 console.log(arr); // Output: [1, 2, 3, 4, 5]
+```
+
+`unshift()`: Adds one or more elements to the beginning of an array and returns the new length of the array.
+
+#### Syntax
+
+```
+arr.unshift(element1, element2, ...)
+```
+
+#### Example
+
+```
+const arr = [1, 2, 3];
+const newLength = arr.unshift(4, 5);
+console.log(newLength); // Output: 5
+console.log(arr); // Output: [4, 5, 1, 2, 3]
+```
+
+- `slice()` returns a new array, while `splice()` modifies the original array.
+- `filter()` returns a new array, while `find()` returns a single element.
+- `map()` returns a new array, while `reduce()` returns a single value.
+- `push()` and `unshift()` return the new length of the array.
