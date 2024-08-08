@@ -4905,3 +4905,58 @@ element.addEventListener("event", () => {}, capturing);
   </body>
 </html>
 ```
+
+## Stoping the propagation / Targeting Phase
+
+- Triggering only the targeted event without any default propagation behaviour known as targeting phase.
+- For stopging the propagation we are using a predefined function `event.stopPropagation()`
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        padding: 50px;
+        background: yellowgreen;
+      }
+      #box2 {
+        padding: 20px;
+        background: red;
+      }
+      button {
+        padding: 10px;
+        background: blue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <div id="box2">
+        <button>Click Here</button>
+      </div>
+    </div>
+    <script>
+      let box1 = document.querySelector(".box1");
+      let box2 = document.getElementById("box2");
+      let btn = document.querySelector("button");
+      console.log(box1, box2, btn);
+
+      box1.addEventListener("click", (event) => {
+        console.log("box1 is clicked");
+      });
+      box2.addEventListener("click", (event) => {
+        console.log("box2 is clicked");
+      });
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        console.log("btn is clicked");
+      });
+    </script>
+  </body>
+</html>
+```
