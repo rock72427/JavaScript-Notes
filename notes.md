@@ -4766,3 +4766,68 @@ p1.catch((err) => {
 ```
 [ 1, 2, 3, 4, 5 ]
 ```
+
+## Event Propagation
+
+![Event Propagation](https://i.ibb.co/mTYHDwD/2024-08-08-11-24-40-AI-Eraser.png)
+
+- Searching for the targeted event inside the dom tree known as event propagation, this process defines how the events are flowing in a web page.
+- Event propagation is mainly divided into 2 types:
+
+1. Event Bubbling
+2. Event Capturing
+
+## Event Bubbling / Bubbling phase
+
+- Searching for the targeted event from least most child element to top most parent element known as event bubbling.
+- This is the default behaviour of every event inside a web page.
+- In this phase first the event of child element is triggered then all the connected parent elements event get triggered one by one.
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        padding: 50px;
+        background: yellowgreen;
+      }
+      #box2 {
+        padding: 20px;
+        background: red;
+      }
+      button {
+        padding: 10px;
+        background: blue;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box1">
+      <div id="box2">
+        <button>Click Here</button>
+      </div>
+    </div>
+    <script>
+      let box1 = document.querySelector(".box1");
+      let box2 = document.getElementById("box2");
+      let btn = document.querySelector("button");
+      console.log(box1, box2, btn);
+
+      box1.addEventListener("click", () => {
+        console.log("box1 is clicked");
+      });
+      box2.addEventListener("click", () => {
+        console.log("box2 is clicked");
+      });
+      btn.addEventListener("click", () => {
+        console.log("btn is clicked");
+      });
+    </script>
+  </body>
+</html>
+```

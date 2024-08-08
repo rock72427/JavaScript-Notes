@@ -829,7 +829,7 @@ function add(a, b) {
 
 ## Q5. this keyword?
 
-In JavaScript, the `this` keyword is a fundamental concept that refers to the context in which a function or method is executed. Understanding `this` can be tricky because its value depends on how and where it is used. Here’s a detailed explanation:
+In JavaScript, the `this` keyword is a fundamental concept that refers to the context in which a function or method is executed.
 
 ### 1. **Global Context**
 
