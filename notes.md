@@ -4999,3 +4999,185 @@ element.addEventListener("event", () => {}, capturing);
   </body>
 </html>
 ```
+
+## Prototype
+
+- In javascript every object has built-in property which is prototype.
+- In javascript inheritance is achieved through prototypes.
+- Inheritance means aquring property from one object to another object.
+- We can implement prototype inheritance in 3 ways:
+
+1. Function Constructor
+2. Class(ES6)
+3. Object.create()
+
+```
+let arr = [1, 2, 3, 4, 5];
+console.log(arr);
+console.log(arr.__proto__);
+console.log(Array.prototype);
+console.log(arr.__proto__ == Array.prototype);
+
+let obj = { id: 1, name: "Satish" };
+console.log(obj);
+console.log(obj.__proto__);
+console.log(Object.prototype);
+console.log(obj.__proto__ == Object.prototype);
+```
+
+#### Output
+
+```
+[ 1, 2, 3, 4, 5 ]
+Object(0) []
+Object(0) []
+true
+{ id: 1, name: 'Satish' }
+[Object: null prototype] {}
+[Object: null prototype] {}
+true
+```
+
+## Prototype Chaining
+
+```
+let arr = [1, 2, 3, 4, 5];
+console.log(arr.__proto__.__proto__);
+
+let obj = { id: 1, name: "Satish" };
+
+function main() {
+  console.log("main starts");
+}
+main();
+
+console.log(main.__proto__);
+console.log(Function.prototype);
+
+console.log(main.__proto__.__proto__.__proto__);
+```
+
+## Function Constructor
+
+- Function Constructor is a normal function which is called with `new` keyword.
+- Function Constructor is use to create multiple objects.
+- While creating function constructor we should not use arrow function(because arrow function doesn't have its own this keyword).
+- When ever we call a function with new keyword 4 will happen implicitly
+
+1. Empty object will be created `{ }`
+2. this keyword points to the newly created object.
+3. The newly created object link to prototpye object.
+4. Automatically it returns the reference of newly created object.
+
+```
+function Student() {
+  console.log(this); // Student {}
+}
+let s1 = new Student();
+console.log(s1); //  Student {}
+```
+
+```
+function Student() {
+  console.log("Ctt Is Executing!!");
+}
+new Student(); // Ctt Is Executing
+new Student(); // Ctt Is Executing
+new Student(); // Ctt Is Executing
+new Student(); // Ctt Is Executing
+```
+
+- Constructer will be executed every time when the object is created.
+
+```
+function Student(id, name, phno) {
+  this.id = id;
+  this.name = name;
+  this.phno = phno;
+}
+let s1 = new Student(1, "Satish", 1234567890);
+console.log(s1.name); // Satish
+let s2 = s1;
+s2.name = "Rajesh";
+console.log(s1.name); // Rajesh
+console.log(s2.name); // Rajesh
+```
+
+```
+function Student(name, birthYear) {
+  this.name = name;
+  this.birthYear = birthYear;
+}
+let s1 = new Student("Satish", 2000);
+let s2 = new Student("Rajesh", 1999);
+let s3 = "Abhay";
+console.log(s1 instanceof Student); // true
+console.log(s2 instanceof Student); // true
+console.log(s3 instanceof Student); // false
+```
+
+```
+function Student(name, bithYear) {
+  this.name = name;
+  this.birthYear = bithYear;
+  this.calcAge = function () {
+    let currentYear = new Date().getFullYear();
+    let age = currentYear - this.birthYear;
+    console.log(age);
+  };
+}
+
+let s1 = new Student("Satish", 2000);
+console.log(s1); // Student { name: 'Satish', birthYear: 2000, calcAge: [Function (anonymous)] }
+s1.calcAge();    // 24
+let s2 = new Student("Rajesh", 1999);
+console.log(s2); // Student { name: 'Rajesh', birthYear: 1999, calcAge: [Function (anonymous)] }
+s2.calcAge();    // 25
+```
+
+```
+function Student(name, birthYear) {
+  this.name = name;
+  this.birthYear = birthYear;
+}
+Student.prototype.calcAge = function () {
+  let currentYear = new Date().getFullYear();
+  let age = currentYear - this.birthYear;
+  console.log(age);
+};
+let s1 = new Student("Satish", 2000);
+let s2 = new Student("Rajesh", 1999);
+s1.calcAge(); // 24
+s2.calcAge(); // 25
+```
+
+```
+class Student {
+  constructor() {
+    console.log(this); // Student {}
+    console.log("ctt is executing!!!"); // ctt is executing!!!
+  }
+}
+let s1 = new Student();
+console.log(s1); // Student {}
+```
+
+```
+let Student = class {
+  constructor() {
+    console.log(this); // Student {}
+    console.log("ctt is executing!!!"); // ctt is executing!!!
+  }
+}
+let s1 = new Student();
+console.log(s1); // Student {}
+```
+
+In javascript class can be declared in 2 ways:
+
+1. Class Declaration
+2. Class Expression
+
+- Class are First Class Citizen
+- Class are are not Hoisting
+- Class are in Strict Mode
