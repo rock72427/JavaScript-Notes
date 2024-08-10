@@ -1679,3 +1679,192 @@ console.log(arr); // Output: [4, 5, 1, 2, 3]
 - `filter()` returns a new array, while `find()` returns a single element.
 - `map()` returns a new array, while `reduce()` returns a single value.
 - `push()` and `unshift()` return the new length of the array.
+
+# 8. All Array Method?
+
+### 1. `push(...items)`
+
+- Adds one or more elements to the end of an array and returns the new length of the array.
+- Example: `arr.push(4, 5); // Adds 4 and 5 to the end of arr`
+
+```
+let arr = [1, 2, 3];
+arr.push(4, 5);
+console.log(arr); // Output: [1, 2, 3, 4, 5]
+```
+
+### 2. `pop()`
+
+- Removes the last element from an array and returns that element. This method changes the length of the array.
+- Example: `arr.pop(); // Removes the last element from arr`
+
+```
+let arr = [1, 2, 3, 4];
+let lastElement = arr.pop();
+console.log(lastElement); // Output: 4
+console.log(arr); // Output: [1, 2, 3]
+```
+
+### 3. `shift()`
+
+- Removes the first element from an array and returns that element. This method changes the length of the array.
+- Example: `arr.shift(); // Removes the first element from arr`
+
+```
+let arr = [1, 2, 3, 4];
+let firstElement = arr.shift();
+console.log(firstElement); // Output: 1
+console.log(arr); // Output: [2, 3, 4]
+```
+
+### 4. `unshift(...items)`
+
+- Adds one or more elements to the beginning of an array and returns the new length of the array.
+- Example: `arr.unshift(1, 2); // Adds 1 and 2 to the beginning of arr`
+
+```
+let arr = [2, 3, 4];
+arr.unshift(0, 1);
+console.log(arr); // Output: [0, 1, 2, 3, 4]
+```
+
+### 5. `concat(...arrays)`
+
+- Merges two or more arrays into a new array without changing the existing arrays.
+- Example: `let newArr = arr1.concat(arr2); // Merges arr1 and arr2 into newArr`
+
+```
+let arr1 = [1, 2];
+let arr2 = [3, 4];
+let newArr = arr1.concat(arr2);
+console.log(newArr); // Output: [1, 2, 3, 4]
+```
+
+### 6. `slice(start, end)`
+
+- Returns a shallow copy of a portion of an array into a new array object selected from `start` to `end` (end not included). The original array is not modified.
+- Example: `arr.slice(1, 3); // Creates a new array with elements from index 1 to 2 of arr`
+
+```
+let arr = [1, 2, 3, 4, 5];
+let slicedArr = arr.slice(1, 4);
+console.log(slicedArr); // Output: [2, 3, 4]
+```
+
+### 7. `splice(start, deleteCount, ...items)`
+
+- Changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. `start` is the index to start changes, `deleteCount` is the number of elements to remove, and `items` are elements to add.
+- Example: `arr.splice(2, 1, 'a', 'b'); // Removes 1 element at index 2 and adds 'a' and 'b'`
+
+```
+let arr = [1, 2, 3, 4, 5];
+arr.splice(2, 2, 'a', 'b');
+console.log(arr); // Output: [1, 2, 'a', 'b', 5]
+```
+
+### 8. `join(separator)`
+
+- Joins all elements of an array into a string, separated by the specified separator (default is a comma).
+- Example: `arr.join('-'); // Joins elements of arr with '-' as separator`
+
+```
+let arr = ['Hello', 'world'];
+let str = arr.join(' ');
+console.log(str); // Output: "Hello world"
+```
+
+### 9. `reverse()`
+
+- Reverses the elements of an array in place (the first element becomes the last, and so on).
+- Example: `arr.reverse(); // Reverses the order of elements in arr`
+
+```
+let arr = [1, 2, 3];
+arr.reverse();
+console.log(arr); // Output: [3, 2, 1]
+```
+
+10. `sort(compareFunction)`
+
+    - Sorts the elements of an array in place and returns the array. By default, elements are sorted as strings. The `compareFunction` can be used to sort numbers or strings in a specific order.
+    - Example (ascending): `arr.sort((a, b) => a - b); // Sorts numbers in ascending order`
+    - Example (descending): `arr.sort((a, b) => b - a); // Sorts numbers in descending order`
+    - Example (strings): `arr.sort(); // Sorts strings alphabetically`
+
+- Ascending (numbers):
+
+```
+let arr = [5, 3, 8, 1];
+arr.sort((a, b) => a - b);
+console.log(arr); // Output: [1, 3, 5, 8]
+```
+
+11. **`map(callback)`**
+
+    - Creates a new array with the results of calling a provided function on every element in the calling array.
+    - Example: `arr.map(x => x * 2); // Creates a new array with each element doubled`
+
+12. **`filter(callback)`**
+
+    - Creates a new array with all elements that pass the test implemented by the provided function.
+    - Example: `arr.filter(x => x > 10); // Creates a new array with elements greater than 10`
+
+13. **`find(callback)`**
+
+    - Returns the first element in the array that satisfies the provided testing function. Otherwise, returns `undefined`.
+    - Example: `arr.find(x => x > 10); // Finds the first element greater than 10`
+
+14. **`indexOf(searchElement, fromIndex)`**
+
+    - Returns the first index at which a given element can be found in the array, or -1 if it is not present. `fromIndex` is the position to start the search.
+    - Example: `arr.indexOf(5); // Returns the index of the first occurrence of 5`
+
+15. **`lastIndexOf(searchElement, fromIndex)`**
+
+    - Returns the last index at which a given element can be found in the array, or -1 if it is not present. `fromIndex` is the position to start the search backwards.
+    - Example: `arr.lastIndexOf(5); // Returns the index of the last occurrence of 5`
+
+16. **`reduce(callback, initialValue)`**
+
+    - Applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value. `initialValue` is optional and specifies the initial value of the accumulator.
+    - Example: `arr.reduce((acc, curr) => acc + curr, 0); // Sums all elements in the array`
+
+17. **`includes(searchElement, fromIndex)`**
+
+    - Determines whether an array contains a certain element, returning `true` or `false` as appropriate. `fromIndex` is the position to start the search.
+    - Example: `arr.includes(5); // Returns true if 5 is in the array`
+
+18. **`forEach(callback)`**
+
+    - Executes a provided function once for each array element.
+    - Example: `arr.forEach(x => console.log(x)); // Logs each element in the array`
+
+19. **`from(arrayLike, mapFunction, thisArg)`**
+
+    - Creates a new, shallow-copied `Array` instance from an array-like or iterable object. `mapFunction` can be used to transform elements, and `thisArg` is the value to use as `this` when executing `mapFunction`.
+    - Example: `Array.from('hello'); // Creates an array ['h', 'e', 'l', 'l', 'o']`
+
+20. **`flat(depth)`**
+
+    - Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+    - Example: `arr.flat(1); // Flattens the array one level deep`
+
+21. **`toString()`**
+
+    - Returns a string representing the elements of the array. The elements are separated by commas.
+    - Example: `arr.toString(); // Converts the array to a string`
+
+22. **`delete`**
+
+    - Note: `delete` is not a method of arrays but a JavaScript operator that removes an element from an array (leaves a `hole`).
+    - Example: `delete arr[2]; // Deletes the element at index 2 but leaves a hole in the array`
+
+23. **`copyWithin(target, start, end)`**
+
+    - Shallow copies part of an array to another location in the same array without modifying its length.
+    - Example: `arr.copyWithin(0, 3, 5); // Copies elements from index 3 to 4 to the beginning of the array`
+
+24. **`toSplice()`**
+    - Note: There is no standard `toSplice` method for arrays. It might be a typo or confusion with `splice()`.
+
+Each of these methods provides different functionality for manipulating and querying arrays, making JavaScript arrays powerful and flexible.

@@ -5181,3 +5181,154 @@ In javascript class can be declared in 2 ways:
 - Class are First Class Citizen
 - Class are are not Hoisting
 - Class are in Strict Mode
+
+```
+class A {
+  static m1() {
+    console.log("static m1 is executing!!!");
+  }
+  m2() {
+    console.log("non-static m2 is executing!!!");
+  }
+}
+A.m1(); // static m1 is executing!!!
+let a1 = new A();
+a1.m2(); // non-static m2 is executing!!!
+```
+
+## Types of Variable
+
+In oops there are 3 types of variables
+
+1. local variable
+2. static variable
+3. non-static variable
+
+### local variable
+
+The variable which is created inside the method is known as local variable.
+
+### static variable
+
+The variable which is created inside the class and outside the method with static keyword is known as static variable.
+
+### non-static variable
+
+The variable which is created inside the class and outside the method without using static keyword is known as non-static variable.
+
+### Note
+
+While creating static and non static variables we should not use any keywords such as let, const, var.
+
+```
+class B {
+  static m1() {
+    let a = 1; // local var
+    a++;
+    ++a;
+    console.log("a value is " + a); // a value is 3
+  }
+}
+B.m1();
+```
+
+```
+class C {
+  static a = 1; // static var
+  b = 2; // non-static var
+
+  display() {
+    console.log(C.a); // 1
+    console.log(this.b); // 2
+  }
+}
+let c1 = new C();
+c1.display();
+```
+
+- For static variable only one copy of memory will be created(at the time of class loading)
+- For non static variable memory will be created for each and every object creation.
+
+```
+class D {
+  static a = 0;
+}
+console.log(D.a); // 0
+D.a = 1;
+console.log(D.a); // 1
+D.a = 2;
+console.log(D.a); // 2
+```
+
+```
+class C {
+  b = 0;
+}
+let c1 = new C();
+c1.b = 1;
+console.log(c1.b); // 1
+
+let c2 = new C();
+// c2.b = 2;
+console.log(c2.b); // 0
+```
+
+```
+class Student {
+  sname = null;
+  phno = null;
+  static institute = "jspiders";
+  static count = 0;
+
+  static getCount() {
+    return Student.count;
+  }
+
+  displayDetails() {
+    console.log(`${this.sname}, ${this.phno}`);
+  }
+}
+console.log(Student.getCount()); // 0
+let s1 = new Student();
+s1.sname = "Satish";
+s1.phno = 1234567890;
+Student.count++;
+s1.displayDetails(); // Satish, 1234567890
+
+console.log(Student.getCount()); // 1
+let s2 = new Student();
+s2.sname = "Rajesh";
+s2.phno = 1234567890;
+Student.count++;
+s2.displayDetails(); // Rajesh, 1234567890
+
+console.log(Student.getCount()); // 2
+```
+
+## Constructor
+
+- Constructor is a special method which is use to initalize object members.
+- Constructor will be executed for every object creation.
+- In javascript we can not create more then one constructor inside one class.
+- Since we can not create more then one constructor, constructor overloading is not possible in javascript.
+
+## Constructor Overloading
+
+- Creating multiple constructors in same class with different arguments is known as constructor overloading.
+
+```
+class Student {
+  static count = 0;
+  constructor(sname, phno) {
+    this.sname = sname;
+    this.phno = phno;
+    Student.count++;
+  }
+}
+let s1 = new Student("Satish", 1234567890);
+console.log(s1); // Student { sname: 'Satish', phno: 1234567890 }
+let s2 = new Student("Rajesh", 1234567890);
+console.log(s2); // Student { sname: 'Rajesh', phno: 1234567890 }
+
+console.log("Numbers of students joined: " + Student.count); // Numbers of students joined: 2
+```
