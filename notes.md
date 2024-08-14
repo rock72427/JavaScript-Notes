@@ -4640,7 +4640,7 @@ function m1(){
 
 - fetch() is a inbuilt method is JS.
 - fetch() is used to perfrom http request to the server.
-- fetch is a provided based api which returns a promise responses as a result.
+- fetch is a promise based api which returns a promise responses as a result.
 - fetch always return JSON response to get data from JSON response we have to use response JSON.
 
 #### Syntax:

@@ -1868,3 +1868,372 @@ console.log(arr); // Output: [1, 3, 5, 8]
     - Note: There is no standard `toSplice` method for arrays. It might be a typo or confusion with `splice()`.
 
 Each of these methods provides different functionality for manipulating and querying arrays, making JavaScript arrays powerful and flexible.
+
+# 8. Selector in javascript? difference between getElementById and querySelector? difference between getElementByClassName and getElementByTagName and querySelectorAll?
+
+Selectors are methods used to access and manipulate DOM (Document Object Model) elements.
+
+### 1. `getElementById`
+
+- **Usage**: `document.getElementById('id')`
+- **Returns**: A single element (the first element with the specified ID) or `null` if no element with that ID exists.
+- **Performance**: Fast, as IDs are unique within a document.
+- **Example**:
+  ```html
+  <div id="myDiv">Hello World</div>
+  <script>
+    const element = document.getElementById("myDiv");
+    console.log(element.textContent); // "Hello World"
+  </script>
+  ```
+
+### 2. `querySelector`
+
+- **Usage**: `document.querySelector('selector')`
+- **Returns**: The first element that matches the specified CSS selector or `null` if no matching element is found.
+- **Flexibility**: Can use any valid CSS selector (ID, class, tag, attribute selectors, etc.).
+- **Example**:
+  ```html
+  <div class="myClass">Hello</div>
+  <script>
+    const element = document.querySelector(".myClass");
+    console.log(element.textContent); // "Hello"
+  </script>
+  ```
+
+### **Differences between `getElementById` and `querySelector`**
+
+- **Return Type**: `getElementById` returns a single element or `null`, while `querySelector` also returns a single element or `null`, but allows for more complex selectors.
+- **Performance**: `getElementById` is faster because it specifically looks for an ID. `querySelector` is more versatile but can be slightly slower due to the complexity of CSS selectors.
+
+---
+
+### 3. `getElementsByClassName`
+
+- **Usage**: `document.getElementsByClassName('className')`
+- **Returns**: A live HTMLCollection of all elements with the specified class name. If no elements match, it returns an empty collection.
+- **Live Collection**: The collection updates automatically when the document changes.
+- **Example**:
+  ```html
+  <div class="myClass">One</div>
+  <div class="myClass">Two</div>
+  <script>
+    const elements = document.getElementsByClassName("myClass");
+    console.log(elements.length); // 2
+  </script>
+  ```
+
+### 4. `getElementsByTagName`
+
+- **Usage**: `document.getElementsByTagName('tagName')`
+- **Returns**: A live HTMLCollection of all elements with the specified tag name.
+- **Live Collection**: Like `getElementsByClassName`, this collection updates automatically.
+- **Example**:
+  ```html
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <script>
+    const elements = document.getElementsByTagName("p");
+    console.log(elements.length); // 2
+  </script>
+  ```
+
+### 5. `querySelectorAll`
+
+- **Usage**: `document.querySelectorAll('selector')`
+- **Returns**: A static NodeList of all elements that match the specified CSS selector. If no elements match, it returns an empty NodeList.
+- **Static Collection**: The collection does not update automatically when the document changes.
+- **Example**:
+  ```html
+  <div class="myClass">One</div>
+  <div class="myClass">Two</div>
+  <script>
+    const elements = document.querySelectorAll(".myClass");
+    console.log(elements.length); // 2
+  </script>
+  ```
+
+### **Differences between `getElementsByClassName`, `getElementsByTagName`, and `querySelectorAll`**
+
+- **Return Type**:
+  - `getElementsByClassName` and `getElementsByTagName` return live HTMLCollections.
+  - `querySelectorAll` returns a static NodeList.
+- **Selector Flexibility**:
+
+  - `getElementsByClassName` and `getElementsByTagName` can only search by class name or tag name, respectively.
+  - `querySelectorAll` can use any valid CSS selector, allowing for more complex queries (like `div.myClass`, `p:nth-child(2)`, etc.).
+
+- **Performance**:
+  - `getElementsByClassName` and `getElementsByTagName` can be faster in some cases because they are optimized for those specific searches, but `querySelectorAll` is more powerful for complex selectors.
+
+### Summary Table
+
+| Method                   | Returns                  | Live Collection | Selector Flexibility |
+| ------------------------ | ------------------------ | --------------- | -------------------- |
+| `getElementById`         | Single element or `null` | No              | ID only              |
+| `querySelector`          | Single element or `null` | No              | Any CSS selector     |
+| `getElementsByClassName` | Live HTMLCollection      | Yes             | Class name only      |
+| `getElementsByTagName`   | Live HTMLCollection      | Yes             | Tag name only        |
+| `querySelectorAll`       | Static NodeList          | No              | Any CSS selector     |
+
+In JavaScript, when you work with the DOM, you'll often encounter two types of collections: **HTMLCollection** and **NodeList**. Both of these are collections of DOM nodes, but they have some differences in how they behave and how you interact with them. Let's explore these collections in detail.
+
+### HTMLCollection
+
+**Definition**: An `HTMLCollection` is a collection of HTML elements. It is typically returned by methods like `getElementsByClassName`, `getElementsByTagName`, and `children`.
+
+#### Characteristics:
+
+- **Live Collection**: `HTMLCollection` is live, meaning it automatically updates when the DOM changes. If elements are added or removed from the document, the `HTMLCollection` will reflect those changes.
+- **Indexed**: Elements can be accessed by their index (like an array), or by their `id` or `name` attributes.
+- **Array-like**: Although it looks like an array, it is not a true array. It lacks methods like `forEach`, `map`, and others available on actual arrays.
+
+#### Example of Using HTMLCollection:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTMLCollection Example</title>
+  </head>
+  <body>
+    <div class="example">Item 1</div>
+    <div class="example">Item 2</div>
+    <div class="example">Item 3</div>
+    <script>
+      const elements = document.getElementsByClassName("example");
+
+      console.log(elements.length); // Output: 3
+
+      // Accessing elements using their index
+      for (let i = 0; i < elements.length; i++) {
+        console.log(elements[i].textContent);
+      }
+
+      // Adding a new element (to show live update)
+      const newDiv = document.createElement("div");
+      newDiv.className = "example";
+      newDiv.textContent = "Item 4";
+      document.body.appendChild(newDiv);
+
+      console.log(elements.length); // Output: 4 (live update)
+    </script>
+  </body>
+</html>
+```
+
+### NodeList
+
+**Definition**: A `NodeList` is a collection of nodes that can include elements, text nodes, comments, etc. It is returned by methods like `querySelectorAll`, `childNodes`, and `getElementsByName`.
+
+#### Characteristics:
+
+- **Static or Live**: `NodeList` can be either live or static, depending on how it was created. For example, `childNodes` returns a live `NodeList`, while `querySelectorAll` returns a static `NodeList`.
+- **Array-like**: Like `HTMLCollection`, a `NodeList` is also array-like but is not a true array. However, static `NodeList` can use `forEach`.
+- **Can Include Non-Element Nodes**: A `NodeList` may contain any type of node (including text nodes and comments), while an `HTMLCollection` contains only element nodes.
+
+#### Example of Using NodeList:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NodeList Example</title>
+  </head>
+  <body>
+    <div class="example">Item A</div>
+    <div class="example">Item B</div>
+    <div class="example">Item C</div>
+    <script>
+      const elements = document.querySelectorAll(".example");
+
+      console.log(elements.length); // Output: 3
+
+      // Using forEach to iterate through NodeList
+      elements.forEach((element) => {
+        console.log(element.textContent);
+      });
+
+      // Adding a new element (NodeList remains static)
+      const newDiv = document.createElement("div");
+      newDiv.className = "example";
+      newDiv.textContent = "Item D";
+      document.body.appendChild(newDiv);
+
+      console.log(elements.length); // Output: 3 (no live update)
+    </script>
+  </body>
+</html>
+```
+
+### Key Differences Between HTMLCollection and NodeList
+
+| Feature                | HTMLCollection                                               | NodeList                         |
+| ---------------------- | ------------------------------------------------------------ | -------------------------------- |
+| **Return Methods**     | `getElementsByClassName`, `getElementsByTagName`, `children` | `querySelectorAll`, `childNodes` |
+| **Type of Nodes**      | Only element nodes                                           | Can include all node types       |
+| **Live or Static**     | Always live                                                  | Can be live or static            |
+| **Array Methods**      | Lacks methods like `forEach`                                 | Static NodeList has `forEach`    |
+| **Accessing Elements** | Access via index or `item()` method                          | Access via index                 |
+
+### Conclusion
+
+When working with the DOM, choosing between `HTMLCollection` and `NodeList` depends on your specific needs. If you need a live collection of elements, use `HTMLCollection`. If you want a static collection or need to select with CSS selectors, use `NodeList`. Understanding these differences helps you manipulate the DOM more effectively.
+
+# 9. difference between innerHTML VS innerText vs textContent?
+
+In JavaScript, `innerHTML`, `innerText`, and `textContent` are properties used to access or modify the content of DOM elements. Each of these properties serves a different purpose, and understanding their differences is crucial for effectively manipulating the DOM. Here's a detailed comparison:
+
+### 1. `innerHTML`
+
+- **Definition**: `innerHTML` gets or sets the HTML markup contained within an element. It allows you to read or modify the HTML structure inside an element.
+- **Usage**: Can be used to insert or retrieve HTML tags, elements, and their attributes.
+- **Example**:
+
+  ```html
+  <div id="myDiv">Hello <strong>World</strong></div>
+  <script>
+    const div = document.getElementById("myDiv");
+    console.log(div.innerHTML); // Output: "Hello <strong>World</strong>"
+
+    // Modify the inner HTML
+    div.innerHTML = "New <em>Content</em>";
+  </script>
+  ```
+
+- **Considerations**:
+  - Using `innerHTML` can expose your application to XSS (Cross-Site Scripting) vulnerabilities if you are inserting user-generated content without sanitization.
+  - It can cause reflow and repaint in the browser, as it parses the HTML string and updates the DOM.
+
+### 2. `innerText`
+
+- **Definition**: `innerText` gets or sets the text content of an element, including formatting. It retrieves the visible text, ignoring any HTML tags, and takes into account CSS styles that affect visibility (like `display: none`).
+- **Usage**: Useful when you want to work with the text that is actually rendered on the page.
+- **Example**:
+
+  ```html
+  <div id="myDiv">Hello <strong>World</strong></div>
+  <script>
+    const div = document.getElementById("myDiv");
+    console.log(div.innerText); // Output: "Hello World"
+
+    // Modify the inner text
+    div.innerText = "New Content";
+  </script>
+  ```
+
+- **Considerations**:
+  - `innerText` is not the same as `textContent` because it respects styles that may hide text.
+  - When you set `innerText`, it will replace the entire text content of the element, including any child elements.
+
+### 3. `textContent`
+
+- **Definition**: `textContent` gets or sets the text content of an element, but unlike `innerText`, it retrieves all text, including that in hidden elements. It does not parse HTML and treats the text as plain text.
+- **Usage**: Best used when you need to get or set all the text inside an element, regardless of its formatting or visibility.
+- **Example**:
+
+  ```html
+  <div id="myDiv">Hello <strong>World</strong></div>
+  <script>
+    const div = document.getElementById("myDiv");
+    console.log(div.textContent); // Output: "Hello World"
+
+    // Modify the text content
+    div.textContent = "New Content";
+  </script>
+  ```
+
+- **Considerations**:
+  - `textContent` is generally faster than `innerHTML` because it does not parse HTML and simply retrieves or sets plain text.
+  - When you set `textContent`, any existing child elements are removed and replaced with the new text.
+
+### Summary of Differences
+
+| Feature          | `innerHTML`                       | `innerText`                                      | `textContent`                         |
+| ---------------- | --------------------------------- | ------------------------------------------------ | ------------------------------------- |
+| **Type**         | HTML markup (can contain tags)    | Visible text (ignores HTML tags)                 | Plain text (ignores formatting)       |
+| **Retrieval**    | Retrieves HTML, including tags    | Retrieves text as it appears on the page         | Retrieves all text (including hidden) |
+| **Modification** | Can insert HTML content           | Replaces text (affects formatting)               | Replaces text (removes child nodes)   |
+| **Performance**  | Slower due to HTML parsing        | Slower than `textContent` (style considerations) | Faster due to no parsing              |
+| **XSS Risk**     | Higher risk if user input is used | Lower risk                                       | Lower risk                            |
+
+### Conclusion
+
+- Use **`innerHTML`** when you need to work with HTML content, but be cautious of XSS risks.
+- Use **`innerText`** when you want to work with text as it is rendered in the browser, taking styles into account.
+- Use **`textContent`** when you need to retrieve or set all the text within an element without any HTML formatting and with better performance.
+
+# 10. DOM? BOM? Window?
+
+The terms **DOM**, **BOM**, and **Window** refer to different aspects of web APIs that allow you to interact with web pages and the browser environment. Here’s a breakdown of each term and their differences:
+
+### 1. DOM (Document Object Model)
+
+- **Definition**: The **DOM** is a programming interface for web documents. It represents the structure of a document (such as HTML or XML) as a tree of objects, allowing developers to access and manipulate elements and their content.
+- **Structure**: In the DOM, every element, attribute, and piece of text is represented as a node in a tree structure. The document itself is the root node.
+- **Interactivity**: The DOM allows JavaScript to change the document structure, style, and content dynamically in response to user interactions or other events.
+- **Example**:
+  ```html
+  <div id="myDiv">Hello, <span>World!</span></div>
+  <script>
+    const myDiv = document.getElementById("myDiv");
+    console.log(myDiv.textContent); // Output: "Hello, World!"
+    myDiv.style.color = "blue"; // Change text color to blue
+  </script>
+  ```
+
+### 2. BOM (Browser Object Model)
+
+- **Definition**: The **BOM** is a set of objects that allow JavaScript to interact with the browser itself. It provides methods to manipulate the browser window and handle tasks such as controlling the browser’s navigation, managing cookies, and handling browser events.
+- **Components**: Common components of the BOM include:
+  - **`window`**: Represents the browser window and is the global context for JavaScript execution.
+  - **`navigator`**: Contains information about the browser (e.g., browser name, version).
+  - **`location`**: Provides information about the current URL and allows redirection.
+  - **`history`**: Provides access to the browser session history.
+- **Example**:
+
+  ```javascript
+  // Redirect to a new URL
+  window.location.href = "https://www.example.com";
+
+  // Get the browser's user agent
+  console.log(navigator.userAgent); // Output: User agent string
+  ```
+
+### 3. Window
+
+- **Definition**: The **Window** object is a part of both the DOM and BOM. It represents the current browser window or tab and serves as the global context for JavaScript code. When you open a web page, the browser creates a `window` object that contains all the other objects, including the DOM and BOM objects.
+- **Global Object**: In the global scope, `window` acts as the global object, meaning that any global variables and functions are properties of the `window` object.
+- **Properties and Methods**: The `window` object has many properties and methods for interacting with the browser, including:
+  - **`window.alert()`**: Displays an alert dialog box.
+  - **`window.setTimeout()`**: Executes a function after a specified delay.
+  - **`window.innerWidth`**: Gets the width of the viewport.
+- **Example**:
+
+  ```javascript
+  // Display an alert
+  window.alert("Welcome to my website!");
+
+  // Access the viewport dimensions
+  console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
+  ```
+
+### Key Differences
+
+| Feature               | DOM                                     | BOM                                          | Window                                        |
+| --------------------- | --------------------------------------- | -------------------------------------------- | --------------------------------------------- |
+| **Definition**        | Represents the document structure       | Represents the browser environment           | Represents the browser window/tab             |
+| **Focus**             | Content and structure of the document   | Browser-related functions and properties     | Global context for JavaScript execution       |
+| **Components**        | Elements, attributes, and text nodes    | `window`, `navigator`, `location`, `history` | Main object containing all other objects      |
+| **Manipulation**      | Change HTML, CSS, and content           | Control browser behavior and navigation      | Access global variables and functions         |
+| **Example Use Cases** | Modify elements, create event listeners | Change URL, manage history, access cookies   | Display alerts, get dimensions, manage timers |
+
+### Conclusion
+
+- The **DOM** is focused on the structure and content of web documents, enabling you to manipulate HTML and XML.
+- The **BOM** provides access to browser-related functionalities that extend beyond the document itself.
+- The **Window** object is the global context in which JavaScript operates, combining aspects of both the DOM and BOM. Understanding these concepts helps in effectively working with web pages and enhancing user interactions.
