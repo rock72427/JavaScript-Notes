@@ -2237,3 +2237,378 @@ The terms **DOM**, **BOM**, and **Window** refer to different aspects of web API
 - The **DOM** is focused on the structure and content of web documents, enabling you to manipulate HTML and XML.
 - The **BOM** provides access to browser-related functionalities that extend beyond the document itself.
 - The **Window** object is the global context in which JavaScript operates, combining aspects of both the DOM and BOM. Understanding these concepts helps in effectively working with web pages and enhancing user interactions.
+
+# Topic
+
+# 1. Events
+
+Events are things that happen in the system you are programming — the system produces (or "fires") a signal of some kind when an event occurs, and provides a mechanism by which an action can be automatically taken (that is, some code running) when the event occurs. Events are fired inside the browser window, and tend to be attached to a specific item that resides in it. This might be a single element, a set of elements, the HTML document loaded in the current tab, or the entire browser window. There are many different types of events that can occur.
+
+For example:
+
+- The user selects, clicks, or hovers the cursor over a certain element.
+- The user chooses a key on the keyboard.
+- The user resizes or closes the browser window.
+- A web page finishes loading.
+- A form is submitted.
+- A video is played, paused, or ends.
+- An error occurs.
+
+### An example: handling a click event
+
+In the following example, we have a single `<button>` in the page:
+
+```
+<button>Change color</button>
+```
+
+```
+const btn = document.querySelector("button");
+
+function random(number) {
+  return Math.floor(Math.random() * (number + 1));
+}
+
+btn.addEventListener("click", () => {
+  const rndCol = `rgb(${random(255)} ${random(255)} ${random(255)})`;
+  document.body.style.backgroundColor = rndCol;
+});
+```
+
+# 2. Type of events declaration and difference between them
+
+In JavaScript, events are actions or occurrences that happen in the system you’re programming, and handling these events properly is crucial for creating interactive web applications. There are different ways to declare and handle events in JavaScript. Here’s a breakdown of the main types and their differences:
+
+### 1. **Inline Event Handlers**
+
+These are event handlers defined directly within the HTML elements using attributes.
+
+```html
+<button onclick="alert('Button clicked!')">Click me</button>
+```
+
+**Pros:**
+
+- Simple and straightforward for small scripts.
+- No need to use JavaScript code externally.
+
+**Cons:**
+
+- Not ideal for complex logic or when the same event handler is needed across multiple elements.
+- Mixing HTML with JavaScript can make the code harder to maintain.
+
+### 2. **DOM Level 0 Event Handlers**
+
+These are handlers assigned directly to the element properties in JavaScript.
+
+```html
+<button id="myButton">Click me</button>
+
+<script>
+  document.getElementById("myButton").onclick = function () {
+    alert("Button clicked!");
+  };
+</script>
+```
+
+**Pros:**
+
+- Keeps JavaScript code separate from HTML.
+- Easier to manage and update JavaScript logic.
+
+**Cons:**
+
+- Overwrites any previously assigned event handler for the same event type.
+
+### 3. **DOM Level 2 Event Listeners**
+
+These are handlers registered using the `addEventListener` method, introduced in DOM Level 2. This method allows for multiple handlers to be attached to a single event.
+
+```html
+<button id="myButton">Click me</button>
+
+<script>
+  document.getElementById("myButton").addEventListener("click", function () {
+    alert("Button clicked!");
+  });
+</script>
+```
+
+**Pros:**
+
+- Multiple event listeners can be attached to the same event on the same element.
+- Provides more control over event propagation and handling.
+- Better separation of concerns, as event handling code is kept out of HTML.
+
+**Cons:**
+
+- Slightly more verbose than inline or DOM Level 0 methods.
+
+### 4. **Event Delegation**
+
+Event delegation involves setting up an event listener on a parent element rather than individual child elements. This is useful for handling events on dynamically created elements.
+
+```html
+<ul id="myList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+
+<script>
+  document.getElementById("myList").addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      alert("List item clicked: " + event.target.textContent);
+    }
+  });
+</script>
+```
+
+**Pros:**
+
+- Efficiently handles events for many elements with a single listener.
+- Useful for dynamically added elements.
+
+**Cons:**
+
+- Requires careful management of event propagation and target checking.
+
+### Summary of Differences:
+
+- **Inline Event Handlers:** Embedded in HTML, quick to implement but less maintainable.
+- **DOM Level 0 Event Handlers:** Set directly on elements via properties, less flexible due to overwriting issues.
+- **DOM Level 2 Event Listeners:** Use `addEventListener` for flexible and maintainable event handling with multiple handlers.
+- **Event Delegation:** Handles events at a higher level (on parent elements), useful for dynamic content and improving performance.
+
+Using the `addEventListener` method is generally recommended for modern JavaScript applications due to its flexibility and adherence to best practices.
+
+# 3. Bubbling
+
+Event bubbling is a key concept in JavaScript event handling. It describes the process by which an event propagates from a child element up through its ancestor elements in the DOM hierarchy. Understanding event bubbling helps in effectively managing events, particularly when dealing with nested elements.
+
+### How Event Bubbling Works
+
+When an event is triggered on an element, it first triggers the event handler on that element itself. Then, the event bubbles up to its parent element, and so on, until it reaches the root of the document.
+
+For example, consider the following HTML structure:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Bubbling Example</title>
+  </head>
+  <body>
+    <div id="parent">
+      <button id="child">Click me!</button>
+    </div>
+
+    <script>
+      document.getElementById("parent").addEventListener("click", function () {
+        alert("Parent clicked!");
+      });
+
+      document.getElementById("child").addEventListener("click", function () {
+        alert("Child clicked!");
+      });
+    </script>
+  </body>
+</html>
+```
+
+Here’s what happens when you click the button:
+
+1. **Child Click Handler:** The click event is first handled by the `child` element. The alert saying "Child clicked!" is displayed.
+2. **Parent Click Handler:** After the child’s event handler completes, the event bubbles up to the `parent` element. The alert saying "Parent clicked!" is then displayed.
+
+### Key Points of Event Bubbling
+
+1. **Event Order:** Events bubble up from the target element to the root of the document. If you have nested elements, the innermost element’s event handler is executed first, followed by its ancestors.
+2. **Propagation Control:** You can stop the event from bubbling up by calling `event.stopPropagation()` within an event handler. This is useful when you want to prevent ancestor elements from handling the same event.
+
+   ```javascript
+   document.getElementById("child").addEventListener("click", function (event) {
+     alert("Child clicked!");
+     event.stopPropagation(); // Stops the event from bubbling up to the parent
+   });
+   ```
+
+3. **Event Capturing:** While bubbling is the default behavior, you can also use event capturing (or trickling), where the event starts from the root and trickles down to the target element. Event capturing is less commonly used but can be specified with `addEventListener` by passing `true` as the third argument:
+
+   ```javascript
+   document.getElementById("parent").addEventListener(
+     "click",
+     function () {
+       alert("Parent clicked!");
+     },
+     true
+   ); // This uses capturing phase
+   ```
+
+### Practical Uses of Event Bubbling
+
+- **Event Delegation:** Event bubbling is particularly useful in event delegation, where you attach a single event listener to a parent element rather than multiple listeners on individual child elements. This approach improves performance and simplifies event management, especially for dynamic content.
+
+  ```javascript
+  document.getElementById("parent").addEventListener("click", function (event) {
+    if (event.target.tagName === "BUTTON") {
+      alert("Button inside parent clicked!");
+    }
+  });
+  ```
+
+- **Handling Events in Complex UIs:** Bubbling allows you to manage events in complex user interfaces where multiple elements are nested. By attaching a handler to a parent element, you can efficiently manage and respond to events from any child element.
+
+### Summary
+
+Event bubbling is a fundamental concept in JavaScript that involves the propagation of events from the target element up through its ancestor elements in the DOM. It allows for flexible and efficient event handling and is especially useful in event delegation and managing complex UIs. Understanding how and when to use event bubbling can help you write more effective and maintainable event-driven code.
+
+# 4. Capturing
+
+Event capturing, also known as event trickling, is one of the phases of event propagation in JavaScript. While event bubbling handles events as they propagate from a target element up to the root, event capturing starts from the root and propagates down to the target element. This allows you to intercept events before they reach the target element.
+
+### How Event Capturing Works
+
+1. **Event Capturing Phase:** When an event is triggered, the event capturing phase starts at the root of the document and travels down through the DOM tree to the target element. This is the first phase of event propagation.
+
+2. **Target Phase:** After the event reaches the target element, it enters the target phase where event handlers attached directly to the target element are executed.
+
+3. **Event Bubbling Phase:** Finally, the event enters the bubbling phase, where it bubbles up from the target element back to the root of the document.
+
+### Example of Event Capturing
+
+Consider the following HTML structure:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Capturing Example</title>
+  </head>
+  <body>
+    <div id="grandparent">
+      <div id="parent">
+        <button id="child">Click me!</button>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("grandparent").addEventListener(
+        "click",
+        function () {
+          alert("Grandparent clicked!");
+        },
+        true
+      ); // `true` indicates capturing phase
+
+      document.getElementById("parent").addEventListener(
+        "click",
+        function () {
+          alert("Parent clicked!");
+        },
+        true
+      ); // `true` indicates capturing phase
+
+      document.getElementById("child").addEventListener("click", function () {
+        alert("Child clicked!");
+      });
+    </script>
+  </body>
+</html>
+```
+
+Here’s what happens when you click the button:
+
+1. **Capturing Phase:** The click event starts from the root and travels down:
+
+   - `grandparent` element's event listener is triggered first (since it uses capturing phase).
+   - `parent` element’s event listener is triggered next (also in the capturing phase).
+
+2. **Target Phase:** The event then reaches the `child` element, where its event listener is triggered.
+
+3. **Bubbling Phase:** If the event were to bubble up, it would trigger the event handlers on `parent` and `grandparent` again, but in the bubbling phase. However, in this example, only capturing handlers are set for `parent` and `grandparent`, so this phase is not illustrated here.
+
+### Key Points of Event Capturing
+
+- **Event Propagation Order:** The order is root -> target -> leaf, where event handlers attached with capturing (`true` as the third argument) are executed before those in the bubbling phase.
+- **Usage:** Capturing is less commonly used compared to bubbling. It's useful for scenarios where you need to intercept events before they reach specific target elements. This can be helpful for setting up global event handlers or applying pre-processing before the event reaches the target.
+
+- **Adding Event Listeners in Capturing Phase:** To add an event listener in the capturing phase, you pass `true` as the third argument to `addEventListener`.
+
+  ```javascript
+  element.addEventListener("event", handler, true); // Capturing phase
+  ```
+
+### Summary
+
+Event capturing is part of the event propagation process that allows events to be intercepted as they travel down from the root of the DOM to the target element. While it is less commonly used than event bubbling, capturing provides an additional layer of control and is useful for certain scenarios where you need to handle or preprocess events before they reach specific elements.
+
+# 5. What is event.StopPropagation() & why we need it
+
+`event.stopPropagation()` is a method in JavaScript that is used to prevent the propagation of an event from continuing through the event phases. Specifically, it stops the event from bubbling up the DOM tree during the event bubbling phase or from capturing down the DOM tree during the event capturing phase.
+
+### How `event.stopPropagation()` Works
+
+When an event occurs, it goes through the following phases:
+
+1. **Capturing Phase:** The event starts from the root and travels down to the target element.
+2. **Target Phase:** The event reaches the target element where it was initially triggered.
+3. **Bubbling Phase:** The event bubbles up from the target element to the root.
+
+By default, the event will propagate through these phases, triggering any event listeners attached to the ancestor elements. `event.stopPropagation()` prevents this further propagation.
+
+### Example
+
+Consider the following HTML structure and JavaScript code:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>stopPropagation Example</title>
+  </head>
+  <body>
+    <div id="parent" style="padding: 20px; background-color: lightblue;">
+      Parent
+      <button id="child">Click me!</button>
+    </div>
+
+    <script>
+      document.getElementById("parent").addEventListener("click", function () {
+        alert("Parent clicked!");
+      });
+
+      document
+        .getElementById("child")
+        .addEventListener("click", function (event) {
+          alert("Child clicked!");
+          event.stopPropagation(); // Stops the event from bubbling up to the parent
+        });
+    </script>
+  </body>
+</html>
+```
+
+Here’s what happens when you click the button:
+
+1. **Child Click Handler:** The click event triggers the `child` element's event handler, which displays "Child clicked!" and calls `event.stopPropagation()`.
+2. **Propagation Stopped:** The `event.stopPropagation()` method prevents the event from bubbling up to the `parent` element. As a result, the `parent` element's event handler is not triggered, and you don't see the "Parent clicked!" alert.
+
+### Why We Need `event.stopPropagation()`
+
+1. **Prevent Unintended Behavior:** Sometimes, multiple event handlers might be attached at different levels of the DOM. If you want to prevent an event from affecting parent elements or other elements in the hierarchy, you can use `event.stopPropagation()`.
+
+2. **Event Delegation:** In event delegation, you might attach a single event handler to a parent element to handle events for its child elements. If you need to prevent a child element's event from affecting the parent or triggering other handlers, `event.stopPropagation()` can be used.
+
+3. **Component Isolation:** In complex applications with multiple interactive components, you might want to isolate events within a component. Using `event.stopPropagation()` ensures that the event handling remains confined to the component or specific area without affecting others.
+
+4. **Avoiding Duplicate Actions:** Preventing further propagation can help avoid duplicate actions or conflicts where multiple handlers might otherwise process the same event.
+
+### Important Considerations
+
+- **Does Not Stop Default Behavior:** `event.stopPropagation()` does not prevent the default action associated with the event (e.g., following a link or submitting a form). To prevent the default action, you need to use `event.preventDefault()`.
+
+- **Use Judiciously:** Overusing `event.stopPropagation()` can make debugging and understanding event flow more difficult. It’s best used when you have a clear need to stop event propagation, rather than as a general practice.
+
+### Summary
+
+`event.stopPropagation()` is a method used to halt the propagation of an event through the DOM tree, either during the capturing or bubbling phases. It is useful for preventing unintended interactions with ancestor elements, isolating events within components, and controlling complex event handling scenarios. However, it should be used thoughtfully to avoid complicating event management.
